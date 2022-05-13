@@ -75,3 +75,6 @@ Thumbs.db
 /build
 /.vscode
 /CMakeLists.txt.user
+
+# added by intlsy
+/test-intlsy
