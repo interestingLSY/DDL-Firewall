@@ -20,11 +20,8 @@ set(PROJECT_SOURCES
         mainwindow.h
         mainwindow.ui
         src/classes/reminder.cpp
-        src/classes/reminder.h
         src/classes/task.cpp
-        src/classes/task.h
         src/classes/subtask.cpp
-        src/classes/subtask.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
