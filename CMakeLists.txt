@@ -22,6 +22,7 @@ set(PROJECT_SOURCES
         src/classes/reminder.cpp
         src/classes/task.cpp
         src/classes/subtask.cpp
+        src/classes/tasklist.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
