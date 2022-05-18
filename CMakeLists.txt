@@ -19,10 +19,12 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        src/3rdparty/jsoncpp/jsoncpp.cpp
         src/classes/reminder.cpp
         src/classes/task.cpp
         src/classes/subtask.cpp
         src/classes/tasklist.cpp
+        src/config/config.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
