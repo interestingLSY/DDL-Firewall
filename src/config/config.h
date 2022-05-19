@@ -17,6 +17,7 @@ private:
 	QDir config_qdir;
 	QFile config_qfile;
 	Json::Value data;
+	static int instance_count;
 
 public:
 	Config();

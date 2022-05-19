@@ -9,8 +9,16 @@
 #include <QErrorMessage>
 
 Config config;
+int Config::instance_count = 0;
 
 Config::Config() {
+	++instance_count;
+	if (instance_count >= 2) {
+		// There must exist exactly one instance
+		// So there must be something wrong
+		fprintf(stderr, "ERROR! There must exist exactly one instance of config\n");
+		assert(0);
+	}
 	this->config_qdir = QDir::home();
 	bool is_directory_exist = this->config_qdir.cd("ddl_firewall");
 	if (!is_directory_exist) {
