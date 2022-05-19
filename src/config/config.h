@@ -6,6 +6,12 @@
 #include "../3rdparty/jsoncpp/json.h"
 #include "../3rdparty/jsoncpp/json-forwards.h"
 
+/*
+Config 类
+负责维护用户的“设置”
+
+*/
+
 class Config {
 private:
 	QDir config_qdir;

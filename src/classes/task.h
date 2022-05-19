@@ -23,7 +23,7 @@ public:
 	QString comment;
 	QVector<Subtask> subtasks;
 	QVector<Reminder> reminders;
-	QDateTime start_time; // 开始时间（尽在）
+	QDateTime start_time; // 开始时间
 	QDateTime end_time;   // 截止时间
 	bool is_finished;
 
