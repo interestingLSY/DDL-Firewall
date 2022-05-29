@@ -12,6 +12,7 @@ AddTaskList::AddTaskList(QWidget *parent) :
     ui(new Ui::AddTaskList)
 {
    ui->setupUi(this);
+   this->setWindowTitle("新建任务列表");
    this->setWindowFlags(windowFlags()&~Qt::WindowContextHelpButtonHint);
    ui->lineEdit->setStyleSheet("font: 25 13pt '微软雅黑 Light';" //字体
                                    "color: rgb(31,31,31);"		//字体颜色

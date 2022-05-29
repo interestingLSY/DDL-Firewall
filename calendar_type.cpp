@@ -6,6 +6,7 @@ calendar_type::calendar_type(QWidget *parent) :
     ui(new Ui::calendar_type)
 {
     ui->setupUi(this);
+
 }
 
 calendar_type::~calendar_type()

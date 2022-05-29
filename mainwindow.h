@@ -22,5 +22,6 @@ public:
 private slots:
     void on_pushButton_clicked();
     void on_mid_switch_clicked();
+    void on_mid_newtask_clicked();
 };
 #endif // MAINWINDOW_H
