@@ -14,8 +14,13 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void switchpage();
 
-private:
+public:
     Ui::MainWindow *ui;
+
+private slots:
+    void on_pushButton_clicked();
+    void on_mid_switch_clicked();
 };
 #endif // MAINWINDOW_H
