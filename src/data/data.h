@@ -14,11 +14,15 @@ class DataManager {
 private:
 	Textfile file_handler;
 	static int instance_count;
-	void load();
-	void save();
 
+	Json::Value dump_as_json();
+	void load_from_json(const Json::Value &);
+	
 public:
 	QVector<Tasklist> tasklists; 
+
+	void load();
+	void save();
 
 	DataManager();
 	~DataManager();

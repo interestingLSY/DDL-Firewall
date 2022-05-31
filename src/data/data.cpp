@@ -3,7 +3,7 @@
 
 #include <cassert>
 
-DataManager data;
+DataManager data_manager;
 int DataManager::instance_count = 0;
 
 DataManager::DataManager():
@@ -22,6 +22,16 @@ DataManager::~DataManager() {
 	this->save();
 }
 
+Json::Value DataManager::dump_as_json() {
+	Json::Value result;
+	result["tasklists"] = json_io::dump<Tasklist>(this->tasklists, [](const Tasklist &t){ return json_io::dump(t); });
+	return result;
+}
+
+void DataManager::load_from_json(const Json::Value &value) {
+	this->tasklists = json_io::load_qvector<Tasklist>(value["tasklists"], json_io::load_tasklist);
+}
+
 void DataManager::load() {
 	QString content = this->file_handler.read_all();
 
@@ -34,11 +44,12 @@ void DataManager::load() {
 		exit(1);
 	}
 
-	// TODO parse tasklists
+	this->load_from_json(json_data);
 }
 
 void DataManager::save() {
-	Json::Value json_data;
+	Json::Value json_data = this->dump_as_json();
+	
 	Json::StyledWriter writer;
 	std::string data_string = writer.write(json_data);
 	this->file_handler.write_all(QString(data_string.c_str()));
