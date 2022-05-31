@@ -1,5 +1,5 @@
 #include "data.h"
-#include "json_io.hpp"
+#include "json_io.h"
 
 #include <cassert>
 

@@ -68,7 +68,7 @@ Json::Value dump(const Task &task) {
 	Json::Value result;
 	result["type"] = static_cast<int>(task.type);
 	result["name"] = task.name.toStdString();
-	result["comment"] = task.name.toStdString();
+	result["comment"] = task.comment.toStdString();
 	result["subtasks"] = dump<Subtask>(task.subtasks, [](const Subtask &t){ return dump(t); });
 	result["reminders"] = dump<Reminder>(task.reminders, [](const Reminder &t){ return dump(t); });
 	result["start_time"] = dump(task.start_time);
