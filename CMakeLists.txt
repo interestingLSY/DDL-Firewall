@@ -28,6 +28,7 @@ set(PROJECT_SOURCES
         src/data/data.cpp
         src/data/json_io.cpp
         src/fileio/textfile.cpp
+        src/self_test/data_gen.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
