@@ -106,4 +106,21 @@ Tasklist load_tasklist(const Json::Value &value) {
 }
 
 
-}
+/*
+We need to generate code for dump<Tasklist>, dump<Task>, dump<Reminder>.... here.
+Or we'll get an error when linking.
+https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
+https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file/495056#495056
+Anyway, fuck C++. Rust is the best programming language.
+*/
+template Json::Value dump<Reminder>(const QVector<Reminder> &qvector, std::function<Json::Value(const Reminder&)> dumper);
+template Json::Value dump<Subtask>(const QVector<Subtask> &qvector, std::function<Json::Value(const Subtask&)> dumper);
+template Json::Value dump<Task>(const QVector<Task> &qvector, std::function<Json::Value(const Task&)> dumper);
+template Json::Value dump<Tasklist>(const QVector<Tasklist> &qvector, std::function<Json::Value(const Tasklist&)> dumper);
+
+template QVector<Reminder> load_qvector(const Json::Value &value, std::function<Reminder(const Json::Value&)> loader);
+template QVector<Subtask> load_qvector(const Json::Value &value, std::function<Subtask(const Json::Value&)> loader);
+template QVector<Task> load_qvector(const Json::Value &value, std::function<Task(const Json::Value&)> loader);
+template QVector<Tasklist> load_qvector(const Json::Value &value, std::function<Tasklist(const Json::Value&)> loader);
+
+}	// namespace json_io
