@@ -14,7 +14,7 @@ QDateTime load_qdatetime(const Json::Value &value) {
 // QVector
 template<typename T>
 Json::Value dump(const QVector<T> &qvector, std::function<Json::Value(const T&)> dumper) {
-	Json::Value result;
+	Json::Value result = Json::arrayValue;
 	for (const T& item : qvector) {
 		result.append(dumper(item));
 	}
