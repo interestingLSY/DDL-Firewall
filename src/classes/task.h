@@ -31,4 +31,5 @@ public:
 	~Task();
 
 	friend QDebug operator<< (QDebug debug, const Task &task);
+	friend bool operator== (const Task &task1, const Task &task2);
 };

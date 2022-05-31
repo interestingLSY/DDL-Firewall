@@ -10,8 +10,8 @@ BY_ACCURATE_TIME 指的是“到指定的时间就提醒”
 BY_TIME_DELTA 指的是“距离开始时间还有指定秒数的时候提醒”
 */
 enum class ReminderType {
-    BY_ACCURATE_TIME,
-    BY_TIME_DELTA
+    BY_ACCURATE_TIME = 0,
+    BY_TIME_DELTA    = 1
 };
 
 /*
@@ -29,4 +29,5 @@ public:
 	int second_delta;
 
 	friend QDebug operator<< (QDebug debug, const Reminder &reminder);
+	friend bool operator== (const Reminder &reminder1, const Reminder &reminder2);
 };
