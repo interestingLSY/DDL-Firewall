@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddTask</class>
+ <widget class="QDialog" name="AddTask">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>721</width>
+    <height>481</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>669</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="2,2,1,2,4,2,2,2,3,0">
+    <item>
+     <widget class="QLabel" name="label_taskname">
+      <property name="text">
+       <string>任务名</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,12,1">
+      <item>
+       <spacer name="horizontalSpacer_11">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_12">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="remind">
+      <property name="text">
+       <string>任务名不能为空！</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_taskdetail">
+      <property name="text">
+       <string>任务描述</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,12,1">
+      <item>
+       <spacer name="horizontalSpacer_9">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPlainTextEdit" name="plainTextEdit">
+        <property name="contextMenuPolicy">
+         <enum>Qt::DefaultContextMenu</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_10">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QCheckBox" name="checkBoxSubtask">
+        <property name="text">
+         <string>需要包含子任务</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="ymd_layout" stretch="2,1,3,5">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>2</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QCheckBox" name="checkBoxDate">
+          <property name="text">
+           <string>需要设置截止日期</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QComboBox" name="comboBoxYear">
+          <property name="styleSheet">
+           <string notr="true">/* 未下拉时，QComboBox的样式 */
+QComboBox {
+    border: 1px solid gray;   /* 边框 */
+    border-radius: 3px;   /* 圆⾓ */
+    padding: 1px 18px 1px 3px;   /* 字体填衬 */
+    color: black;
+    font: normal normal 15px &quot;Microsoft YaHei&quot;;
+    background: white;
+}
+/* 下拉后，整个下拉窗体样式 */
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;   /* 选定项的虚框 */
+    border: black;   /* 整个下拉窗体的边框 */
+    color: black;
+    background-color: white;   /* 整个下拉窗体的背景⾊ */
+    selection-background-color:rgb(212, 212, 212)
+	selection-color:white
+;   /* 整个下拉窗体被选中项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体每项的样式 */
+QComboBox QAbstractItemView::item {
+    height: 50px;   /* 项的⾼度（设置pComboBox-&gt;setView(new QListView());后，该项才起作⽤） */
+}
+/* 下拉后，整个下拉窗体越过每项的样式 */
+QComboBox QAbstractItemView::item:hover {
+    color: red;
+    background-color: green;   /* 整个下拉窗体越过每项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体被选择的每项的样式 */
+QComboBox QAbstractItemView::item:selected {
+    color: black;
+    background-color: grey;
+}
+/* QComboBox中的垂直滚动条 */
+QComboBox QAbstractScrollArea QScrollBar:vertical {
+    width: 10px;
+    background-color: white;   /* 空⽩区域的背景⾊灰⾊green */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical {
+    border-radius: 5px;   /* 圆⾓ */
+    background: rgb(192,192,192);   /* ⼩⽅块的背景⾊深灰lightblue */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical:hover {
+    background: rgb(192,192,192);   /* 越过⼩⽅块的背景⾊yellow */
+}
+/* 设置为可编辑（setEditable(true)）editable时，编辑区域的样式 */
+QComboBox:editable {
+    background: rgb(192,192,192);
+}
+/* 设置为⾮编辑（setEditable(false)）!editable时，整个QComboBox的样式 */
+QComboBox:!editable {
+     background: white;
+}
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+QComboBox:editable:on {
+    background: black;
+}
+/* 设置为⾮编辑!editable时，点击整个QComboBox的样式 */
+QComboBox:!editable:on {
+     background: white;
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="year">
+          <property name="text">
+           <string>年</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBoxMonth">
+          <property name="styleSheet">
+           <string notr="true">/* 未下拉时，QComboBox的样式 */
+QComboBox {
+    border: 1px solid gray;   /* 边框 */
+    border-radius: 3px;   /* 圆⾓ */
+    padding: 1px 18px 1px 3px;   /* 字体填衬 */
+    color: black;
+    font: normal normal 15px &quot;Microsoft YaHei&quot;;
+    background: white;
+}
+/* 下拉后，整个下拉窗体样式 */
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;   /* 选定项的虚框 */
+    border: black;   /* 整个下拉窗体的边框 */
+    color: black;
+    background-color: white;   /* 整个下拉窗体的背景⾊ */
+    selection-background-color:rgb(212, 212, 212)
+	selection-color:white
+;   /* 整个下拉窗体被选中项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体每项的样式 */
+QComboBox QAbstractItemView::item {
+    height: 50px;   /* 项的⾼度（设置pComboBox-&gt;setView(new QListView());后，该项才起作⽤） */
+}
+/* 下拉后，整个下拉窗体越过每项的样式 */
+QComboBox QAbstractItemView::item:hover {
+    color: red;
+    background-color: green;   /* 整个下拉窗体越过每项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体被选择的每项的样式 */
+QComboBox QAbstractItemView::item:selected {
+    color: black;
+    background-color: grey;
+}
+/* QComboBox中的垂直滚动条 */
+QComboBox QAbstractScrollArea QScrollBar:vertical {
+    width: 10px;
+    background-color: white;   /* 空⽩区域的背景⾊灰⾊green */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical {
+    border-radius: 5px;   /* 圆⾓ */
+    background: rgb(192,192,192);   /* ⼩⽅块的背景⾊深灰lightblue */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical:hover {
+    background: rgb(192,192,192);   /* 越过⼩⽅块的背景⾊yellow */
+}
+/* 设置为可编辑（setEditable(true)）editable时，编辑区域的样式 */
+QComboBox:editable {
+    background: rgb(192,192,192);
+}
+/* 设置为⾮编辑（setEditable(false)）!editable时，整个QComboBox的样式 */
+QComboBox:!editable {
+     background: white;
+}
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+QComboBox:editable:on {
+    background: black;
+}
+/* 设置为⾮编辑!editable时，点击整个QComboBox的样式 */
+QComboBox:!editable:on {
+     background: white;
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="month">
+          <property name="contextMenuPolicy">
+           <enum>Qt::NoContextMenu</enum>
+          </property>
+          <property name="text">
+           <string>月</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBoxDay">
+          <property name="styleSheet">
+           <string notr="true">/* 未下拉时，QComboBox的样式 */
+QComboBox {
+    border: 1px solid gray;   /* 边框 */
+    border-radius: 3px;   /* 圆⾓ */
+    padding: 1px 18px 1px 3px;   /* 字体填衬 */
+    color: black;
+    font: normal normal 15px &quot;Microsoft YaHei&quot;;
+    background: white;
+}
+/* 下拉后，整个下拉窗体样式 */
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;   /* 选定项的虚框 */
+    border: black;   /* 整个下拉窗体的边框 */
+    color: black;
+    background-color: white;   /* 整个下拉窗体的背景⾊ */
+    selection-background-color:rgb(212, 212, 212)
+	selection-color:white
+;   /* 整个下拉窗体被选中项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体每项的样式 */
+QComboBox QAbstractItemView::item {
+    height: 50px;   /* 项的⾼度（设置pComboBox-&gt;setView(new QListView());后，该项才起作⽤） */
+}
+/* 下拉后，整个下拉窗体越过每项的样式 */
+QComboBox QAbstractItemView::item:hover {
+    color: red;
+    background-color: green;   /* 整个下拉窗体越过每项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体被选择的每项的样式 */
+QComboBox QAbstractItemView::item:selected {
+    color: black;
+    background-color: grey;
+}
+/* QComboBox中的垂直滚动条 */
+QComboBox QAbstractScrollArea QScrollBar:vertical {
+    width: 10px;
+    background-color: white;   /* 空⽩区域的背景⾊灰⾊green */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical {
+    border-radius: 5px;   /* 圆⾓ */
+    background: rgb(192,192,192);   /* ⼩⽅块的背景⾊深灰lightblue */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical:hover {
+    background: rgb(192,192,192);   /* 越过⼩⽅块的背景⾊yellow */
+}
+/* 设置为可编辑（setEditable(true)）editable时，编辑区域的样式 */
+QComboBox:editable {
+    background: rgb(192,192,192);
+}
+/* 设置为⾮编辑（setEditable(false)）!editable时，整个QComboBox的样式 */
+QComboBox:!editable {
+     background: white;
+}
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+QComboBox:editable:on {
+    background: black;
+}
+/* 设置为⾮编辑!editable时，点击整个QComboBox的样式 */
+QComboBox:!editable:on {
+     background: white;
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="day">
+          <property name="text">
+           <string>日</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_7">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="2,3,2,9">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_10">
+        <item>
+         <widget class="QCheckBox" name="checkBoxTime">
+          <property name="text">
+           <string>需要到时提醒</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_9">
+        <item>
+         <widget class="QComboBox" name="comboBoxHour">
+          <property name="styleSheet">
+           <string notr="true">/* 未下拉时，QComboBox的样式 */
+QComboBox {
+    border: 1px solid gray;   /* 边框 */
+    border-radius: 3px;   /* 圆⾓ */
+    padding: 1px 18px 1px 3px;   /* 字体填衬 */
+    color: black;
+    font: normal normal 15px &quot;Microsoft YaHei&quot;;
+    background: white;
+}
+/* 下拉后，整个下拉窗体样式 */
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;   /* 选定项的虚框 */
+    border: black;   /* 整个下拉窗体的边框 */
+    color: black;
+    background-color: white;   /* 整个下拉窗体的背景⾊ */
+    selection-background-color:rgb(212, 212, 212)
+	selection-color:white
+;   /* 整个下拉窗体被选中项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体每项的样式 */
+QComboBox QAbstractItemView::item {
+    height: 50px;   /* 项的⾼度（设置pComboBox-&gt;setView(new QListView());后，该项才起作⽤） */
+}
+/* 下拉后，整个下拉窗体越过每项的样式 */
+QComboBox QAbstractItemView::item:hover {
+    color: red;
+    background-color: green;   /* 整个下拉窗体越过每项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体被选择的每项的样式 */
+QComboBox QAbstractItemView::item:selected {
+    color: black;
+    background-color: grey;
+}
+/* QComboBox中的垂直滚动条 */
+QComboBox QAbstractScrollArea QScrollBar:vertical {
+    width: 10px;
+    background-color: white;   /* 空⽩区域的背景⾊灰⾊green */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical {
+    border-radius: 5px;   /* 圆⾓ */
+    background: rgb(192,192,192);   /* ⼩⽅块的背景⾊深灰lightblue */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical:hover {
+    background: rgb(192,192,192);   /* 越过⼩⽅块的背景⾊yellow */
+}
+/* 设置为可编辑（setEditable(true)）editable时，编辑区域的样式 */
+QComboBox:editable {
+    background: rgb(192,192,192);
+}
+/* 设置为⾮编辑（setEditable(false)）!editable时，整个QComboBox的样式 */
+QComboBox:!editable {
+     background: white;
+}
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+QComboBox:editable:on {
+    background: black;
+}
+/* 设置为⾮编辑!editable时，点击整个QComboBox的样式 */
+QComboBox:!editable:on {
+     background: white;
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="hour">
+          <property name="text">
+           <string>时</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBoxMinute">
+          <property name="styleSheet">
+           <string notr="true">/* 未下拉时，QComboBox的样式 */
+QComboBox {
+    border: 1px solid gray;   /* 边框 */
+    border-radius: 3px;   /* 圆⾓ */
+    padding: 1px 18px 1px 3px;   /* 字体填衬 */
+    color: black;
+    font: normal normal 15px &quot;Microsoft YaHei&quot;;
+    background: white;
+}
+/* 下拉后，整个下拉窗体样式 */
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;   /* 选定项的虚框 */
+    border: black;   /* 整个下拉窗体的边框 */
+    color: black;
+    background-color: white;   /* 整个下拉窗体的背景⾊ */
+    selection-background-color:rgb(212, 212, 212)
+	selection-color:white
+;   /* 整个下拉窗体被选中项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体每项的样式 */
+QComboBox QAbstractItemView::item {
+    height: 50px;   /* 项的⾼度（设置pComboBox-&gt;setView(new QListView());后，该项才起作⽤） */
+}
+/* 下拉后，整个下拉窗体越过每项的样式 */
+QComboBox QAbstractItemView::item:hover {
+    color: red;
+    background-color: green;   /* 整个下拉窗体越过每项的背景⾊ */
+}
+/* 下拉后，整个下拉窗体被选择的每项的样式 */
+QComboBox QAbstractItemView::item:selected {
+    color: black;
+    background-color: grey;
+}
+/* QComboBox中的垂直滚动条 */
+QComboBox QAbstractScrollArea QScrollBar:vertical {
+    width: 10px;
+    background-color: white;   /* 空⽩区域的背景⾊灰⾊green */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical {
+    border-radius: 5px;   /* 圆⾓ */
+    background: rgb(192,192,192);   /* ⼩⽅块的背景⾊深灰lightblue */
+}
+QComboBox QAbstractScrollArea QScrollBar::handle:vertical:hover {
+    background: rgb(192,192,192);   /* 越过⼩⽅块的背景⾊yellow */
+}
+/* 设置为可编辑（setEditable(true)）editable时，编辑区域的样式 */
+QComboBox:editable {
+    background: rgb(192,192,192);
+}
+/* 设置为⾮编辑（setEditable(false)）!editable时，整个QComboBox的样式 */
+QComboBox:!editable {
+     background: white;
+}
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+/* 设置为可编辑editable时，点击整个QComboBox的样式 */
+QComboBox:editable:on {
+    background: black;
+}
+/* 设置为⾮编辑!editable时，点击整个QComboBox的样式 */
+QComboBox:!editable:on {
+     background: white;
+}
+</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="minute">
+          <property name="text">
+           <string>分</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,3,2,3,2">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>取消</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>创建</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>AddTask</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>216</x>
+     <y>418</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>196</x>
+     <y>458</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
