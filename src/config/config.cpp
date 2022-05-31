@@ -11,7 +11,8 @@
 Config config;
 int Config::instance_count = 0;
 
-Config::Config() {
+Config::Config():
+	file_handler("config.json", "{}") {
 	++instance_count;
 	if (instance_count >= 2) {
 		// There must exist exactly one instance
@@ -19,35 +20,15 @@ Config::Config() {
 		fprintf(stderr, "ERROR! There must exist exactly one instance of config\n");
 		assert(0);
 	}
-	this->config_qdir = QDir::home();
-	bool is_directory_exist = this->config_qdir.cd("ddl_firewall");
-	if (!is_directory_exist) {
-		// try to create the directory
-		bool is_create_success = this->config_qdir.mkdir("ddl_firewall");
-		assert(is_create_success);
-		bool is_cd_success = this->config_qdir.cd("ddl_firewall");
-		assert(is_cd_success);
-	}
-	bool is_file_exist = this->config_qdir.exists("config.json");
-	this->config_qfile.setFileName(this->config_qdir.absoluteFilePath("config.json"));
-	if (!is_file_exist) {
-		this->config_qfile.open(QIODevice::ReadWrite | QIODevice::Text);
-		QTextStream text_stream(&this->config_qfile);
-		text_stream << "{}";
-		this->config_qfile.close();
-	}
-	this->read_config();
+	this->load();
 }
 
 Config::~Config() {
-	this->save_config();
+	this->save();
 }
 
-void Config::read_config() {
-	bool is_open_success = this->config_qfile.open(QIODevice::ReadOnly | QIODevice::Text);
-	assert(is_open_success);
-	QTextStream text_stream = QTextStream(&this->config_qfile);
-	QString content = text_stream.readAll();
+void Config::load() {
+	QString content = this->file_handler.read_all();
 
 	Json::Reader reader;
 	bool is_parse_success = reader.parse(content.toStdString(), this->data);
@@ -69,20 +50,12 @@ void Config::read_config() {
 			this->data[key] = default_val;
 		}
 	}
-
-	this->config_qfile.close();
 }
 
-void Config::save_config() {
-	bool is_open_success = this->config_qfile.open(QIODevice::ReadWrite | QIODevice::Text);
-	assert(is_open_success);
-
+void Config::save() {
 	Json::StyledWriter writer;
 	std::string data_string = writer.write(this->data);
-	QTextStream text_stream(&this->config_qfile);
-	text_stream << QString(data_string.c_str());
-
-	this->config_qfile.close();
+	this->file_handler.write_all(QString(data_string.c_str()));
 }
 
 std::string Config::get_value(const std::string &key) {
