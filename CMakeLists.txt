@@ -25,6 +25,10 @@ set(PROJECT_SOURCES
         src/classes/subtask.cpp
         src/classes/tasklist.cpp
         src/config/config.cpp
+        src/data/data.cpp
+        src/data/json_io.cpp
+        src/fileio/textfile.cpp
+        src/self_test/data_gen.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

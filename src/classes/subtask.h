@@ -13,4 +13,5 @@ public:
 	~Subtask();
 
 	friend QDebug operator<< (QDebug debug, const Subtask &subtask);
+	friend bool operator== (const Subtask &subtask1, const Subtask &subtask2);
 };

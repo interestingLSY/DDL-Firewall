@@ -11,4 +11,5 @@ public:
 	QVector<Task> tasks;
 
 	friend QDebug operator<< (QDebug debug, const Tasklist &task);
+	friend bool operator== (const Tasklist &tasklist1, const Tasklist &tasklist2);
 };
