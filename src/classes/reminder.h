@@ -4,6 +4,8 @@
 #include <QDateTime>
 #include <QDebug>
 
+#include "uuid.hpp"
+
 /*
 Reminder 的类型
 BY_ACCURATE_TIME 指的是“到指定的时间就提醒”
@@ -20,6 +22,8 @@ enum class ReminderType {
 */
 class Reminder {
 public:
+	long long uuid;
+
     ReminderType type;
 
 	// 如果这个 Reminder 的类型是 BY_ACCURATE_TIME（到指定的时间就提醒），那么该 field 就表示提醒的时间
@@ -28,6 +32,8 @@ public:
 	// 如果这个 Reminder 的类型是 BY_TIME_DELTA（距离事务的开始时间还有指定秒数的时候提醒），那么该 field 就表示距离开始时间还有多少秒的时候提醒
 	int second_delta;
 
+	Reminder();
+	
 	friend QDebug operator<< (QDebug debug, const Reminder &reminder);
 	friend bool operator== (const Reminder &reminder1, const Reminder &reminder2);
 };

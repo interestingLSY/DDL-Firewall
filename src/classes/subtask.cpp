@@ -2,11 +2,13 @@
 
 Subtask::Subtask() {
     this->is_finished = false;
+    this->uuid = get_uuid();
 }
 
 Subtask::Subtask (QString _name)
     : name(_name) {
     this->is_finished = false;
+    this->uuid = get_uuid();
 }
 
 Subtask::~Subtask() {}

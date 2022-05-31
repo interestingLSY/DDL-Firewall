@@ -1,7 +1,50 @@
 #include "task.h"
 
+void Task::add_subtask(const Subtask &subtask) {
+    this->subtasks.push_back(subtask);
+}
+
+QVector<Subtask*> Task::filter_subtask(std::function<bool(const Subtask&)> filt) {
+    QVector<Subtask*> result;
+    for (Subtask& subtask : this->subtasks)
+        if (filt(subtask))
+            result.push_back(&subtask);
+    return result;
+}
+
+void Task::del_subtask(uuid_t target_uuid) {
+	for (auto p = this->subtasks.begin(); p != this->subtasks.end(); ) {
+		if (p->uuid == target_uuid)
+			p = this->subtasks.erase(p);
+		else
+			p++;
+	}
+}
+
+void Task::add_reminder(const Reminder &reminder) {
+    this->reminders.push_back(reminder);
+}
+
+QVector<Reminder*> Task::filter_reminder(std::function<bool(const Reminder&)> filt) {
+    QVector<Reminder*> result;
+    for (Reminder& reminder : this->reminders)
+        if (filt(reminder))
+            result.push_back(&reminder);
+    return result;
+}
+
+void Task::del_reminder(uuid_t target_uuid) {
+	for (auto p = this->reminders.begin(); p != this->reminders.end(); ) {
+		if (p->uuid == target_uuid)
+			p = this->reminders.erase(p);
+		else
+			p++;
+	}
+}
+
 Task::Task() {
     this->is_finished = false;
+    this->uuid = get_uuid();
 }
 
 Task::~Task() {}
