@@ -1,7 +1,10 @@
 #pragma once
 
+#include <functional>
+
 #include "../3rdparty/jsoncpp/json.h"
 #include "../3rdparty/jsoncpp/json-forwards.h"
+#include "../classes/uuid.hpp"
 #include "../fileio/textfile.h"
 #include "../classes/tasklist.h"
 
@@ -23,6 +26,10 @@ public:
 
 	void load();
 	void save();
+
+	void add_tasklist(const Tasklist &tasklist);
+	QVector<Tasklist*> filter_tasklist(std::function<bool(const Tasklist&)> filt);
+	void del_tasklisk(uuid_t target_uuid);
 
 	DataManager();
 	~DataManager();

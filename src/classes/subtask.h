@@ -3,8 +3,11 @@
 #include <QDebug>
 #include <QString>
 
+#include "uuid.hpp"
+
 class Subtask {
 public:
+	uuid_t uuid;
 	QString name;
 	bool is_finished;
 

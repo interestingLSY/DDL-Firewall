@@ -32,6 +32,27 @@ void DataManager::load_from_json(const Json::Value &value) {
 	this->tasklists = json_io::load_qvector<Tasklist>(value["tasklists"], json_io::load_tasklist);
 }
 
+void DataManager::add_tasklist(const Tasklist &tasklist) {
+	this->tasklists.push_back(tasklist);
+}
+
+QVector<Tasklist*> DataManager::filter_tasklist(std::function<bool(const Tasklist&)> filt) {
+	QVector<Tasklist*> result;
+	for (Tasklist& tasklist : this->tasklists)
+		if (filt(tasklist))
+			result.push_back(&tasklist);
+	return result;
+}
+
+void DataManager::del_tasklisk(uuid_t target_uuid) {
+	for (auto p = this->tasklists.begin(); p != this->tasklists.end(); ) {
+		if (p->uuid == target_uuid)
+			p = this->tasklists.erase(p);
+		else
+			p++;
+	}
+}
+
 void DataManager::load() {
 	QString content = this->file_handler.read_all();
 

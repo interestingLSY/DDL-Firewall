@@ -1,5 +1,9 @@
 #include "reminder.h"
 
+Reminder::Reminder() {
+    this->uuid = get_uuid();
+}
+
 QDebug operator<< (QDebug debug, const Reminder &reminder) {
     debug << "Reminder{";
     if (reminder.type == ReminderType::BY_ACCURATE_TIME) {
