@@ -29,6 +29,12 @@ set(PROJECT_SOURCES
         src/data/json_io.cpp
         src/fileio/textfile.cpp
         src/self_test/data_gen.cpp
+        addtask.cpp
+        addtasklist.cpp
+        calendar_type.cpp
+        errors.cpp
+        list_type.cpp
+        list_type2.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
