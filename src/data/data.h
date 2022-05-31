@@ -3,27 +3,25 @@
 #include "../3rdparty/jsoncpp/json.h"
 #include "../3rdparty/jsoncpp/json-forwards.h"
 #include "../fileio/textfile.h"
+#include "../classes/tasklist.h"
 
 /*
-Config 类
-负责维护用户的“设置”
-
+DataManager 类
+负责管理所有的数据
 */
 
-class Config {
+class DataManager {
 private:
 	Textfile file_handler;
-	Json::Value data;
 	static int instance_count;
 	void load();
 	void save();
 
 public:
-	Config();
-	~Config();
+	QVector<Tasklist> tasklists; 
 
-	std::string get_value(const std::string &key);
-	void set_value(const std::string &key, const std::string &value);
+	DataManager();
+	~DataManager();
 };
 
-extern Config config;
+extern DataManager data_manager;
