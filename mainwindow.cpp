@@ -42,30 +42,30 @@ MainWindow::MainWindow(QWidget *parent)
                                     "border: none;border-radius:15px;}"
                                     "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
                                     "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
-   ui->mid_refresh->setStyleSheet("QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);"
-                                    "border: none;border-radius:15px;}"
-                                    "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
-                                    "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
-   ui->label->setStyleSheet("font: 25 19pt '宋体';" //字体
-                            "color: rgb(31,31,31);"		//字体颜色
-                            "background-color: rgb(255, 255, 255);"); //背景颜色
-   ui->label_2->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                      "color: rgb(31,31,31);"		//字体颜色
-                                      "background-color: rgb(255, 255, 255);"); //背景颜色
-   ui->ddlcounter->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                      "color: rgb(31,31,31);"		//字体颜色
-                                      "background-color: rgb(255, 255, 255);"); //背景颜色
-   ui->label_4->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                      "color: rgb(31,31,31);"		//字体颜色
-                                      "background-color: rgb(255, 255, 255);"); //背景颜色
-   ui->label_6->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                      "color: rgb(31,31,31);"		//字体颜色
-                                      "background-color: rgb(255, 255, 255);"); //背景颜色
-   ui->label_7->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                      "color: rgb(31,31,31);"		//字体颜色
-                                      "background-color: rgb(255, 255, 255);"); //背景颜色
-   ui->ddlcounter->setText("今天还有"+QString::number(1)+"个ddl,加油！");
-   ui->ddlcounter->setAlignment(Qt::AlignHCenter);
+    ui->mid_refresh->setStyleSheet("QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);"
+                                        "border: none;border-radius:15px;}"
+                                        "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
+                                        "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
+    ui->label->setStyleSheet("font: 25 19pt '宋体';" //字体
+                                "color: rgb(31,31,31);"		//字体颜色
+                                "background-color: rgb(255, 255, 255);"); //背景颜色
+    ui->label_2->setStyleSheet("font: 25 11pt '宋体';" //字体
+                                        "color: rgb(31,31,31);"		//字体颜色
+                                        "background-color: rgb(255, 255, 255);"); //背景颜色
+    ui->ddlcounter->setStyleSheet("font: 25 11pt '宋体';" //字体
+                                        "color: rgb(31,31,31);"		//字体颜色
+                                        "background-color: rgb(255, 255, 255);"); //背景颜色
+    ui->label_4->setStyleSheet("font: 25 11pt '宋体';" //字体
+                                        "color: rgb(31,31,31);"		//字体颜色
+                                        "background-color: rgb(255, 255, 255);"); //背景颜色
+    ui->label_6->setStyleSheet("font: 25 11pt '宋体';" //字体
+                                        "color: rgb(31,31,31);"		//字体颜色
+                                        "background-color: rgb(255, 255, 255);"); //背景颜色
+    ui->label_7->setStyleSheet("font: 25 11pt '宋体';" //字体
+                                        "color: rgb(31,31,31);"		//字体颜色
+                                        "background-color: rgb(255, 255, 255);"); //背景颜色
+    ui->ddlcounter->setText("今天还有"+QString::number(1)+"个ddl,加油！");
+    ui->ddlcounter->setAlignment(Qt::AlignHCenter);
 
 }
 
