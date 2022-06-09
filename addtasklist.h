@@ -18,7 +18,7 @@ public:
     ~AddTaskList();
 
 private slots:
-    void on_pushButton_2_clicked();
+    void on_btn_create_clicked();
 signals:
     void change_error_text(int);
 public:
