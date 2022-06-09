@@ -14,5 +14,6 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.setWindowTitle(QObject::tr("DDL firewall"));
     w.show();
+    
     return a.exec();
 }

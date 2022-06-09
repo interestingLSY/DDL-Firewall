@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1048</width>
-    <height>677</height>
+    <width>1162</width>
+    <height>809</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,11 +19,14 @@
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>1021</width>
-      <height>611</height>
+      <width>1141</width>
+      <height>721</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="laymain" stretch="1,5,1,10,1,5,1">
+    <layout class="QHBoxLayout" name="laymain" stretch="0,1,0,1,0,1,0">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
      <property name="topMargin">
       <number>5</number>
      </property>
@@ -35,7 +38,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="left" stretch="1,3,3,36,1">
+      <layout class="QVBoxLayout" name="left" stretch="10,0,0,0,0">
        <property name="topMargin">
         <number>5</number>
        </property>
@@ -56,11 +59,43 @@ color: rgb(31,31,31);</string>
           <set>Qt::ImhLatinOnly</set>
          </property>
          <property name="text">
-          <string>任务清单</string>
+          <string>事务清单</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
          </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scroll_tasklists">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>360</width>
+            <height>611</height>
+           </rect>
+          </property>
+          <widget class="QWidget" name="verticalLayoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>361</width>
+             <height>611</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="layout_tasklists">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetMaximumSize</enum>
+            </property>
+           </layout>
+          </widget>
+         </widget>
         </widget>
        </item>
        <item>
@@ -69,63 +104,9 @@ color: rgb(31,31,31);</string>
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>新建任务清单</string>
+          <string>新建事务清单</string>
          </property>
         </widget>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="left_inside">
-         <item>
-          <widget class="QFrame" name="frame">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="frame_5">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="frame_3">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="frame_4">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="frame_2">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
        <item>
         <widget class="Line" name="line_8">
@@ -144,9 +125,9 @@ color: rgb(31,31,31);</string>
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="midpoint" stretch="0,0,0,3,0,35,0">
+      <layout class="QVBoxLayout" name="midpoint" stretch="0,1,0,1,0,9,1,0">
        <property name="sizeConstraint">
-        <enum>QLayout::SetNoConstraint</enum>
+        <enum>QLayout::SetDefaultConstraint</enum>
        </property>
        <property name="topMargin">
         <number>5</number>
@@ -177,40 +158,19 @@ color: rgb(31,31,31);</string>
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLabel" name="lab_tasklist_name">
-           <property name="styleSheet">
-            <string notr="true">font: 25 11pt '宋体';
-color: rgb(31,31,31);</string>
-           </property>
-           <property name="text">
-            <string>某个任务清单的名字</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_mid_switch">
-           <property name="text">
-            <string>切换</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_mid_refresh">
-           <property name="text">
-            <string>刷新</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_mid_create_task">
-           <property name="text">
-            <string>新建</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QLabel" name="lab_tasklist_name">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(31,31,31);</string>
+         </property>
+         <property name="text">
+          <string>某个任务清单的名字</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="Line" name="line_12">
@@ -220,14 +180,54 @@ color: rgb(31,31,31);</string>
         </widget>
        </item>
        <item>
-        <widget class="QStackedWidget" name="stackedWidget">
-         <property name="currentIndex">
-          <number>2</number>
+        <widget class="QScrollArea" name="scroll_tasks">
+         <property name="widgetResizable">
+          <bool>true</bool>
          </property>
-         <widget class="list_type" name="page1"/>
-         <widget class="calendar_type" name="page2"/>
-         <widget class="list_type2" name="page3"/>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>359</width>
+            <height>489</height>
+           </rect>
+          </property>
+          <widget class="QWidget" name="verticalLayoutWidget_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>331</width>
+             <height>491</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="layout_tasks">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetMaximumSize</enum>
+            </property>
+           </layout>
+          </widget>
+         </widget>
         </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QPushButton" name="btn_mid_add_job">
+           <property name="text">
+            <string>新建任务</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_mid_add_sche_task">
+           <property name="text">
+            <string>新建定时事务</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
         <widget class="Line" name="line_10">
@@ -248,7 +248,7 @@ color: rgb(31,31,31);</string>
      <item>
       <layout class="QVBoxLayout" name="right">
        <property name="sizeConstraint">
-        <enum>QLayout::SetNoConstraint</enum>
+        <enum>QLayout::SetDefaultConstraint</enum>
        </property>
        <property name="topMargin">
         <number>5</number>
@@ -267,7 +267,7 @@ color: rgb(31,31,31);</string>
 color: rgb(31,31,31);</string>
          </property>
          <property name="text">
-          <string>任务的名字</string>
+          <string>事务名</string>
          </property>
         </widget>
        </item>
@@ -291,7 +291,7 @@ color: rgb(31,31,31);</string>
 color: rgb(31,31,31);</string>
          </property>
          <property name="text">
-          <string>任务的描述细节</string>
+          <string>事务描述</string>
          </property>
         </widget>
        </item>
@@ -315,7 +315,7 @@ color: rgb(31,31,31);</string>
 color: rgb(31,31,31);</string>
          </property>
          <property name="text">
-          <string>任务的开始与结束时间</string>
+          <string>事务的起止时间</string>
          </property>
         </widget>
        </item>
@@ -381,7 +381,7 @@ color: rgb(31,31,31);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1048</width>
+     <width>1162</width>
      <height>27</height>
     </rect>
    </property>
@@ -394,26 +394,6 @@ color: rgb(31,31,31);</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>list_type</class>
-   <extends>QWidget</extends>
-   <header location="global">list_type.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>calendar_type</class>
-   <extends>QWidget</extends>
-   <header location="global">calendar_type.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>list_type2</class>
-   <extends>QWidget</extends>
-   <header location="global">list_type2.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -1,10 +1,13 @@
-#include "addtasklist.h"
-#include "ui_addtasklist.h"
+#include <QDialog>
+
 #include "./src/classes/reminder.h"
 #include "./src/classes/subtask.h"
 #include "./src/classes/task.h"
 #include "./src/classes/tasklist.h"
-#include <QDialog>
+#include "./src/data/data.h"
+
+#include "addtasklist.h"
+#include "ui_addtasklist.h"
 #include "errors.h"
 
 AddTaskList::AddTaskList(QWidget *parent) :
@@ -36,7 +39,10 @@ void AddTaskList::on_btn_create_clicked()
     }
     else
     {
-        QString new_tasklist_name=ui->input_tasklist_name->text();
+        QString new_tasklist_name = ui->input_tasklist_name->text();
+        Tasklist new_tasklist;
+        new_tasklist.name = new_tasklist_name;
+        data_manager.add_tasklist(new_tasklist);
         this->QDialog::close();
     }
 }

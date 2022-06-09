@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddTask</class>
- <widget class="QDialog" name="AddTask">
+ <class>AddJob</class>
+ <widget class="QDialog" name="AddJob">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>405</height>
+    <width>608</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>新建任务</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -21,29 +21,14 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>451</width>
-     <height>401</height>
+     <width>601</width>
+     <height>521</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="6,6,6,8">
     <property name="sizeConstraint">
      <enum>QLayout::SetDefaultConstraint</enum>
     </property>
-    <item>
-     <widget class="QLabel" name="label_taskname">
-      <property name="font">
-       <font>
-        <pointsize>16</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>添加事务</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
@@ -142,7 +127,7 @@ color: rgb(31,31,31);</string>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
+          <width>80</width>
           <height>20</height>
          </size>
         </property>
@@ -203,7 +188,7 @@ color: rgb(31,31,31);</string>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
+          <width>80</width>
           <height>20</height>
          </size>
         </property>

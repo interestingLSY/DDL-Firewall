@@ -1,21 +1,21 @@
-#ifndef ADDTASK_H
-#define ADDTASK_H
+#ifndef AddJob_H
+#define AddJob_H
 
 #include <QDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class AddTask;
+class AddJob;
 }
 QT_END_NAMESPACE
 
-class AddTask : public QDialog
+class AddJob : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit AddTask(QWidget *parent = nullptr);
-    ~AddTask();
+    explicit AddJob(QWidget *parent = nullptr);
+    ~AddJob();
 
 private slots:
     void on_chkbox_have_ddl_stateChanged(int arg1);
@@ -24,8 +24,10 @@ private slots:
 
     void on_btn_create_clicked();
 
+    void on_datetime_ddl_dateTimeChanged(const QDateTime &datetime);
+
 private:
-    Ui::AddTask *ui;
+    Ui::AddJob *ui;
 };
 
-#endif // ADDTASK_H
+#endif // AddJob_H

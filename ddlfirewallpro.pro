@@ -9,7 +9,8 @@ CONFIG += resources_big
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    addtask.cpp \
+    add_job.cpp \
+    add_sche_task.cpp \
     addtasklist.cpp \
     calendar_type.cpp \
     errors.cpp \
@@ -19,7 +20,8 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
-    addtask.h \
+    add_job.h \
+    add_sche_task.h \
     addtasklist.h \
     calendar_type.h \
     errors.h \
@@ -28,7 +30,8 @@ HEADERS += \
     mainwindow.h
 
 FORMS += \
-    addtask.ui \
+    add_job.ui \
+    add_sche_task.ui \
     addtasklist.ui \
     calendar_type.ui \
     errors.ui \

@@ -30,6 +30,7 @@ public:
 	void add_tasklist(const Tasklist &tasklist);
 	QVector<Tasklist*> filter_tasklist(std::function<bool(const Tasklist&)> filt);
 	void del_tasklisk(uuid_t target_uuid);
+	QVector<Task*> generate_virtual_tasklist(std::function<bool(const Task&)> filt);	// 生成一个包括所有满足了 filt 的 Task 的列表
 
 	DataManager();
 	~DataManager();
