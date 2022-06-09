@@ -18,13 +18,11 @@ public:
     ~AddTask();
 
 private slots:
-    void on_checkBoxSubtask_stateChanged(int arg1);
+    void on_chkbox_have_ddl_stateChanged(int arg1);
 
-    void on_checkBoxDate_stateChanged(int arg1);
+    void on_chkbox_have_reminder_stateChanged(int arg1);
 
-    void on_checkBoxTime_stateChanged(int arg1);
-
-    void on_pushButton_clicked();
+    void on_btn_create_clicked();
 
 private:
     Ui::AddTask *ui;
