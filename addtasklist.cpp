@@ -1,9 +1,9 @@
 #include "addtasklist.h"
 #include "ui_addtasklist.h"
-#include ".\src\classes\reminder.h"
-#include ".\src\classes\subtask.h"
-#include ".\src\classes\task.h"
-#include ".\src\classes\tasklist.h"
+#include "./src/classes/reminder.h"
+#include "./src/classes/subtask.h"
+#include "./src/classes/task.h"
+#include "./src/classes/tasklist.h"
 #include <QDialog>
 #include "errors.h"
 

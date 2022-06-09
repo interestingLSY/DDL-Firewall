@@ -1,9 +1,9 @@
 #include "errors.h"
 #include "ui_errors.h"
-#include ".\src\classes\reminder.h"
-#include ".\src\classes\subtask.h"
-#include ".\src\classes\task.h"
-#include ".\src\classes\tasklist.h"
+#include "./src/classes/reminder.h"
+#include "./src/classes/subtask.h"
+#include "./src/classes/task.h"
+#include "./src/classes/tasklist.h"
 #include "addtasklist.h"
 
 
