@@ -48,6 +48,10 @@
        </item>
        <item>
         <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">font: 25 19pt '宋体';
+color: rgb(31,31,31);</string>
+         </property>
          <property name="inputMethodHints">
           <set>Qt::ImhLatinOnly</set>
          </property>
@@ -156,6 +160,10 @@
        </item>
        <item>
         <widget class="QLabel" name="lab_ddlcounter">
+         <property name="styleSheet">
+          <string notr="true">font: 25 11pt '宋体';
+color: rgb(31,31,31);</string>
+         </property>
          <property name="text">
           <string>今天你还剩下%d个ddl</string>
          </property>
@@ -172,6 +180,10 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="lab_tasklist_name">
+           <property name="styleSheet">
+            <string notr="true">font: 25 11pt '宋体';
+color: rgb(31,31,31);</string>
+           </property>
            <property name="text">
             <string>某个任务清单的名字</string>
            </property>
@@ -250,6 +262,10 @@
        </item>
        <item>
         <widget class="QLabel" name="lab_task_name">
+         <property name="styleSheet">
+          <string notr="true">font: 25 11pt '宋体';
+color: rgb(31,31,31);</string>
+         </property>
          <property name="text">
           <string>任务的名字</string>
          </property>
@@ -270,6 +286,10 @@
        </item>
        <item>
         <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">font: 25 11pt '宋体';
+color: rgb(31,31,31);</string>
+         </property>
          <property name="text">
           <string>任务的描述细节</string>
          </property>
@@ -290,6 +310,10 @@
        </item>
        <item>
         <widget class="QLabel" name="label_7">
+         <property name="styleSheet">
+          <string notr="true">font: 25 11pt '宋体';
+color: rgb(31,31,31);</string>
+         </property>
          <property name="text">
           <string>任务的开始与结束时间</string>
          </property>

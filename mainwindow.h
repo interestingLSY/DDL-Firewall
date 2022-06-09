@@ -20,8 +20,8 @@ public:
     Ui::MainWindow *ui;
 
 private slots:
-    void on_pushButton_clicked();
-    void on_mid_switch_clicked();
-    void on_mid_newtask_clicked();
+    void on_btn_left_create_tasklist_clicked();
+    void on_btn_mid_switch_clicked();
+    void on_btn_mid_create_task_clicked();
 };
 #endif // MAINWINDOW_H

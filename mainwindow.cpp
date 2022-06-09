@@ -18,52 +18,21 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
     this->setStyleSheet("background-color: rgb(255, 255, 255);");
-    ui->btn_left_create_tasklist->setStyleSheet("QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);"
-                                    "border: none;border-radius:15px;}"
-                                    "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
-                                    "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
-    ui->btn_right_done->setStyleSheet("QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);"
-                                    "border: none;border-radius:15px;}"
-                                    "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
-                                    "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
-    ui->btn_right_edit_task->setStyleSheet("QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);"
-                                    "border: none;border-radius:15px;}"
-                                    "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
-                                    "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
-    ui->btn_right_del_task->setStyleSheet("QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);"
-                                    "border: none;border-radius:15px;}"
-                                    "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
-                                    "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
-    ui->btn_mid_switch->setStyleSheet("QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);"
-                                    "border: none;border-radius:15px;}"
-                                    "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
-                                    "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
-    ui->btn_mid_create_task->setStyleSheet("QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);"
-                                    "border: none;border-radius:15px;}"
-                                    "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
-                                    "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
-    ui->btn_mid_refresh->setStyleSheet("QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);"
-                                        "border: none;border-radius:15px;}"
-                                        "QPushButton:hover{background-color: rgb(22,218,208);}"//hover
-                                        "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
-    ui->label->setStyleSheet("font: 25 19pt '宋体';" //字体
-                                "color: rgb(31,31,31);"		//字体颜色
-                                "background-color: rgb(255, 255, 255);"); //背景颜色
-    ui->lab_task_name->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                        "color: rgb(31,31,31);"		//字体颜色
-                                        "background-color: rgb(255, 255, 255);"); //背景颜色
-    ui->lab_ddlcounter->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                        "color: rgb(31,31,31);"		//字体颜色
-                                        "background-color: rgb(255, 255, 255);"); //背景颜色
-    ui->label_4->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                        "color: rgb(31,31,31);"		//字体颜色
-                                        "background-color: rgb(255, 255, 255);"); //背景颜色
-    ui->lab_tasklist_name->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                        "color: rgb(31,31,31);"		//字体颜色
-                                        "background-color: rgb(255, 255, 255);"); //背景颜色
-    ui->label_7->setStyleSheet("font: 25 11pt '宋体';" //字体
-                                        "color: rgb(31,31,31);"		//字体颜色
-                                        "background-color: rgb(255, 255, 255);"); //背景颜色
+    
+#define BUTTON_STYLE "QPushButton{font: 25 14pt '微软雅黑';color: rgb(255,255,255);background-color: rgb(120,196,255);" \
+                    "border: none;border-radius:15px;}" \
+                    "QPushButton:hover{background-color: rgb(22,218,208);}" \
+                    "QPushButton:pressed{background-color: rgb(17,171,164);}"
+    this->setStyleSheet("background-color: rgb(255, 255, 255);");
+    ui->btn_left_create_tasklist->setStyleSheet(BUTTON_STYLE);
+    ui->btn_right_done->setStyleSheet(BUTTON_STYLE);
+    ui->btn_right_edit_task->setStyleSheet(BUTTON_STYLE);
+    ui->btn_right_del_task->setStyleSheet(BUTTON_STYLE);
+    ui->btn_mid_switch->setStyleSheet(BUTTON_STYLE);
+    ui->btn_mid_create_task->setStyleSheet(BUTTON_STYLE);
+    ui->btn_mid_refresh->setStyleSheet(BUTTON_STYLE);
+#undef BUTTON_STYLE
+
     ui->lab_ddlcounter->setText("今天还有"+QString::number(1)+"个ddl,加油！");
     ui->lab_ddlcounter->setAlignment(Qt::AlignHCenter);
 
@@ -74,7 +43,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_btn_left_create_tasklist_clicked()
 {
     AddTaskList *querylists = new AddTaskList(this);
 
@@ -84,7 +53,7 @@ void MainWindow::on_pushButton_clicked()
 
 int type=0,backtype=0; //视图类型
 
-void MainWindow::on_mid_switch_clicked() // 切换视图
+void MainWindow::on_btn_mid_switch_clicked() // 切换视图
 {
     if(type==0||type==2)
     {
@@ -102,7 +71,7 @@ void MainWindow::on_mid_switch_clicked() // 切换视图
 }
 
 
-void MainWindow::on_mid_newtask_clicked()
+void MainWindow::on_btn_mid_create_task_clicked()
 {
     AddTask *querytask = new AddTask(this);
     querytask->setModal(true);
