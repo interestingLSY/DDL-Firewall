@@ -3,9 +3,11 @@
 
 #include <QDialog>
 
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class AddTask;
 }
+QT_END_NAMESPACE
 
 class AddTask : public QDialog
 {

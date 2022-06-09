@@ -3,9 +3,11 @@
 
 #include <QWidget>
 
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class list_type;
 }
+QT_END_NAMESPACE
 
 class list_type : public QWidget
 {

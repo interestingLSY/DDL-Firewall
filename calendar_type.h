@@ -3,9 +3,11 @@
 
 #include <QWidget>
 
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class calendar_type;
 }
+QT_END_NAMESPACE
 
 class calendar_type : public QWidget
 {
