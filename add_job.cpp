@@ -69,9 +69,9 @@ void AddJob::on_btn_create_clicked() {
 		}
 		MainWindow* parent = dynamic_cast<MainWindow*>(this->parentWidget());
 		Q_ASSERT(parent != nullptr);
-		Q_ASSERT(parent->selected_tasklist_item != nullptr);
-		Q_ASSERT(!parent->selected_tasklist_item->is_virtual);
-		parent->selected_tasklist_item->tasklist->add_task(new_task);
+		Q_ASSERT(parent->selected_tasklist_layout_item != nullptr);
+		Q_ASSERT(!parent->selected_tasklist_layout_item->is_virtual);
+		parent->selected_tasklist_layout_item->tasklist->add_task(new_task);
 		this->QDialog::close();
 	}
 }

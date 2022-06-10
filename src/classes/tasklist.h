@@ -18,6 +18,7 @@ public:
 	void add_task(const Task &task);
 	QVector<Task*> filter_task(std::function<bool(const Task&)> filt);
 	void del_task(uuid_t target_uuid);
+	void update_task(uuid_t target_uuid, const Task &new_task);
 
 	Tasklist();
 	

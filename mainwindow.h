@@ -23,7 +23,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void switchpage();
 
     struct TasklistLayoutItem {
         QString name;
@@ -41,32 +40,41 @@ public:
         Tasklist* tasklist;
         // Rust is the best programming language
     };
-    QVector<TasklistLayoutItem> tasklist_items;
-    TasklistLayoutItem* selected_tasklist_item;
+    QVector<TasklistLayoutItem> tasklist_layout_items;
+    // 当前选中的事务列表，nullptr 表示没有选中任何事务列表
+    TasklistLayoutItem* selected_tasklist_layout_item;
+
 
     struct TaskLayoutItem {
         Task* task;
         QPushButton* btn;
     };
-    QVector<TaskLayoutItem> task_items;
-    Task* selected_task_item;
+    QVector<TaskLayoutItem> task_layout_items;
+    // 当前选中的事务，nullptr 表示没有选中任何事务
+    TaskLayoutItem* selected_task_layout_item;
     
+    
+    // 重新绘制左边（list of tasklist）的区域
     void redraw_left();
+    // 重新绘制中间（tasklist）的区域
     void redraw_middle();
+    // 重新绘制右边（task）的区域
     void redraw_right();
     
 
 public:
     Ui::MainWindow *ui;
-    int current_vision_type, old_vision_type;
 
 private slots:
-    void on_btn_left_create_tasklist_clicked();
-    void on_btn_mid_add_job_clicked();
-    void on_btn_mid_add_sche_task_clicked();
+    void on_btn_create_tasklist_clicked();
+    void on_btn_add_job_clicked();
+    void on_btn_add_sche_task_clicked();
+    void on_btn_del_tasklist_clicked();
+    void on_btn_del_task_clicked();
+    void on_btn_edit_task_clicked();
 
 public slots:
     void select_displayed_tasklist();
-
+    void select_displayed_task();
 };
 #endif // MAINWINDOW_H

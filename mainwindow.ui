@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1162</width>
-    <height>809</height>
+    <width>1342</width>
+    <height>980</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>1141</width>
-      <height>721</height>
+      <width>1321</width>
+      <height>891</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="laymain" stretch="0,1,0,1,0,1,0">
@@ -76,8 +76,8 @@ color: rgb(31,31,31);</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>360</width>
-            <height>611</height>
+            <width>420</width>
+            <height>781</height>
            </rect>
           </property>
           <widget class="QWidget" name="verticalLayoutWidget">
@@ -99,7 +99,7 @@ color: rgb(31,31,31);</string>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btn_left_create_tasklist">
+        <widget class="QPushButton" name="btn_create_tasklist">
          <property name="styleSheet">
           <string notr="true"/>
          </property>
@@ -125,7 +125,7 @@ color: rgb(31,31,31);</string>
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="midpoint" stretch="0,1,0,1,0,9,1,0">
+      <layout class="QVBoxLayout" name="midpoint" stretch="9,0,0">
        <property name="sizeConstraint">
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
@@ -133,95 +133,140 @@ color: rgb(31,31,31);</string>
         <number>5</number>
        </property>
        <item>
-        <widget class="Line" name="line_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,1,10,0">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetNoConstraint</enum>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="lab_ddlcounter">
-         <property name="styleSheet">
-          <string notr="true">font: 25 11pt '宋体';
-color: rgb(31,31,31);</string>
-         </property>
-         <property name="text">
-          <string>今天你还剩下%d个ddl</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="Line" name="line_11">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="lab_tasklist_name">
-         <property name="font">
-          <font>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(31,31,31);</string>
-         </property>
-         <property name="text">
-          <string>某个任务清单的名字</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="Line" name="line_12">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QScrollArea" name="scroll_tasks">
-         <property name="widgetResizable">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>359</width>
-            <height>489</height>
-           </rect>
-          </property>
-          <widget class="QWidget" name="verticalLayoutWidget_2">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>331</width>
-             <height>491</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="layout_tasks">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetMaximumSize</enum>
-            </property>
-           </layout>
-          </widget>
-         </widget>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QPushButton" name="btn_mid_add_job">
+          <widget class="Line" name="line_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lab_ddlcounter">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>80</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 25 11pt '宋体';
+color: rgb(31,31,31);</string>
+           </property>
+           <property name="text">
+            <string>今天你还剩下%d个ddl</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_11">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="lab_tasklist_name">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>80</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(31,31,31);</string>
+             </property>
+             <property name="text">
+              <string>某个事务清单的名字</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_del_tasklist">
+             <property name="text">
+              <string>删除事务清单</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QScrollArea" name="scrollArea_2">
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scroll_tasks">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>417</width>
+              <height>657</height>
+             </rect>
+            </property>
+            <widget class="QWidget" name="verticalLayoutWidget_2">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>361</width>
+               <height>611</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="layout_tasks">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMaximumSize</enum>
+              </property>
+             </layout>
+            </widget>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_12">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_add_task">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btn_add_job">
            <property name="text">
             <string>新建任务</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btn_mid_add_sche_task">
+          <widget class="QPushButton" name="btn_add_sche_task">
            <property name="text">
             <string>新建定时事务</string>
            </property>
@@ -261,97 +306,25 @@ color: rgb(31,31,31);</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="lab_task_name">
-         <property name="styleSheet">
-          <string notr="true">font: 25 11pt '宋体';
-color: rgb(31,31,31);</string>
-         </property>
+        <widget class="QLabel" name="label_task_name">
          <property name="text">
-          <string>事务名</string>
+          <string>事务名称</string>
          </property>
         </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="styleSheet">
-          <string notr="true">font: 25 11pt '宋体';
-color: rgb(31,31,31);</string>
-         </property>
-         <property name="text">
-          <string>事务描述</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_7">
-         <property name="styleSheet">
-          <string notr="true">font: 25 11pt '宋体';
-color: rgb(31,31,31);</string>
-         </property>
-         <property name="text">
-          <string>事务的起止时间</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QPushButton" name="btn_right_del_task">
+          <widget class="QPushButton" name="btn_del_task">
            <property name="text">
             <string>删除</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btn_right_edit_task">
+          <widget class="QPushButton" name="btn_edit_task">
            <property name="text">
             <string>编辑</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_right_done">
-           <property name="text">
-            <string>完成</string>
            </property>
           </widget>
          </item>
@@ -381,7 +354,7 @@ color: rgb(31,31,31);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1162</width>
+     <width>1342</width>
      <height>27</height>
     </rect>
    </property>
