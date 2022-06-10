@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>新建事务列表</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
@@ -22,7 +22,7 @@
      <height>261</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,2,2,1,1,2">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="2,2,1,2">
     <property name="sizeConstraint">
      <enum>QLayout::SetNoConstraint</enum>
     </property>
@@ -39,26 +39,13 @@
      <number>5</number>
     </property>
     <item>
-     <spacer name="verticalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
      <widget class="QLabel" name="label">
       <property name="styleSheet">
        <string notr="true">font: 20 14pt '微软雅黑 Light';
 color: rgb(31,31,31);</string>
       </property>
       <property name="text">
-       <string>任务清单名</string>
+       <string>事务列表名</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -108,17 +95,6 @@ border-radius:5px;</string>
        </spacer>
       </item>
      </layout>
-    </item>
-    <item>
-     <widget class="QLabel" name="remind">
-      <property name="styleSheet">
-       <string notr="true">font: 12 9pt '微软雅黑 Light';
-color: rgb(255,0,0);</string>
-      </property>
-      <property name="text">
-       <string>任务名不能为空！</string>
-      </property>
-     </widget>
     </item>
     <item>
      <spacer name="verticalSpacer">

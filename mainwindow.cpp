@@ -2,6 +2,7 @@
 #include <QWidget>
 #include <QMessageBox>
 #include <QBoxLayout>
+#include <QtGlobal>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -102,6 +103,9 @@ void MainWindow::on_btn_del_task_clicked() {
     if (reply == QMessageBox::Yes) {
         data_manager.del_task(selected_task->uuid);
         this->selected_task_layout_item = nullptr;
+        // 这里需要 redraw_left，因为“全部事务”，“未完成事务”中的内容可能会出现变化
+        // 以后需要改进一下
+        this->redraw_left();
         this->redraw_middle();
         this->redraw_right();
     }
@@ -256,7 +260,11 @@ void MainWindow::redraw_right() {
     if (this->selected_task_layout_item == nullptr) {
         // 当前没有选中任务
         ui->label_task_name->setText("请选择一个事务");
+        ui->btn_del_task->setVisible(false);
+        ui->btn_edit_task->setVisible(false);
     } else {
+        ui->btn_del_task->setVisible(true);
+        ui->btn_edit_task->setVisible(true);
         ui->label_task_name->setText(this->selected_task_layout_item->task->name);
         // TODO
         // 我们需要在右侧那一栏中添加更多的关于事务的信息

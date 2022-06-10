@@ -291,7 +291,7 @@ color: rgb(31,31,31);</string>
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="right">
+      <layout class="QVBoxLayout" name="right" stretch="0,9,0,0">
        <property name="sizeConstraint">
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>

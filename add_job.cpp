@@ -1,4 +1,5 @@
 #include <QDateTime>
+#include <QMessageBox>
 
 #include "./src/classes/tasklist.h"
 #include "./src/data/data.h"
@@ -43,27 +44,25 @@ void AddJob::on_datetime_ddl_dateTimeChanged(const QDateTime &datetime) {
 
 void AddJob::on_btn_create_clicked() {
 	if(ui->input_task_name->text().isEmpty()) {
-//        err->setModal(true);
-//        connect(this,&AddTaskList::change_error_text,err,&Errors::change_text);
-//        emit change_error_text(1);
-//        err->exec();
-	} else {
-		Task new_task;
-		new_task.type = TaskType::JOB;
-		new_task.name = ui->input_task_name->text();
-		if (ui->chkbox_have_ddl->isChecked()) {
-			new_task.end_time = ui->datetime_ddl->dateTime();
-		}
-		if (ui->chkbox_have_reminder->isChecked()) {
-			Reminder reminder;
-			reminder.type = ReminderType::BY_ACCURATE_TIME;
-			new_task.reminders.push_back(reminder);
-		}
-		MainWindow* parent = dynamic_cast<MainWindow*>(this->parentWidget());
-		Q_ASSERT(parent != nullptr);
-		Q_ASSERT(parent->selected_tasklist_layout_item != nullptr);
-		Q_ASSERT(!parent->selected_tasklist_layout_item->is_virtual);
-		parent->selected_tasklist_layout_item->tasklist->add_task(new_task);
-		this->QDialog::close();
+		QMessageBox message_box;
+		message_box.critical(nullptr, "Error", "事务名不能为空");
+		return;
 	}
+	Task new_task;
+	new_task.type = TaskType::JOB;
+	new_task.name = ui->input_task_name->text();
+	if (ui->chkbox_have_ddl->isChecked()) {
+		new_task.end_time = ui->datetime_ddl->dateTime();
+	}
+	if (ui->chkbox_have_reminder->isChecked()) {
+		Reminder reminder;
+		reminder.type = ReminderType::BY_ACCURATE_TIME;
+		new_task.reminders.push_back(reminder);
+	}
+	MainWindow* parent = dynamic_cast<MainWindow*>(this->parentWidget());
+	Q_ASSERT(parent != nullptr);
+	Q_ASSERT(parent->selected_tasklist_layout_item != nullptr);
+	Q_ASSERT(!parent->selected_tasklist_layout_item->is_virtual);
+	parent->selected_tasklist_layout_item->tasklist->add_task(new_task);
+	this->QDialog::close();
 }

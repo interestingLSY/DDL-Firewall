@@ -1,4 +1,5 @@
 #include <QDialog>
+#include <QMessageBox>
 
 #include "./src/classes/reminder.h"
 #include "./src/classes/subtask.h"
@@ -15,10 +16,8 @@ AddTaskList::AddTaskList(QWidget *parent) :
     ui(new Ui::AddTaskList)
 {
     ui->setupUi(this);
-    this->setWindowTitle("新建任务列表");
     this->setWindowFlags(windowFlags()&~Qt::WindowContextHelpButtonHint);
     this->setStyleSheet("background-color: rgb(255, 255, 255);");
-    ui->remind->setText("");
 }
 
 AddTaskList::~AddTaskList()
@@ -28,22 +27,15 @@ AddTaskList::~AddTaskList()
 
 void AddTaskList::on_btn_create_clicked()
 {
-    if(ui->input_tasklist_name->text().isEmpty())
-    {
-        ui->remind->setText("任务清单名不能为空！");
-//        Errors *err = new Errors(this);
-//        err->setModal(true);
-//        connect(this,&AddTaskList::change_error_text,err,&Errors::change_text);
-//        emit change_error_text(1);
-//        err->exec();
+    if(ui->input_tasklist_name->text().isEmpty()) {
+        QMessageBox message_box;
+		message_box.critical(nullptr, "Error", "事务列表名不能为空");
+		return;
     }
-    else
-    {
-        QString new_tasklist_name = ui->input_tasklist_name->text();
-        Tasklist new_tasklist;
-        new_tasklist.name = new_tasklist_name;
-        data_manager.add_tasklist(new_tasklist);
-        this->QDialog::close();
-    }
+    QString new_tasklist_name = ui->input_tasklist_name->text();
+    Tasklist new_tasklist;
+    new_tasklist.name = new_tasklist_name;
+    data_manager.add_tasklist(new_tasklist);
+    this->QDialog::close();
 }
 
