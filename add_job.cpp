@@ -28,21 +28,13 @@ AddJob::~AddJob()
 }
 
 
-void AddJob::on_chkbox_have_ddl_stateChanged(int arg1) {
-	if (arg1) {
-		ui->datetime_ddl->setVisible(true);
-	} else {
-		ui->datetime_ddl->setVisible(false);
-	}
+void AddJob::on_chkbox_have_ddl_stateChanged(int is_checkced) {
+	ui->datetime_ddl->setVisible(is_checkced);
 }
 
 
-void AddJob::on_chkbox_have_reminder_stateChanged(int arg1) {
-	if (arg1) {
-		ui->datetime_reminder->setVisible(true);
-	} else {
-		ui->datetime_reminder->setVisible(false);
-	}
+void AddJob::on_chkbox_have_reminder_stateChanged(int is_checked) {
+	ui->datetime_reminder->setVisible(is_checked);
 }
 
 void AddJob::on_datetime_ddl_dateTimeChanged(const QDateTime &datetime) {

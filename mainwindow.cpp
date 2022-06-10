@@ -147,6 +147,9 @@ void MainWindow::redraw_left() {
     qDeleteAll(ui->layout_tasklists->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly));
 
     for (TasklistLayoutItem& item : this->tasklist_layout_items) {
+        // 因为我们之前使用 new 来生成 QPushButton，所以我们要手动将其 delete 掉
+        // 否则就会发生内存泄漏
+        // 虽然泄露这点内存大概率没啥事，但我认为我们需要养成良好的习惯
         delete item.btn;
     }
     this->tasklist_layout_items.clear();
@@ -183,7 +186,7 @@ void MainWindow::redraw_left() {
         nullptr
     });
 
-    // 添加所有用户创建的事务清单
+    // 添加所有用户创建的事务列表
     for (Tasklist &tasklist : data_manager.tasklists) {
         process_new_tasklist(TasklistLayoutItem {
             tasklist.name,
@@ -236,10 +239,12 @@ void MainWindow::redraw_middle() {
         };
 
         if (this->selected_tasklist_layout_item->is_virtual) {
+            // 如果一个事务列表是 virtual 的，那么根据约定，我们从 QVector<Task*> tasks 中读取信息
             for (Task *task : this->selected_tasklist_layout_item->tasks) {
                 process_new_task(task);
             }
         } else {
+            // 否则，就直接从 Tasklist* tasklist 中读取信息
             for (Task &task : this->selected_tasklist_layout_item->tasklist->tasks) {
                 process_new_task(&task);
             }
@@ -253,5 +258,10 @@ void MainWindow::redraw_right() {
         ui->label_task_name->setText("请选择一个事务");
     } else {
         ui->label_task_name->setText(this->selected_task_layout_item->task->name);
+        // TODO
+        // 我们需要在右侧那一栏中添加更多的关于事务的信息
+        // （比如类型、起止时间、注释、子任务、是否完成...）
+        // 详见 src/classes/task.h
+        // 并且在这里更新界面中的相关信息
     }
 }
