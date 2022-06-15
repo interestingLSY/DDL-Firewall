@@ -11,9 +11,8 @@
 #include "subtask.h"
 
 enum class TaskType {
-	LONG_TASK = 0,      // 长期任务
-	SHORT_TASK = 1,     // 短期任务
-	SCHEDULED_TASK = 2  // 定时事务
+	JOB = 0,      // 任务类
+	SCHEDULED_EVENT = 2  // 定时事务
 };
 
 /*

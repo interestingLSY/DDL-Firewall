@@ -47,7 +47,7 @@ Subtask subtask() {
 
 Task task(int subtask_cnt, int reminder_cnt) {
 	Task result;
-	result.type = static_cast<TaskType>(gen::number(0, 2));
+	result.type = static_cast<TaskType>(gen::number(0, 1));
 	result.name = gen::qstring();
 	result.comment = gen::qstring();
 	for (int i = 0; i < subtask_cnt; ++i)

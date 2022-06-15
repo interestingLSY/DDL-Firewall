@@ -29,7 +29,8 @@ set(PROJECT_SOURCES
         src/data/json_io.cpp
         src/fileio/textfile.cpp
         src/self_test/data_gen.cpp
-        addtask.cpp
+        add_job.cpp
+        add_sche_task.cpp
         addtasklist.cpp
         calendar_type.cpp
         errors.cpp

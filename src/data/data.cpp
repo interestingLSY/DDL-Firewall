@@ -53,6 +53,26 @@ void DataManager::del_tasklisk(uuid_t target_uuid) {
 	}
 }
 
+QVector<Task*> DataManager::generate_virtual_tasklist(std::function<bool(const Task&)> filt) {
+	QVector<Task*> result;
+	for (Tasklist& tasklist : this->tasklists) {
+		result.append(tasklist.filter_task(filt));
+	}
+	return result;
+}
+
+void DataManager::del_task(uuid_t target_uuid) {
+	for (Tasklist &tasklist : this->tasklists) {
+		tasklist.del_task(target_uuid);
+	}
+}
+
+void DataManager::update_task(uuid_t target_uuid, const Task& new_task) {
+	for (Tasklist &tasklist : this->tasklists) {
+		tasklist.update_task(target_uuid, new_task);
+	}
+}
+
 void DataManager::load() {
 	QString content = this->file_handler.read_all();
 

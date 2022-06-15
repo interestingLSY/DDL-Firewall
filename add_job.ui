@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddTask</class>
- <widget class="QDialog" name="AddTask">
+ <class>AddJob</class>
+ <widget class="QDialog" name="AddJob">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>405</height>
+    <width>608</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>新建任务</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -21,15 +21,20 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>451</width>
-     <height>401</height>
+     <width>601</width>
+     <height>521</height>
     </rect>
    </property>
+<<<<<<< HEAD:addtask.ui
    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,2,2,20">
+=======
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="6,6,6,8">
+>>>>>>> 9526cbf832e8d2b2c69336d0351dd647632b019e:add_job.ui
     <property name="sizeConstraint">
      <enum>QLayout::SetNoConstraint</enum>
     </property>
     <item>
+<<<<<<< HEAD:addtask.ui
      <widget class="QLabel" name="label">
       <property name="styleSheet">
        <string notr="true">font: 75 14pt &quot;Agency FB&quot;;</string>
@@ -43,6 +48,8 @@
      </widget>
     </item>
     <item>
+=======
+>>>>>>> 9526cbf832e8d2b2c69336d0351dd647632b019e:add_job.ui
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
        <spacer name="horizontalSpacer_8">
@@ -140,7 +147,7 @@ color: rgb(31,31,31);</string>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
+          <width>80</width>
           <height>20</height>
          </size>
         </property>
@@ -201,7 +208,7 @@ color: rgb(31,31,31);</string>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
+          <width>80</width>
           <height>20</height>
          </size>
         </property>
