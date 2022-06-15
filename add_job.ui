@@ -25,31 +25,11 @@
      <height>521</height>
     </rect>
    </property>
-<<<<<<< HEAD:addtask.ui
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,2,2,20">
-=======
    <layout class="QVBoxLayout" name="verticalLayout" stretch="6,6,6,8">
->>>>>>> 9526cbf832e8d2b2c69336d0351dd647632b019e:add_job.ui
     <property name="sizeConstraint">
-     <enum>QLayout::SetNoConstraint</enum>
+     <enum>QLayout::SetDefaultConstraint</enum>
     </property>
     <item>
-<<<<<<< HEAD:addtask.ui
-     <widget class="QLabel" name="label">
-      <property name="styleSheet">
-       <string notr="true">font: 75 14pt &quot;Agency FB&quot;;</string>
-      </property>
-      <property name="text">
-       <string>新建事务</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
-=======
->>>>>>> 9526cbf832e8d2b2c69336d0351dd647632b019e:add_job.ui
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
        <spacer name="horizontalSpacer_8">

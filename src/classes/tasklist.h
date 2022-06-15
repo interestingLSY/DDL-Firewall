@@ -14,6 +14,7 @@ public:
 	QString name;
 	QVector<Task> tasks;
 
+	
 	void add_task(const Task &task);
 	QVector<Task*> filter_task(std::function<bool(const Task&)> filt);
 	void del_task(uuid_t target_uuid);
