@@ -11,6 +11,12 @@
 #include "list_type.h"
 #include "calendar_type.h"
 #include "addtask.h"
+#include "./src/data/data.h"
+#include "./src/data/json_io.h"
+#include "./src/fileio/textfile.h"
+#include "./src/self_test/data_gen.h"
+int page=1;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -36,6 +42,58 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lab_ddlcounter->setText("今天还有"+QString::number(1)+"个ddl,加油！");
     ui->lab_ddlcounter->setAlignment(Qt::AlignHCenter);
 
+
+// 处理左边的信息
+    page=1;
+    ui->pagetasklist->setText(QString::number(page));
+//    //1
+//    if((page-1)*6+1<=data_manager.tasklists.size()+1)
+//    {
+//        ui->t1->setText(data_manager.tasklists[(page-1)*6].name);
+//        ui->t1->setVisible(true);
+//    }
+//    else
+//        ui->t1->setVisible(false);
+//    //2
+//    if((page-1)*6+2<=data_manager.tasklists.size()+1)
+//    {
+//        ui->t2->setText(data_manager.tasklists[(page-1)*6+1].name);
+//        ui->t2->setVisible(true);
+//    }
+//    else
+//        ui->t2->setVisible(false);
+//    //3
+//    if((page-1)*6+3<=data_manager.tasklists.size()+1)
+//    {
+//        ui->t3->setText(data_manager.tasklists[(page-1)*6+2].name);
+//        ui->t3->setVisible(true);
+//    }
+//    else
+//        ui->t3->setVisible(false);
+//    //4
+//    if((page-1)*6+4<=data_manager.tasklists.size()+1)
+//    {
+//        ui->t4->setText(data_manager.tasklists[(page-1)*6+3].name);
+//        ui->t4->setVisible(true);
+//    }
+//    else
+//        ui->t4->setVisible(false);
+//    //2
+//    if((page-1)*6+5<=data_manager.tasklists.size()+1)
+//    {
+//        ui->t5->setText(data_manager.tasklists[(page-1)*6+4].name);
+//        ui->t5->setVisible(true);
+//    }
+//    else
+//        ui->t5->setVisible(false);
+//    //2
+//    if((page-1)*6+6<=data_manager.tasklists.size()+1)
+//    {
+//        ui->t6->setText(data_manager.tasklists[(page-1)*6+5].name);
+//        ui->t6->setVisible(true);
+//    }
+//    else
+//        ui->t6->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -76,5 +134,15 @@ void MainWindow::on_btn_mid_create_task_clicked()
     AddTask *querytask = new AddTask(this);
     querytask->setModal(true);
     querytask->exec();
+}
+
+
+void MainWindow::on_pageleft_tasklist_clicked()
+{
+    if(page!=1)
+    {
+        page--;
+
+    }
 }
 

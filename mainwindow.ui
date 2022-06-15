@@ -35,7 +35,10 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="left" stretch="1,3,3,36,1">
+      <layout class="QVBoxLayout" name="left" stretch="0,0,0,0,0,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetNoConstraint</enum>
+       </property>
        <property name="topMargin">
         <number>5</number>
        </property>
@@ -74,54 +77,77 @@ color: rgb(31,31,31);</string>
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="left_inside">
+        <layout class="QHBoxLayout" name="lists">
          <item>
-          <widget class="QFrame" name="frame">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,1,1,1,1,1">
+           <property name="sizeConstraint">
+            <enum>QLayout::SetNoConstraint</enum>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+           <item>
+            <widget class="QPushButton" name="t1">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="t2">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="t3">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="t4">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="t5">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="t6">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="bottom" stretch="0,0,0">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <item>
+          <widget class="QPushButton" name="pageleft_tasklist">
+           <property name="text">
+            <string>&lt;</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="frame_5">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-          </widget>
+          <widget class="QLineEdit" name="pagetasklist"/>
          </item>
          <item>
-          <widget class="QFrame" name="frame_3">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="frame_4">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="frame_2">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+          <widget class="QPushButton" name="pageright_tasklist">
+           <property name="text">
+            <string>&gt;</string>
            </property>
           </widget>
          </item>
@@ -382,15 +408,9 @@ color: rgb(31,31,31);</string>
      <x>0</x>
      <y>0</y>
      <width>1048</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>狒狒</string>
-    </property>
-   </widget>
-   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

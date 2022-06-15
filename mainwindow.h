@@ -23,5 +23,6 @@ private slots:
     void on_btn_left_create_tasklist_clicked();
     void on_btn_mid_switch_clicked();
     void on_btn_mid_create_task_clicked();
+    void on_pageleft_tasklist_clicked();
 };
 #endif // MAINWINDOW_H

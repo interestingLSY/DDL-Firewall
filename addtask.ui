@@ -25,19 +25,17 @@
      <height>401</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,2,2,20">
     <property name="sizeConstraint">
-     <enum>QLayout::SetDefaultConstraint</enum>
+     <enum>QLayout::SetNoConstraint</enum>
     </property>
     <item>
-     <widget class="QLabel" name="label_taskname">
-      <property name="font">
-       <font>
-        <pointsize>16</pointsize>
-       </font>
+     <widget class="QLabel" name="label">
+      <property name="styleSheet">
+       <string notr="true">font: 75 14pt &quot;Agency FB&quot;;</string>
       </property>
       <property name="text">
-       <string>添加事务</string>
+       <string>新建事务</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
