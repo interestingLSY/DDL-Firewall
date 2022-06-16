@@ -34,8 +34,6 @@ set(PROJECT_SOURCES
         add_tasklist.cpp
         calendar_type.cpp
         errors.cpp
-        list_type.cpp
-        list_type2.cpp
         edit_job.cpp
         edit_sche_task.cpp
 )

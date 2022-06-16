@@ -24,8 +24,6 @@ SOURCES += \
     add_tasklist.cpp \
     calendar_type.cpp \
     errors.cpp \
-    list_type.cpp \
-    list_type2.cpp \
     main.cpp \
     mainwindow.cpp \
     edit_sche_task.cpp \
@@ -48,8 +46,6 @@ HEADERS += \
     add_tasklist.h \
     calendar_type.h \
     errors.h \
-    list_type.h \
-    list_type2.h \
     mainwindow.h \
     edit_sche_task.h \
     edit_job.h
@@ -60,8 +56,6 @@ FORMS += \
     add_tasklist.ui \
     calendar_type.ui \
     errors.ui \
-    list_type.ui \
-    list_type2.ui \
     mainwindow.ui \
     edit_sche_task.ui \
     edit_job.ui
