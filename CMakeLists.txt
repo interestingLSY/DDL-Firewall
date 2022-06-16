@@ -31,13 +31,13 @@ set(PROJECT_SOURCES
         src/self_test/data_gen.cpp
         add_job.cpp
         add_sche_task.cpp
-        addtasklist.cpp
+        add_tasklist.cpp
         calendar_type.cpp
         errors.cpp
         list_type.cpp
         list_type2.cpp
-        task_edit.cpp
-        job_edit.cpp
+        edit_job.cpp
+        edit_sche_task.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

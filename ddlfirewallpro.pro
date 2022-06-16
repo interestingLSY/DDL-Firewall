@@ -9,7 +9,6 @@ CONFIG += resources_big
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    job_edit.cpp \
     src/3rdparty/jsoncpp/jsoncpp.cpp \
     src/classes/reminder.cpp \
     src/classes/task.cpp \
@@ -22,17 +21,17 @@ SOURCES += \
     src/self_test/data_gen.cpp \
     add_job.cpp \
     add_sche_task.cpp \
-    addtasklist.cpp \
+    add_tasklist.cpp \
     calendar_type.cpp \
     errors.cpp \
     list_type.cpp \
     list_type2.cpp \
     main.cpp \
     mainwindow.cpp \
-    task_edit.cpp
+    edit_sche_task.cpp \
+    edit_job.cpp
 
 HEADERS += \
-    job_edit.h \
     src/3rdparty/jsoncpp/json.h \
     src/3rdparty/jsoncpp/json-forwards.h \
     src/classes/reminder.h \
@@ -46,25 +45,26 @@ HEADERS += \
     src/self_test/data_gen.h \
     add_job.h \
     add_sche_task.h \
-    addtasklist.h \
+    add_tasklist.h \
     calendar_type.h \
     errors.h \
     list_type.h \
     list_type2.h \
     mainwindow.h \
-    task_edit.h
+    edit_sche_task.h \
+    edit_job.h
 
 FORMS += \
     add_job.ui \
     add_sche_task.ui \
-    addtasklist.ui \
+    add_tasklist.ui \
     calendar_type.ui \
     errors.ui \
-    job_edit.ui \
     list_type.ui \
     list_type2.ui \
     mainwindow.ui \
-    task_edit.ui
+    edit_sche_task.ui \
+    edit_job.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

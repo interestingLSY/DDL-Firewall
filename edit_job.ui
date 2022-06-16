@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>job_edit</class>
- <widget class="QDialog" name="job_edit">
+ <class>EditJob</class>
+ <widget class="QDialog" name="EditJob">
   <property name="geometry">
    <rect>
     <x>0</x>

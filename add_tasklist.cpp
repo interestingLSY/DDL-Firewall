@@ -7,8 +7,8 @@
 #include "./src/classes/tasklist.h"
 #include "./src/data/data.h"
 
-#include "addtasklist.h"
-#include "ui_addtasklist.h"
+#include "add_tasklist.h"
+#include "ui_add_tasklist.h"
 #include "errors.h"
 
 AddTaskList::AddTaskList(QWidget *parent) :

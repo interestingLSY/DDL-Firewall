@@ -1,11 +1,5 @@
 #include "mainwindow.h"
-#include "./src/classes/reminder.h"
-#include "./src/classes/subtask.h"
-#include "./src/classes/task.h"
-#include "./src/classes/tasklist.h"
-#include "addtasklist.h"
 #include <QApplication>
-#include "errors.h"
 
 int main(int argc, char *argv[])
 {

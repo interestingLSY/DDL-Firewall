@@ -1,22 +1,22 @@
-#ifndef JOB_EDIT_H
-#define JOB_EDIT_H
+#ifndef EDIT_JOB_H
+#define EDIT_JOB_H
 
 #include <QDialog>
 #include "./src/classes/task.h"
 namespace Ui {
-class job_edit;
+class EditJob;
 }
 
-class job_edit : public QDialog
+class EditJob : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit job_edit(QWidget *parent = nullptr);
-    ~job_edit();
+    explicit EditJob(QWidget *parent = nullptr);
+    ~EditJob();
 
 public:
-    Ui::job_edit *ui;
+    Ui::EditJob *ui;
     Task *task;
     void putTaskAddress(Task* temp);
 private slots:
@@ -26,4 +26,4 @@ private slots:
     void on_btn_create_clicked();
 };
 
-#endif // JOB_EDIT_H
+#endif // EDIT_JOB_H

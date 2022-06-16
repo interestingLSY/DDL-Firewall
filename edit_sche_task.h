@@ -1,24 +1,24 @@
-#ifndef TASK_EDIT_H
-#define TASK_EDIT_H
+#ifndef EDIT_SCHE_TASK_H
+#define EDIT_SCHE_TASK_H
 
 #include <QDialog>
 #include <QDateTime>
 
 #include "./src/classes/task.h"
 namespace Ui {
-class task_edit;
+class EditScheTask;
 }
 
-class task_edit : public QDialog
+class EditScheTask : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit task_edit(QWidget *parent = nullptr);
-    ~task_edit();
+    explicit EditScheTask(QWidget *parent = nullptr);
+    ~EditScheTask();
 
 public:
-    Ui::task_edit *ui;
+    Ui::EditScheTask *ui;
     Task *task;
     void putTaskAddress(Task* temp);
 private slots:
@@ -27,4 +27,4 @@ private slots:
     void on_chkbox_have_reminder_stateChanged(int arg1);
 };
 
-#endif // TASK_EDIT_H
+#endif // EDIT_SCHE_TASK_H

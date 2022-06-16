@@ -4,7 +4,7 @@
 #include "./src/classes/subtask.h"
 #include "./src/classes/task.h"
 #include "./src/classes/tasklist.h"
-#include "addtasklist.h"
+#include "add_tasklist.h"
 
 
 Errors::Errors(QWidget *parent) :

@@ -1,45 +1,45 @@
-#include "job_edit.h"
-#include "ui_job_edit.h"
+#include "edit_job.h"
+#include "ui_edit_job.h"
 #include "mainwindow.h"
 
 #include <QDateTime>
 #include <QMessageBox>
 
-job_edit::job_edit(QWidget *parent) :
+EditJob::EditJob(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::job_edit)
+    ui(new Ui::EditJob)
 {
     ui->setupUi(this);
 }
 
-job_edit::~job_edit()
+EditJob::~EditJob()
 {
     delete ui;
 }
 
-void job_edit::on_chkbox_have_ddl_stateChanged(int if_is_checked)
+void EditJob::on_chkbox_have_ddl_stateChanged(int if_is_checked)
 {
     ui->datetime_ddl->setVisible(if_is_checked);
 }
 
-void job_edit::on_chkbox_have_reminder_stateChanged(int if_is_checked)
+void EditJob::on_chkbox_have_reminder_stateChanged(int if_is_checked)
 {
     ui->datetime_reminder->setVisible(if_is_checked);
 }
 
 
-void job_edit::on_datetime_ddl_dateTimeChanged(const QDateTime &dateTime)
+void EditJob::on_datetime_ddl_dateTimeChanged(const QDateTime &dateTime)
 {
    ui->datetime_reminder->setDateTime(dateTime);
 }
 
 
-void job_edit::putTaskAddress(Task *temp)
+void EditJob::putTaskAddress(Task *temp)
 {
     this->task=temp;
 }
 
-void job_edit::on_btn_create_clicked()
+void EditJob::on_btn_create_clicked()
 {
     if(ui->input_task_name->text().isEmpty()) {
         QMessageBox message_box;

@@ -1,29 +1,29 @@
-#include "task_edit.h"
-#include "ui_task_edit.h"
+#include "edit_sche_task.h"
+#include "ui_edit_sche_task.h"
 #include "./src/classes/task.h"
 #include "mainwindow.h"
 
 #include <QDateTime>
 #include <QMessageBox>
 
-task_edit::task_edit(QWidget *parent) :
+EditScheTask::EditScheTask(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::task_edit)
+    ui(new Ui::EditScheTask)
 {
     ui->setupUi(this);
 }
 
-task_edit::~task_edit()
+EditScheTask::~EditScheTask()
 {
     delete ui;
 }
 
-void task_edit::putTaskAddress(Task *temp)
+void EditScheTask::putTaskAddress(Task *temp)
 {
     this->task=temp;
 }
 
-void task_edit::on_btn_create_clicked()
+void EditScheTask::on_btn_create_clicked()
 {
     if (ui->input_task_name->text().isEmpty()) {
         QMessageBox message_box;
@@ -52,7 +52,7 @@ void task_edit::on_btn_create_clicked()
 }
 
 
-void task_edit::on_datetime_start_dateTimeChanged(const QDateTime &datetime)
+void EditScheTask::on_datetime_start_dateTimeChanged(const QDateTime &datetime)
 {
     ui->datetime_end->setDateTime(datetime);
     ui->datetime_reminder->setDateTime(datetime);
@@ -60,7 +60,7 @@ void task_edit::on_datetime_start_dateTimeChanged(const QDateTime &datetime)
 
 
 
-void task_edit::on_chkbox_have_reminder_stateChanged(int is_checked)
+void EditScheTask::on_chkbox_have_reminder_stateChanged(int is_checked)
 {
     ui->datetime_reminder->setVisible(is_checked);
 }

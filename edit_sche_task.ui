@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>task_edit</class>
- <widget class="QDialog" name="task_edit">
+ <class>EditScheTask</class>
+ <widget class="QDialog" name="EditScheTask">
   <property name="geometry">
    <rect>
     <x>0</x>

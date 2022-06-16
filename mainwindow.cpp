@@ -7,16 +7,18 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "addtasklist.h"
+#include "add_job.h"
+#include "add_sche_task.h"
+#include "add_tasklist.h"
 #include "errors.h"
 #include "list_type.h"
 #include "calendar_type.h"
 #include "add_job.h"
 #include "add_sche_task.h"
-#include "ui_task_edit.h"
-#include "task_edit.h"
-#include "job_edit.h"
-#include "ui_job_edit.h"
+#include "edit_sche_task.h"
+#include "ui_edit_sche_task.h"
+#include "edit_job.h"
+#include "ui_edit_job.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -124,7 +126,7 @@ void MainWindow::on_btn_edit_task_clicked() {
     Task new_task = *selected_task;
     if(new_task.type==TaskType::SCHEDULED_EVENT)
     {
-        task_edit *editTask = new task_edit (this);
+        EditScheTask *editTask = new EditScheTask (this);
         editTask->putTaskAddress(selected_task);
         editTask->ui->input_task_name->setText(selected_task->name);
         editTask->ui->input_comment->setText(selected_task->comment);
@@ -147,7 +149,7 @@ void MainWindow::on_btn_edit_task_clicked() {
     }
     else if(new_task.type==TaskType::JOB)
     {
-        job_edit *editJob = new job_edit (this);
+        EditJob *editJob = new EditJob (this);
         editJob->putTaskAddress(selected_task);
         editJob->ui->input_task_name->setText(selected_task->name);
         editJob->ui->input_comment->setText(selected_task->comment);
@@ -177,8 +179,10 @@ void MainWindow::on_btn_edit_task_clicked() {
         }
         editJob->setModal(true);
         editJob->exec();
+        new_task=*(editJob->task);
     }
 
+    // qDebug() << new_task;
     data_manager.update_task(selected_task->uuid, new_task);
     this->redraw_left();
     this->redraw_middle();
