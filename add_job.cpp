@@ -58,6 +58,7 @@ void AddJob::on_btn_create_clicked() {
 	if (ui->chkbox_have_reminder->isChecked()) {
 		Reminder reminder;
 		reminder.type = ReminderType::BY_ACCURATE_TIME;
+		reminder.accurate_time = ui->datetime_reminder->dateTime();
 		new_task.reminders.push_back(reminder);
 	}
 	MainWindow* parent = dynamic_cast<MainWindow*>(this->parentWidget());
