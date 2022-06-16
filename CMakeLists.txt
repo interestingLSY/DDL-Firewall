@@ -36,6 +36,8 @@ set(PROJECT_SOURCES
         errors.cpp
         list_type.cpp
         list_type2.cpp
+        task_edit.cpp
+        job_edit.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
