@@ -108,8 +108,8 @@ void MainWindow::on_btn_del_task_clicked() {
     if (reply == QMessageBox::Yes) {
         data_manager.del_task(selected_task->uuid);
         this->selected_task_layout_item = nullptr;
-        // 这里需要 redraw_left，因为“全部事务”，“未完成事务”中的内容可能会出现变化
-        // 以后需要改进一下
+        // 之所以这里需要 redraw_left，是因为“全部事务”、“未完成事务”等 virtual tasklist 中的内容可能会出现变化
+        // TODO 以后需要改进一下
         this->redraw_left();
         this->redraw_middle();
         this->redraw_right();
@@ -121,8 +121,6 @@ void MainWindow::on_btn_edit_task_clicked() {
     Q_ASSERT(this->selected_tasklist_layout_item);
     Q_ASSERT(this->selected_task_layout_item);
     Task* selected_task = this->selected_task_layout_item->task;
-    //生成一个新的窗口，让用户能够修改 selected_task
-    // 假设修改后的 task 的名字是 new_task
     Task new_task = *selected_task;
     if(new_task.type==TaskType::SCHEDULED_EVENT)
     {
@@ -358,11 +356,5 @@ void MainWindow::redraw_right() {
             }
         }
         ui->label_task_comment->setText(selected_task->comment);
-        // TODO
-        // 我们需要在右侧那一栏中添加更多的关于事务的信息
-        // （比如类型、起止时间、注释、子任务、是否完成...）
-        // 详见 src/classes/task.h
-        // 并且在这里更新界面中的相关信息
-
     }
 }
