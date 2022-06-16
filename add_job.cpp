@@ -51,6 +51,7 @@ void AddJob::on_btn_create_clicked() {
 	Task new_task;
 	new_task.type = TaskType::JOB;
 	new_task.name = ui->input_task_name->text();
+    new_task.comment = ui->input_comment->toPlainText();
 	if (ui->chkbox_have_ddl->isChecked()) {
 		new_task.end_time = ui->datetime_ddl->dateTime();
 	}

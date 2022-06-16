@@ -48,12 +48,6 @@ void task_edit::on_btn_create_clicked()
         reminder.accurate_time = ui->datetime_reminder->dateTime();
         this->task->reminders.push_back(reminder);
     }
-//    MainWindow* parent = dynamic_cast<MainWindow*>(this->parentWidget());
-//    Q_ASSERT(parent != nullptr);
-//    Q_ASSERT(parent->selected_tasklist_layout_item != nullptr);
-//    Q_ASSERT(!parent->selected_tasklist_layout_item->is_virtual);
-//    parent->selected_tasklist_layout_item->tasklist->add_task(*(this->task));
-
     this->QDialog::close();
 }
 

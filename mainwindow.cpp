@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QBoxLayout>
 #include <QtGlobal>
+#include <QDateTime>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -14,6 +15,8 @@
 #include "add_sche_task.h"
 #include "ui_task_edit.h"
 #include "task_edit.h"
+#include "job_edit.h"
+#include "ui_job_edit.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -118,8 +121,7 @@ void MainWindow::on_btn_edit_task_clicked() {
     Q_ASSERT(this->selected_tasklist_layout_item);
     Q_ASSERT(this->selected_task_layout_item);
     Task* selected_task = this->selected_task_layout_item->task;
-    // TODO
-    // 我们需要在这里生成一个新的窗口，让用户能够修改 selected_task
+    //生成一个新的窗口，让用户能够修改 selected_task
     // 假设修改后的 task 的名字是 new_task
     Task new_task = *selected_task;
     if(new_task.type==TaskType::SCHEDULED_EVENT)
@@ -152,25 +154,36 @@ void MainWindow::on_btn_edit_task_clicked() {
     else if(new_task.type==TaskType::JOB)
     {
         job_edit *editJob = new job_edit (this);
-        editTask->putTaskAddress(selected_task);
-        editTask->ui->input_task_name->setText(selected_task->name);
-        editTask->ui->input_comment->setText(selected_task->comment);
-        editTask->ui->datetime_start->setDateTime(selected_task->start_time);
-        editTask->ui->datetime_end->setDateTime(selected_task->end_time);
-        editTask->ui->datetime_start->setDateTime(selected_task->start_time);
-        if (selected_task->reminders.size()!=0)
+        editJob->putTaskAddress(selected_task);
+        editJob->ui->input_task_name->setText(selected_task->name);
+        editJob->ui->input_comment->setText(selected_task->comment);
+        if(selected_task->end_time.isNull()==false)
         {
-            editTask->ui->chkbox_have_reminder->setChecked(true);
-            editTask->ui->datetime_reminder->setDateTime(selected_task->reminders.front().accurate_time);
+            editJob->ui->chkbox_have_ddl->setChecked(true);
+            editJob->ui->datetime_ddl->setVisible(true);
+            editJob->ui->datetime_ddl->setDateTime(selected_task->end_time);
         }
         else
         {
-            editTask->ui->chkbox_have_reminder->setChecked(false);
-            editTask->ui->datetime_reminder->setDateTime(QDateTime::currentDateTime());
+            editJob->ui->chkbox_have_ddl->setChecked(false);
+            editJob->ui->datetime_ddl->setVisible(false);
+            editJob->ui->datetime_ddl->setDateTime(QDateTime::currentDateTime());
         }
-        new_task=*(editTask->task);
-        editTask->setModal(true);
-        editTask->exec();
+        if (selected_task->reminders.size()!=0)
+        {
+            editJob->ui->chkbox_have_reminder->setChecked(true);
+            editJob->ui->datetime_reminder->setVisible(true);
+            editJob->ui->datetime_reminder->setDateTime(selected_task->reminders.front().accurate_time);
+        }
+        else
+        {
+            editJob->ui->chkbox_have_reminder->setChecked(false);
+            editJob->ui->datetime_reminder->setVisible(false);
+            editJob->ui->datetime_reminder->setDateTime(QDateTime::currentDateTime());
+        }
+        new_task=*(editJob->task);
+        editJob->setModal(true);
+        editJob->exec();
         data_manager.update_task(selected_task->uuid, new_task);
         this->redraw_left();
         this->redraw_middle();
@@ -209,6 +222,7 @@ void MainWindow::redraw_left() {
         // 因为我们之前使用 new 来生成 QPushButton，所以我们要手动将其 delete 掉
         // 否则就会发生内存泄漏
         // 虽然泄露这点内存大概率没啥事，但我认为我们需要养成良好的习惯
+        // Re:确实如此
         delete item.btn;
     }
     this->tasklist_layout_items.clear();
@@ -317,14 +331,74 @@ void MainWindow::redraw_right() {
         ui->label_task_name->setText("请选择一个事务");
         ui->btn_del_task->setVisible(false);
         ui->btn_edit_task->setVisible(false);
+        ui->btn_add_reminder->setVisible(false);
+        ui->btn_add_subtask->setVisible(false);
+        ui->btn_finish->setVisible(false);
+        ui->btn_delete_reminder->setVisible(false);
+        ui->btn_delete_subtask->setVisible(false);
+        ui->btn_edit_reminder->setVisible(false);
+        ui->btn_edit_subtask->setVisible(false);
+        ui->btn_finish_subtask->setVisible(false);
+        ui->label_add_reminder->setVisible(false);
+        ui->label_add_subtask->setVisible(false);
+        ui->label_is_finished->setVisible(false);
+        ui->label_st_and_ed_time->setVisible(false);
+        ui->label_task_comment->setVisible(false);
+        ui->scrollArea_reminder->setVisible(false);
+        ui->scrollArea_subtask->setVisible(false);
     } else {
         ui->btn_del_task->setVisible(true);
         ui->btn_edit_task->setVisible(true);
         ui->label_task_name->setText(this->selected_task_layout_item->task->name);
+        ui->btn_add_reminder->setVisible(true);
+        ui->btn_add_subtask->setVisible(true);
+        if(this->selected_task_layout_item->task->is_finished==false)
+        {
+            ui->btn_finish->setVisible(true);
+            ui->label_is_finished->setVisible(true);
+            ui->label_is_finished->setText("任务完成状态：未完成");
+        }
+        else
+        {
+            ui->btn_finish->setVisible(false);
+            ui->label_is_finished->setVisible(true);
+            ui->label_is_finished->setText("任务完成状态：已完成");
+        }
+        ui->btn_delete_reminder->setVisible(true);
+        ui->btn_delete_subtask->setVisible(true);
+        ui->btn_edit_reminder->setVisible(true);
+        ui->btn_edit_subtask->setVisible(true);
+        ui->btn_finish_subtask->setVisible(true);
+        ui->label_add_reminder->setVisible(true);
+        ui->label_add_subtask->setVisible(true);
+
+        ui->label_st_and_ed_time->setVisible(true);
+        if(this->selected_task_layout_item->task->type==TaskType::SCHEDULED_EVENT)
+        {
+            ui->label_st_and_ed_time->setText("事务时间："
+                  +this->selected_task_layout_item->task->start_time.toString("yyyy-MM-dd hh:mm:ss")
+                  +"至"
+                  +this->selected_task_layout_item->task->end_time.toString("yyyy-MM-dd hh:mm:ss"));
+        }
+        else if(selected_task_layout_item->task->type==TaskType::JOB)
+        {
+            if(this->selected_task_layout_item->task->end_time.isNull())
+                ui->label_st_and_ed_time->setText("无截止时间");
+            else
+                ui->label_st_and_ed_time->setText("截止时间："+
+                  this->selected_task_layout_item->task->end_time.toString("yyyy-MM-dd hh:mm:ss"));
+        }
+
+        ui->label_task_comment->setVisible(true);
+        ui->label_task_comment->setText("事务描述："+this->selected_task_layout_item->task->comment);
+
+        ui->scrollArea_reminder->setVisible(true);
+        ui->scrollArea_subtask->setVisible(true);
         // TODO
         // 我们需要在右侧那一栏中添加更多的关于事务的信息
         // （比如类型、起止时间、注释、子任务、是否完成...）
         // 详见 src/classes/task.h
         // 并且在这里更新界面中的相关信息
+
     }
 }
