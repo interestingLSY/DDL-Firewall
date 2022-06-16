@@ -329,71 +329,35 @@ void MainWindow::redraw_right() {
     if (this->selected_task_layout_item == nullptr) {
         // 当前没有选中任务
         ui->label_task_name->setText("请选择一个事务");
-        ui->btn_del_task->setVisible(false);
-        ui->btn_edit_task->setVisible(false);
-        ui->btn_add_reminder->setVisible(false);
-        ui->btn_add_subtask->setVisible(false);
-        ui->btn_finish->setVisible(false);
-        ui->btn_delete_reminder->setVisible(false);
-        ui->btn_delete_subtask->setVisible(false);
-        ui->btn_edit_reminder->setVisible(false);
-        ui->btn_edit_subtask->setVisible(false);
-        ui->btn_finish_subtask->setVisible(false);
-        ui->label_add_reminder->setVisible(false);
-        ui->label_add_subtask->setVisible(false);
-        ui->label_is_finished->setVisible(false);
-        ui->label_st_and_ed_time->setVisible(false);
-        ui->label_task_comment->setVisible(false);
-        ui->scrollArea_reminder->setVisible(false);
-        ui->scrollArea_subtask->setVisible(false);
+        ui->widget_task_info->setVisible(false);
     } else {
-        ui->btn_del_task->setVisible(true);
-        ui->btn_edit_task->setVisible(true);
         ui->label_task_name->setText(this->selected_task_layout_item->task->name);
-        ui->btn_add_reminder->setVisible(true);
-        ui->btn_add_subtask->setVisible(true);
-        if(this->selected_task_layout_item->task->is_finished==false)
-        {
+        ui->widget_task_info->setVisible(true);
+        Task* selected_task = this->selected_task_layout_item->task;
+        if (selected_task->is_finished == false) {
             ui->btn_finish->setVisible(true);
             ui->label_is_finished->setVisible(true);
             ui->label_is_finished->setText("任务完成状态：未完成");
-        }
-        else
-        {
+        } else {
             ui->btn_finish->setVisible(false);
             ui->label_is_finished->setVisible(true);
             ui->label_is_finished->setText("任务完成状态：已完成");
         }
-        ui->btn_delete_reminder->setVisible(true);
-        ui->btn_delete_subtask->setVisible(true);
-        ui->btn_edit_reminder->setVisible(true);
-        ui->btn_edit_subtask->setVisible(true);
-        ui->btn_finish_subtask->setVisible(true);
-        ui->label_add_reminder->setVisible(true);
-        ui->label_add_subtask->setVisible(true);
-
-        ui->label_st_and_ed_time->setVisible(true);
-        if(this->selected_task_layout_item->task->type==TaskType::SCHEDULED_EVENT)
-        {
-            ui->label_st_and_ed_time->setText("事务时间："
-                  +this->selected_task_layout_item->task->start_time.toString("yyyy-MM-dd hh:mm:ss")
-                  +"至"
-                  +this->selected_task_layout_item->task->end_time.toString("yyyy-MM-dd hh:mm:ss"));
+        if (selected_task->type == TaskType::SCHEDULED_EVENT) {
+            ui->widget_task_start_time->setVisible(true);
+            ui->widget_task_end_time->setVisible(true);
+            ui->label_task_start_time->setText(selected_task->start_time.toString("yyyy-MM-dd hh:mm:ss"));
+            ui->label_task_end_time->setText(selected_task->end_time.toString("yyyy-MM-dd hh:mm:ss"));
+        } else if (selected_task->type == TaskType::JOB) {
+            ui->widget_task_start_time->setVisible(false);
+            if (selected_task->end_time.isNull()) {
+                ui->widget_task_end_time->setVisible(false);
+            } else {
+                ui->widget_task_end_time->setVisible(true);
+                ui->label_task_end_time->setText(selected_task->end_time.toString("yyyy-MM-dd hh:mm:ss"));
+            }
         }
-        else if(selected_task_layout_item->task->type==TaskType::JOB)
-        {
-            if(this->selected_task_layout_item->task->end_time.isNull())
-                ui->label_st_and_ed_time->setText("无截止时间");
-            else
-                ui->label_st_and_ed_time->setText("截止时间："+
-                  this->selected_task_layout_item->task->end_time.toString("yyyy-MM-dd hh:mm:ss"));
-        }
-
-        ui->label_task_comment->setVisible(true);
-        ui->label_task_comment->setText("事务描述："+this->selected_task_layout_item->task->comment);
-
-        ui->scrollArea_reminder->setVisible(true);
-        ui->scrollArea_subtask->setVisible(true);
+        ui->label_task_comment->setText(selected_task->comment);
         // TODO
         // 我们需要在右侧那一栏中添加更多的关于事务的信息
         // （比如类型、起止时间、注释、子任务、是否完成...）

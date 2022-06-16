@@ -38,7 +38,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="left" stretch="10,0,0,0,0">
+      <layout class="QVBoxLayout" name="layout_left" stretch="10,0,0,0,0">
        <property name="topMargin">
         <number>5</number>
        </property>
@@ -125,7 +125,7 @@ color: rgb(31,31,31);</string>
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="midpoint" stretch="9,0,0">
+      <layout class="QVBoxLayout" name="layout_mid" stretch="9,0,0">
        <property name="sizeConstraint">
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
@@ -299,7 +299,7 @@ color: rgb(31,31,31);</string>
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="right" stretch="0,0,1,1,5,5,2,2,0">
+      <layout class="QVBoxLayout" name="layout_right" stretch="0,0,0,0,0">
        <property name="sizeConstraint">
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
@@ -331,203 +331,268 @@ color: rgb(31,31,31);</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_task_comment">
-         <property name="text">
-          <string>事务内容</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_st_and_ed_time">
-         <property name="text">
-          <string>任务的开始时间与结束时间/任务的结束时间</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="subtask_area">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <widget class="QWidget" name="widget_task_info" native="true">
+         <layout class="QVBoxLayout" name="layout_task_info" stretch="0,0,0,0,0,0">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="1,4">
+            <item>
+             <widget class="QLabel" name="label_task_comment_str">
+              <property name="text">
+               <string>事务内容</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_task_comment">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_task_start_time" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,4">
              <item>
-              <widget class="QLabel" name="label_add_subtask">
+              <widget class="QLabel" name="label_task_start_time_str">
                <property name="text">
-                <string>子事务：</string>
+                <string>开始时间</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignCenter</set>
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btn_add_subtask">
+              <widget class="QLabel" name="label_task_start_time">
                <property name="text">
-                <string>添加子事务</string>
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
             </layout>
-           </item>
-           <item>
-            <widget class="QScrollArea" name="scrollArea_subtask">
-             <property name="widgetResizable">
-              <bool>true</bool>
-             </property>
-             <widget class="QWidget" name="scrollAreaWidgetContents_2">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>328</width>
-                <height>206</height>
-               </rect>
-              </property>
-             </widget>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
-           <item>
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btn_finish_subtask">
-             <property name="text">
-              <string>完成</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btn_edit_subtask">
-             <property name="text">
-              <string>编辑</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btn_delete_subtask">
-             <property name="text">
-              <string>删除</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="reminder_area">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_6">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_task_end_time" native="true">
+            <layout class="QHBoxLayout" name="layout_task_end_time" stretch="1,4">
              <item>
-              <widget class="QLabel" name="label_add_reminder">
+              <widget class="QLabel" name="label_task_end_time_str">
                <property name="text">
-                <string>提醒：</string>
+                <string>结束时间</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignCenter</set>
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btn_add_reminder">
+              <widget class="QLabel" name="label_task_end_time">
                <property name="text">
-                <string>添加提醒</string>
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
             </layout>
-           </item>
-           <item>
-            <widget class="QScrollArea" name="scrollArea_reminder">
-             <property name="widgetResizable">
-              <bool>true</bool>
-             </property>
-             <widget class="QWidget" name="scrollAreaWidgetContents">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>328</width>
-                <height>207</height>
-               </rect>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layout_reminder">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <widget class="QLabel" name="label_add_reminder">
+                  <property name="text">
+                   <string>提醒：</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_add_reminder">
+                  <property name="text">
+                   <string>添加提醒</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QScrollArea" name="scrollArea_reminder">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>326</width>
+                   <height>285</height>
+                  </rect>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_edit_reminder">
+                <property name="text">
+                 <string>编辑</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_delete_reminder">
+                <property name="text">
+                 <string>删除</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="layout_subtask">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <item>
+                 <widget class="QLabel" name="label_add_subtask">
+                  <property name="text">
+                   <string>子事务：</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_add_subtask">
+                  <property name="text">
+                   <string>添加子事务</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QScrollArea" name="scrollArea_subtask">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>326</width>
+                   <height>284</height>
+                  </rect>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_finish_subtask">
+                <property name="text">
+                 <string>完成</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_edit_subtask">
+                <property name="text">
+                 <string>编辑</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_delete_subtask">
+                <property name="text">
+                 <string>删除</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_is_finished">
+              <property name="text">
+               <string>任务完成状态：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <spacer name="verticalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btn_edit_reminder">
-             <property name="text">
-              <string>编辑</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btn_delete_reminder">
-             <property name="text">
-              <string>删除</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="label_is_finished">
-           <property name="text">
-            <string>任务完成状态：</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_finish">
-           <property name="text">
-            <string>完成</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_finish">
+              <property name="text">
+               <string>完成</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
