@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddScheTask</class>
- <widget class="QDialog" name="AddScheTask">
+ <class>task_edit</class>
+ <widget class="QDialog" name="task_edit">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>608</width>
-    <height>522</height>
+    <width>604</width>
+    <height>516</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>新建定时事务</string>
-  </property>
-  <property name="autoFillBackground">
-   <bool>false</bool>
+   <string>修改事务信息</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
@@ -347,7 +344,7 @@ background-color: rgb(17,171,164);}
 </string>
         </property>
         <property name="text">
-         <string>创建</string>
+         <string>确认更改</string>
         </property>
        </widget>
       </item>

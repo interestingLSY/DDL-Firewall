@@ -52,6 +52,7 @@ void AddScheTask::on_btn_create_clicked() {
 	Task new_task;
 	new_task.type = TaskType::SCHEDULED_EVENT;
 	new_task.name = ui->input_task_name->text();
+    new_task.comment = ui->input_comment->toPlainText();
 	new_task.start_time = ui->datetime_start->dateTime();
 	new_task.end_time = ui->datetime_end->dateTime();
 	if (ui->chkbox_have_reminder->isChecked()) {

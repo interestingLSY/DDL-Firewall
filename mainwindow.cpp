@@ -12,6 +12,8 @@
 #include "calendar_type.h"
 #include "add_job.h"
 #include "add_sche_task.h"
+#include "ui_task_edit.h"
+#include "task_edit.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -120,7 +122,60 @@ void MainWindow::on_btn_edit_task_clicked() {
     // 我们需要在这里生成一个新的窗口，让用户能够修改 selected_task
     // 假设修改后的 task 的名字是 new_task
     Task new_task = *selected_task;
-    data_manager.update_task(selected_task->uuid, new_task);
+    if(new_task.type==TaskType::SCHEDULED_EVENT)
+    {
+        task_edit *editTask = new task_edit (this);
+        editTask->putTaskAddress(selected_task);
+        editTask->ui->input_task_name->setText(selected_task->name);
+        editTask->ui->input_comment->setText(selected_task->comment);
+        editTask->ui->datetime_start->setDateTime(selected_task->start_time);
+        editTask->ui->datetime_end->setDateTime(selected_task->end_time);
+        editTask->ui->datetime_start->setDateTime(selected_task->start_time);
+        if (selected_task->reminders.size()!=0)
+        {
+            editTask->ui->chkbox_have_reminder->setChecked(true);
+            editTask->ui->datetime_reminder->setDateTime(selected_task->reminders.front().accurate_time);
+        }
+        else
+        {
+            editTask->ui->chkbox_have_reminder->setChecked(false);
+            editTask->ui->datetime_reminder->setDateTime(QDateTime::currentDateTime());
+        }
+        new_task=*(editTask->task);
+        editTask->setModal(true);
+        editTask->exec();
+        data_manager.update_task(selected_task->uuid, new_task);
+        this->redraw_left();
+        this->redraw_middle();
+        this->redraw_right();
+    }
+    else if(new_task.type==TaskType::JOB)
+    {
+        job_edit *editJob = new job_edit (this);
+        editTask->putTaskAddress(selected_task);
+        editTask->ui->input_task_name->setText(selected_task->name);
+        editTask->ui->input_comment->setText(selected_task->comment);
+        editTask->ui->datetime_start->setDateTime(selected_task->start_time);
+        editTask->ui->datetime_end->setDateTime(selected_task->end_time);
+        editTask->ui->datetime_start->setDateTime(selected_task->start_time);
+        if (selected_task->reminders.size()!=0)
+        {
+            editTask->ui->chkbox_have_reminder->setChecked(true);
+            editTask->ui->datetime_reminder->setDateTime(selected_task->reminders.front().accurate_time);
+        }
+        else
+        {
+            editTask->ui->chkbox_have_reminder->setChecked(false);
+            editTask->ui->datetime_reminder->setDateTime(QDateTime::currentDateTime());
+        }
+        new_task=*(editTask->task);
+        editTask->setModal(true);
+        editTask->exec();
+        data_manager.update_task(selected_task->uuid, new_task);
+        this->redraw_left();
+        this->redraw_middle();
+        this->redraw_right();
+    }
 }
 
 void MainWindow::select_displayed_tasklist() {

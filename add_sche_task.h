@@ -16,7 +16,6 @@ class AddScheTask : public QDialog
 public:
     explicit AddScheTask(QWidget *parent = nullptr);
     ~AddScheTask();
-
 private slots:
     void on_chkbox_have_reminder_stateChanged(int is_checked);
 
@@ -25,7 +24,7 @@ private slots:
     void on_datetime_start_dateTimeChanged(const QDateTime &datetime);
 
 
-private:
+public:
     Ui::AddScheTask *ui;
 };
 

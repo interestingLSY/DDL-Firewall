@@ -9,6 +9,7 @@ CONFIG += resources_big
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    job_edit.cpp \
     src/3rdparty/jsoncpp/jsoncpp.cpp \
     src/classes/reminder.cpp \
     src/classes/task.cpp \
@@ -27,9 +28,11 @@ SOURCES += \
     list_type.cpp \
     list_type2.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    task_edit.cpp
 
 HEADERS += \
+    job_edit.h \
     src/3rdparty/jsoncpp/json.h \
     src/3rdparty/jsoncpp/json-forwards.h \
     src/classes/reminder.h \
@@ -48,7 +51,8 @@ HEADERS += \
     errors.h \
     list_type.h \
     list_type2.h \
-    mainwindow.h
+    mainwindow.h \
+    task_edit.h
 
 FORMS += \
     add_job.ui \
@@ -56,9 +60,11 @@ FORMS += \
     addtasklist.ui \
     calendar_type.ui \
     errors.ui \
+    job_edit.ui \
     list_type.ui \
     list_type2.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    task_edit.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
