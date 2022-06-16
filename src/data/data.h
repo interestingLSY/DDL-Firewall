@@ -33,7 +33,7 @@ public:
 
 	QVector<Task*> generate_virtual_tasklist(std::function<bool(const Task&)> filt);	// 生成一个包括所有满足了 filt 的 Task 的列表
 	void del_task(uuid_t target_uuid);	// 删除某个特定的任务
-	void update_task(uuid_t target_uuid, const Task& new_task);
+	bool update_task(uuid_t target_uuid, const Task& new_task);	// 根据 uuid 更新某个任务，返回值为“是否找到了含有目标 uuid 的任务”
 
 	DataManager();
 	~DataManager();

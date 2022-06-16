@@ -67,10 +67,12 @@ void DataManager::del_task(uuid_t target_uuid) {
 	}
 }
 
-void DataManager::update_task(uuid_t target_uuid, const Task& new_task) {
+bool DataManager::update_task(uuid_t target_uuid, const Task& new_task) {
+	bool result = false;
 	for (Tasklist &tasklist : this->tasklists) {
-		tasklist.update_task(target_uuid, new_task);
+		result |= tasklist.update_task(target_uuid, new_task);
 	}
+	return result;
 }
 
 void DataManager::load() {

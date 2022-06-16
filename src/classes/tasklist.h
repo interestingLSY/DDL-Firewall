@@ -18,7 +18,9 @@ public:
 	void add_task(const Task &task);
 	QVector<Task*> filter_task(std::function<bool(const Task&)> filt);
 	void del_task(uuid_t target_uuid);
-	void update_task(uuid_t target_uuid, const Task &new_task);
+	// 根据 UUID 更新任务
+	// 返回一个 bool，代表是否找到了对应的 uuid 的任务
+	bool update_task(uuid_t target_uuid, const Task &new_task);
 
 	Tasklist();
 	

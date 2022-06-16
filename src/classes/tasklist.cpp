@@ -23,13 +23,14 @@ void Tasklist::del_task(uuid_t target_uuid) {
 	}
 }
 
-void Tasklist::update_task(uuid_t target_uuid, const Task &new_task) {
+bool Tasklist::update_task(uuid_t target_uuid, const Task &new_task) {
     for (Task& task : this->tasks) {
         if (task.uuid == target_uuid) {
             task = new_task;
-            break;
+            return true;
         }
     }
+    return false;
 }
 
 Tasklist::Tasklist() {
