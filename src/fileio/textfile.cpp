@@ -43,7 +43,7 @@ QString Textfile::read_all() {
 }
 
 void Textfile::write_all(const QString &content) {
-	bool is_open_success = this->qfile.open(QIODevice::ReadWrite | QIODevice::Text);
+	bool is_open_success = this->qfile.open(QIODevice::WriteOnly | QIODevice::Text);
 	assert(is_open_success);
 
 	QTextStream text_stream(&this->qfile);
