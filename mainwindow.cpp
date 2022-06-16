@@ -222,7 +222,7 @@ void MainWindow::redraw_left() {
         // 因为我们之前使用 new 来生成 QPushButton，所以我们要手动将其 delete 掉
         // 否则就会发生内存泄漏
         // 虽然泄露这点内存大概率没啥事，但我认为我们需要养成良好的习惯
-        // Re:确实如此
+        // Re: 确实如此
         delete item.btn;
     }
     this->tasklist_layout_items.clear();
@@ -272,6 +272,12 @@ void MainWindow::redraw_left() {
 }
 
 void MainWindow::redraw_middle() {
+    qDeleteAll(ui->layout_tasks->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly));
+    for (TaskLayoutItem &item : this->task_layout_items) {
+        delete item.btn;
+    }
+    this->task_layout_items.clear();
+
     if (!this->selected_tasklist_layout_item) {
         // 当前没有选中任何任务列表
         ui->lab_tasklist_name->setText("请选择一个事务列表");
@@ -290,12 +296,6 @@ void MainWindow::redraw_middle() {
             // 不允许删除 virtual tasklist
             ui->btn_del_tasklist->setVisible(false);
         }
-
-        qDeleteAll(ui->layout_tasks->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly));
-        for (TaskLayoutItem &item : this->task_layout_items) {
-            delete item.btn;
-        }
-        this->task_layout_items.clear();
 
         ui->lab_tasklist_name->setText(this->selected_tasklist_layout_item->name);
 
