@@ -141,13 +141,9 @@ void MainWindow::on_btn_edit_task_clicked() {
             editTask->ui->chkbox_have_reminder->setChecked(false);
             editTask->ui->datetime_reminder->setDateTime(QDateTime::currentDateTime());
         }
-        new_task=*(editTask->task);
         editTask->setModal(true);
         editTask->exec();
-        data_manager.update_task(selected_task->uuid, new_task);
-        this->redraw_left();
-        this->redraw_middle();
-        this->redraw_right();
+        new_task=*(editTask->task);
     }
     else if(new_task.type==TaskType::JOB)
     {
@@ -179,14 +175,14 @@ void MainWindow::on_btn_edit_task_clicked() {
             editJob->ui->datetime_reminder->setVisible(false);
             editJob->ui->datetime_reminder->setDateTime(QDateTime::currentDateTime());
         }
-        new_task=*(editJob->task);
         editJob->setModal(true);
         editJob->exec();
-        data_manager.update_task(selected_task->uuid, new_task);
-        this->redraw_left();
-        this->redraw_middle();
-        this->redraw_right();
     }
+
+    data_manager.update_task(selected_task->uuid, new_task);
+    this->redraw_left();
+    this->redraw_middle();
+    this->redraw_right();
 }
 
 void MainWindow::select_displayed_tasklist() {
