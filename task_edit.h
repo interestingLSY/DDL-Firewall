@@ -23,7 +23,7 @@ public:
     void putTaskAddress(Task* temp);
 private slots:
     void on_btn_create_clicked();
-    void on_datetime_start_dateChanged(const QDateTime &datetime);
+    void on_datetime_start_dateTimeChanged(const QDateTime &datetime);
     void on_chkbox_have_reminder_stateChanged(int arg1);
 };
 

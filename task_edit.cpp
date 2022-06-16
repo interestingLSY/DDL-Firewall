@@ -52,7 +52,7 @@ void task_edit::on_btn_create_clicked()
 }
 
 
-void task_edit::on_datetime_start_dateChanged(const QDateTime &datetime)
+void task_edit::on_datetime_start_dateTimeChanged(const QDateTime &datetime)
 {
     ui->datetime_end->setDateTime(datetime);
     ui->datetime_reminder->setDateTime(datetime);
