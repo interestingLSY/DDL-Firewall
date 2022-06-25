@@ -11,6 +11,7 @@ CONFIG += resources_big
 SOURCES += \
     add_reminder.cpp \
     add_subtask.cpp \
+    edit_reminder.cpp \
     edit_subtask.cpp \
     src/3rdparty/jsoncpp/jsoncpp.cpp \
     src/classes/reminder.cpp \
@@ -36,6 +37,7 @@ HEADERS += \
     add_reminder.h \
     add_reminder.h \
     add_subtask.h \
+    edit_reminder.h \
     edit_subtask.h \
     src/3rdparty/jsoncpp/json.h \
     src/3rdparty/jsoncpp/json-forwards.h \
@@ -65,6 +67,7 @@ FORMS += \
     add_subtask.ui \
     add_tasklist.ui \
     calendar_type.ui \
+    edit_reminder.ui \
     edit_subtask.ui \
     errors.ui \
     mainwindow.ui \

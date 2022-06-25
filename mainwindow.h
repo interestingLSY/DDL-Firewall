@@ -44,6 +44,9 @@ public:
     // 当前选中的事务列表，nullptr 表示没有选中任何事务列表
     TasklistLayoutItem* selected_tasklist_layout_item;
 
+    // 下一个提醒所属 Task
+    Task *next_task;
+    QDateTime remind_time;
 
     struct TaskLayoutItem {
         Task* task;
@@ -105,6 +108,8 @@ private slots:
     void on_btn_finish_subtask_clicked();
 
     void on_btn_delete_subtask_clicked();
+
+    void on_btn_finish_clicked();
 
 public slots:
     void select_displayed_tasklist();

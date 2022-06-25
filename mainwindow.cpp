@@ -22,6 +22,8 @@
 #include "add_subtask.h"
 #include "edit_subtask.h"
 #include "ui_edit_subtask.h"
+#include "edit_reminder.h"
+#include "ui_edit_reminder.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -41,10 +43,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->btn_add_sche_task->setStyleSheet(BUTTON_STYLE);
 #undef BUTTON_STYLE
 
-    ui->lab_ddlcounter->setText("今天还有 " + QString::number(1) + " 个ddl,加油！");
-
     this->selected_task_layout_item = nullptr;
     this->selected_tasklist_layout_item = nullptr;
+    this->selected_subtask_layout_item = nullptr;
+    this->selected_reminder_layout_item =nullptr;
 
     this->redraw_left();
     this->redraw_middle();
@@ -90,7 +92,7 @@ void MainWindow::on_btn_del_tasklist_clicked() {
     Q_ASSERT(!this->selected_tasklist_layout_item->is_virtual);
     Tasklist* selected_tasklist = this->selected_tasklist_layout_item->tasklist;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "确认", "确定要删除事务清单 "+selected_tasklist->name + "？\n这将会删除这个清单内的所有事务！",
+    reply = QMessageBox::question(this, "DDL-FireWall", "确定要删除事务清单 "+selected_tasklist->name + "？\n这将会删除这个清单内的所有事务！",
                                 QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
         data_manager.del_tasklisk(selected_tasklist->uuid);
@@ -108,7 +110,7 @@ void MainWindow::on_btn_del_task_clicked() {
     Q_ASSERT(this->selected_task_layout_item);
     Task* selected_task = this->selected_task_layout_item->task;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "确认", "确定要删除事务 "+selected_task->name + "？",
+    reply = QMessageBox::question(this, "DDL-FireWall", "确定要删除事务 "+selected_task->name + "？",
                                 QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
         data_manager.del_task(selected_task->uuid);
@@ -293,6 +295,19 @@ void MainWindow::redraw_left() {
 }
 
 void MainWindow::redraw_middle() {
+
+    int cnt_todos=0;
+    for (Tasklist &tasklist : data_manager.tasklists)
+        for (Task &task : tasklist.tasks)
+            if(task.end_time.isNull()==false&&task.is_finished==false)
+                if(task.end_time.date()==QDateTime::currentDateTime().date()&&
+                        task.end_time>QDateTime::currentDateTime())
+                            cnt_todos++;
+    if(cnt_todos)
+        ui->lab_ddlcounter->setText("今天还有 " + QString::number(cnt_todos) + " 个ddl,加油！");
+    else
+        ui->lab_ddlcounter->setText("你已经完成了今天全部的ddl，真棒！");
+
     qDeleteAll(ui->layout_tasks->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly));
     for (TaskLayoutItem &item : this->task_layout_items) {
         delete item.btn;
@@ -352,17 +367,24 @@ void MainWindow::redraw_right() {
         ui->label_task_name->setText("请选择一个事务");
         ui->widget_task_info->setVisible(false);
     } else {
-        if (this->selected_subtask_layout_item!=nullptr)
+        //由选择状态确定按钮的显示情况
+        if (this->selected_subtask_layout_item!=nullptr&&this->selected_task_layout_item->task->is_finished==false)
         {
             ui->btn_delete_subtask->setVisible(true);
             ui->btn_edit_subtask->setVisible(true);
+            // 选中已经完成了的子任务不需要完成按钮
+            if(this->selected_subtask_layout_item->subtask->is_finished==false)
+                ui->btn_finish_subtask->setVisible(true);
+            else
+                ui->btn_finish_subtask->setVisible(false);
         }
         else
         {
             ui->btn_delete_subtask->setVisible(false);
             ui->btn_edit_subtask->setVisible(false);
+            ui->btn_finish_subtask->setVisible(false);
         }
-        if (this->selected_reminder_layout_item!=nullptr)
+        if (this->selected_reminder_layout_item!=nullptr&&this->selected_task_layout_item->task->is_finished==false)
         {
             ui->btn_delete_reminder->setVisible(true);
             ui->btn_edit_reminder->setVisible(true);
@@ -371,6 +393,16 @@ void MainWindow::redraw_right() {
         {
             ui->btn_delete_reminder->setVisible(false);
             ui->btn_edit_reminder->setVisible(false);
+        }
+        if(this->selected_task_layout_item->task->is_finished==false)
+        {
+            ui->btn_add_reminder->setVisible(true);
+            ui->btn_add_subtask->setVisible(true);
+        }
+        else
+        {
+            ui->btn_add_reminder->setVisible(false);
+            ui->btn_add_subtask->setVisible(false);
         }
         ui->label_task_name->setText(this->selected_task_layout_item->task->name);
         ui->widget_task_info->setVisible(true);
@@ -415,6 +447,11 @@ void MainWindow::redraw_right() {
         {
             QPushButton* btn = new QPushButton(ui->scroll_subtasks);
             btn->setText(item.subtask->name);
+            //已完成便添加删除线
+            if(item.subtask->is_finished==true)
+                btn->setStyleSheet("text-decoration: line-through;");
+            else
+                btn->setStyleSheet("text-decoration: none;");
             ui->layout_subtasks->addWidget(btn);
             ui->scroll_subtasks->setLayout(ui->layout_subtasks);
             item.btn = btn;
@@ -442,6 +479,11 @@ void MainWindow::redraw_right() {
         {
             QPushButton* btn = new QPushButton(ui->scroll_reminders);
             btn->setText(item.reminder->accurate_time.toString("yyyy-MM-dd hh:mm:ss"));
+            //已过期便添加删除线
+            if(item.reminder->accurate_time<QDateTime::currentDateTime())
+                btn->setStyleSheet("text-decoration: line-through;");
+            else
+                btn->setStyleSheet("text-decoration: none;");
             ui->layout_reminders->addWidget(btn);
             ui->scroll_reminders->setLayout(ui->layout_reminders);
             item.btn = btn;
@@ -475,23 +517,35 @@ void MainWindow::on_btn_edit_subtask_clicked()
     edit_subtask *edit =new edit_subtask(this);
     edit->putSubtaskAddress(selected_subtask_layout_item->subtask);
     edit->ui->input_subtask_name->setText(selected_subtask->name);
+
     edit->setModal(true);
     edit->exec();
 
-    selected_subtask = edit->subtask;
     this->redraw_right();
 }
 
 
 void MainWindow::on_btn_add_reminder_clicked()
 {
+    add_reminder *adding = new add_reminder(this);
+    adding->setModal(true);
+    adding->exec();
 
+    this->redraw_right();
 }
 
 
 void MainWindow::on_btn_edit_reminder_clicked()
 {
+    Reminder *selected_reminder = MainWindow::selected_reminder_layout_item->reminder;
+    edit_reminder *edit =new edit_reminder(this);
+    edit->putReminderAddress(selected_reminder_layout_item->reminder);
+    edit->ui->reminder_datetime->setDateTime(selected_reminder->accurate_time);
 
+    edit->setModal(true);
+    edit->exec();
+
+    this->redraw_right();
 }
 
 
@@ -501,7 +555,7 @@ void MainWindow::on_btn_delete_reminder_clicked()
     Q_ASSERT(this->selected_reminder_layout_item);
     Reminder* selected_reminder = this->selected_reminder_layout_item->reminder;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "确认", "确定要删除在 "+selected_reminder->accurate_time.toString("yyyy-MM-dd hh:mm:ss")
+    reply = QMessageBox::question(this, "DDL-FireWall", "确定要删除在 "+selected_reminder->accurate_time.toString("yyyy-MM-dd hh:mm:ss")
                                   + "时的提醒？",
                                  QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
@@ -514,6 +568,21 @@ void MainWindow::on_btn_delete_reminder_clicked()
 
 void MainWindow::on_btn_finish_subtask_clicked()
 {
+    Q_ASSERT(this->selected_task_layout_item);
+    Q_ASSERT(this->selected_subtask_layout_item);
+    Subtask* selected_subtask = this->selected_subtask_layout_item->subtask;
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "DDL-FireWall", "恭喜你！确认完成子任务"+selected_subtask->name+ "?",
+                                 QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes)
+    {
+        selected_subtask->is_finished=true;
+        this->redraw_right();
+    }
+    else
+    {
+        QMessageBox::about(this, "DDL-FireWall", "请再接再厉！");
+    }
 
 }
 
@@ -524,12 +593,33 @@ void MainWindow::on_btn_delete_subtask_clicked()
     Q_ASSERT(this->selected_subtask_layout_item);
     Subtask* selected_subtask = this->selected_subtask_layout_item->subtask;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "确认", "确定要删除子任务 "+selected_subtask->name + "？",
+    reply = QMessageBox::question(this, "DDL-FireWall", "确定要删除子任务 "+selected_subtask->name + "？",
                                 QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
         selected_task_layout_item->task->del_subtask(selected_subtask->uuid);
         this->selected_subtask_layout_item = nullptr;
         this->redraw_right();
     }
+}
+
+
+void MainWindow::on_btn_finish_clicked()
+{
+    Q_ASSERT(this->selected_task_layout_item);
+    Task* selected_task = this->selected_task_layout_item->task;
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "DDL-FireWall", "恭喜你！确认完成任务"+selected_task->name+ "?",
+                                 QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes)
+    {
+        selected_task->is_finished=true;
+        this->redraw_right();
+    }
+    else
+    {
+        QMessageBox::about(this, "DDL-FireWall", "请再接再厉！");
+    }
+    this->redraw_right();
+    this->redraw_middle();
 }
 
