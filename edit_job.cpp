@@ -10,6 +10,8 @@ EditJob::EditJob(QWidget *parent) :
     ui(new Ui::EditJob)
 {
     ui->setupUi(this);
+    this->setStyleSheet("background-color: rgb(255, 255, 255);");
+    this->setWindowFlags(windowFlags()&~Qt::WindowContextHelpButtonHint);
 }
 
 EditJob::~EditJob()

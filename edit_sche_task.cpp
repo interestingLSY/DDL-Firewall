@@ -11,6 +11,8 @@ EditScheTask::EditScheTask(QWidget *parent) :
     ui(new Ui::EditScheTask)
 {
     ui->setupUi(this);
+    this->setStyleSheet("background-color: rgb(255, 255, 255);");
+    this->setWindowFlags(windowFlags()&~Qt::WindowContextHelpButtonHint);
 }
 
 EditScheTask::~EditScheTask()

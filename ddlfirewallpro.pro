@@ -9,6 +9,9 @@ CONFIG += resources_big
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    add_reminder.cpp \
+    add_subtask.cpp \
+    edit_subtask.cpp \
     src/3rdparty/jsoncpp/jsoncpp.cpp \
     src/classes/reminder.cpp \
     src/classes/task.cpp \
@@ -30,6 +33,10 @@ SOURCES += \
     edit_job.cpp
 
 HEADERS += \
+    add_reminder.h \
+    add_reminder.h \
+    add_subtask.h \
+    edit_subtask.h \
     src/3rdparty/jsoncpp/json.h \
     src/3rdparty/jsoncpp/json-forwards.h \
     src/classes/reminder.h \
@@ -52,9 +59,13 @@ HEADERS += \
 
 FORMS += \
     add_job.ui \
+    add_reminder.ui \
+    add_reminder.ui \
     add_sche_task.ui \
+    add_subtask.ui \
     add_tasklist.ui \
     calendar_type.ui \
+    edit_subtask.ui \
     errors.ui \
     mainwindow.ui \
     edit_sche_task.ui \

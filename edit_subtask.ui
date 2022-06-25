@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddTaskList</class>
- <widget class="QDialog" name="AddTaskList">
+ <class>edit_subtask</class>
+ <widget class="QDialog" name="edit_subtask">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>新建事务列表</string>
+   <string>Dialog</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>13</y>
+     <y>10</y>
      <width>373</width>
      <height>261</height>
     </rect>
@@ -45,7 +45,7 @@
 color: rgb(31,31,31);</string>
       </property>
       <property name="text">
-       <string>事务列表名</string>
+       <string>子任务名</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -71,7 +71,7 @@ color: rgb(31,31,31);</string>
        </spacer>
       </item>
       <item>
-       <widget class="QLineEdit" name="input_tasklist_name">
+       <widget class="QLineEdit" name="input_subtask_name">
         <property name="styleSheet">
          <string notr="true">font: 25 13pt '微软雅黑 Light';
 color: rgb(31,31,31);
@@ -128,7 +128,7 @@ border-radius:5px;</string>
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="btn_create">
+       <widget class="QPushButton" name="btn_confirm">
         <property name="styleSheet">
          <string notr="true">QPushButton{
 font: 25 14pt '微软雅黑 Light';
@@ -143,7 +143,7 @@ background-color: rgb(17,171,164);
 }</string>
         </property>
         <property name="text">
-         <string>创建</string>
+         <string>确认更改</string>
         </property>
        </widget>
       </item>

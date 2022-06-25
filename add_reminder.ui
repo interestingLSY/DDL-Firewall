@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddTaskList</class>
- <widget class="QDialog" name="AddTaskList">
+ <class>add_reminder</class>
+ <widget class="QDialog" name="add_reminder">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>新建事务列表</string>
+   <string>Dialog</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>13</y>
+     <y>20</y>
      <width>373</width>
      <height>261</height>
     </rect>
@@ -45,7 +45,7 @@
 color: rgb(31,31,31);</string>
       </property>
       <property name="text">
-       <string>事务列表名</string>
+       <string>添加提醒时间</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -53,7 +53,7 @@ color: rgb(31,31,31);</string>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,3,0">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,1">
       <property name="sizeConstraint">
        <enum>QLayout::SetNoConstraint</enum>
       </property>
@@ -71,15 +71,7 @@ color: rgb(31,31,31);</string>
        </spacer>
       </item>
       <item>
-       <widget class="QLineEdit" name="input_tasklist_name">
-        <property name="styleSheet">
-         <string notr="true">font: 25 13pt '微软雅黑 Light';
-color: rgb(31,31,31);
-padding-left:20px;
-border:2px solid rgb(120,196,255);
-border-radius:5px;</string>
-        </property>
-       </widget>
+       <widget class="QDateTimeEdit" name="reminder_datetime"/>
       </item>
       <item>
        <spacer name="horizontalSpacer_5">
@@ -110,7 +102,7 @@ border-radius:5px;</string>
      </spacer>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,5,1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,3,1">
       <property name="sizeConstraint">
        <enum>QLayout::SetNoConstraint</enum>
       </property>
@@ -143,7 +135,7 @@ background-color: rgb(17,171,164);
 }</string>
         </property>
         <property name="text">
-         <string>创建</string>
+         <string>添加</string>
         </property>
        </widget>
       </item>

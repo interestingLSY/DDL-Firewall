@@ -18,6 +18,10 @@
 #include "ui_edit_sche_task.h"
 #include "edit_job.h"
 #include "ui_edit_job.h"
+#include "add_reminder.h"
+#include "add_subtask.h"
+#include "edit_subtask.h"
+#include "ui_edit_subtask.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -210,6 +214,26 @@ void MainWindow::select_displayed_task() {
     this->redraw_right();
 }
 
+void MainWindow::select_subtask()
+{
+    QObject* sender_btn = sender();
+    for (SubtaskLayoutItem &item : this->subtask_layout_items)
+        if (item.btn == sender_btn)
+            this->selected_subtask_layout_item = &item;
+
+    this->redraw_right();
+}
+
+void MainWindow::select_reminder()
+{
+    QObject* sender_btn = sender();
+    for (ReminderLayoutItem &item : this->reminder_layout_items)
+        if (item.btn == sender_btn)
+            this->selected_reminder_layout_item = &item;
+
+    this->redraw_right();
+}
+
 // 重新绘制左边的区域
 void MainWindow::redraw_left() {
     // 删除之前添加的按钮
@@ -328,6 +352,26 @@ void MainWindow::redraw_right() {
         ui->label_task_name->setText("请选择一个事务");
         ui->widget_task_info->setVisible(false);
     } else {
+        if (this->selected_subtask_layout_item!=nullptr)
+        {
+            ui->btn_delete_subtask->setVisible(true);
+            ui->btn_edit_subtask->setVisible(true);
+        }
+        else
+        {
+            ui->btn_delete_subtask->setVisible(false);
+            ui->btn_edit_subtask->setVisible(false);
+        }
+        if (this->selected_reminder_layout_item!=nullptr)
+        {
+            ui->btn_delete_reminder->setVisible(true);
+            ui->btn_edit_reminder->setVisible(true);
+        }
+        else
+        {
+            ui->btn_delete_reminder->setVisible(false);
+            ui->btn_edit_reminder->setVisible(false);
+        }
         ui->label_task_name->setText(this->selected_task_layout_item->task->name);
         ui->widget_task_info->setVisible(true);
         Task* selected_task = this->selected_task_layout_item->task;
@@ -356,4 +400,136 @@ void MainWindow::redraw_right() {
         }
         ui->label_task_comment->setText(selected_task->comment);
     }
+
+    // 删除已存在的按钮
+    if (this->selected_task_layout_item != nullptr)
+    {
+        qDeleteAll(ui->layout_subtasks->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly));
+
+        for (SubtaskLayoutItem& item : this->subtask_layout_items)
+            delete item.btn;
+
+        this->subtask_layout_items.clear();
+
+        auto process_new_subtask = [&](SubtaskLayoutItem item)
+        {
+            QPushButton* btn = new QPushButton(ui->scroll_subtasks);
+            btn->setText(item.subtask->name);
+            ui->layout_subtasks->addWidget(btn);
+            ui->scroll_subtasks->setLayout(ui->layout_subtasks);
+            item.btn = btn;
+            this->subtask_layout_items.push_back(item);
+            QMetaObject::Connection connection = QObject::connect(btn, &QPushButton::clicked, this, &MainWindow::select_subtask);
+        };
+
+        //添加子任务
+        for (Subtask &subtask : MainWindow::selected_task_layout_item->task->subtasks)
+            process_new_subtask(SubtaskLayoutItem
+            {
+                &subtask,
+                nullptr
+            });
+
+        //删除已存在的提醒
+        qDeleteAll(ui->layout_reminders->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly));
+
+        for (ReminderLayoutItem& item : this->reminder_layout_items)
+            delete item.btn;
+
+        this->reminder_layout_items.clear();
+
+        auto process_new_reminder = [&](ReminderLayoutItem item)
+        {
+            QPushButton* btn = new QPushButton(ui->scroll_reminders);
+            btn->setText(item.reminder->accurate_time.toString("yyyy-MM-dd hh:mm:ss"));
+            ui->layout_reminders->addWidget(btn);
+            ui->scroll_reminders->setLayout(ui->layout_reminders);
+            item.btn = btn;
+            this->reminder_layout_items.push_back(item);
+            QMetaObject::Connection connection = QObject::connect(btn, &QPushButton::clicked, this, &MainWindow::select_reminder);
+        };
+
+        //初始化 添加提醒
+        for (Reminder &reminder : MainWindow::selected_task_layout_item->task->reminders)
+            process_new_reminder(ReminderLayoutItem
+            {
+                &reminder,
+                nullptr
+            });
+    }
 }
+
+void MainWindow::on_btn_add_subtask_clicked()
+{
+    add_subtask *adding = new add_subtask(this);
+    adding->setModal(true);
+    adding->exec();
+
+    this->redraw_right();
+}
+
+
+void MainWindow::on_btn_edit_subtask_clicked()
+{
+    Subtask *selected_subtask = MainWindow::selected_subtask_layout_item->subtask;
+    edit_subtask *edit =new edit_subtask(this);
+    edit->putSubtaskAddress(selected_subtask_layout_item->subtask);
+    edit->ui->input_subtask_name->setText(selected_subtask->name);
+    edit->setModal(true);
+    edit->exec();
+
+    selected_subtask = edit->subtask;
+    this->redraw_right();
+}
+
+
+void MainWindow::on_btn_add_reminder_clicked()
+{
+
+}
+
+
+void MainWindow::on_btn_edit_reminder_clicked()
+{
+
+}
+
+
+void MainWindow::on_btn_delete_reminder_clicked()
+{
+    Q_ASSERT(this->selected_task_layout_item);
+    Q_ASSERT(this->selected_reminder_layout_item);
+    Reminder* selected_reminder = this->selected_reminder_layout_item->reminder;
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "确认", "确定要删除在 "+selected_reminder->accurate_time.toString("yyyy-MM-dd hh:mm:ss")
+                                  + "时的提醒？",
+                                 QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        selected_task_layout_item->task->del_reminder(selected_reminder->uuid);
+        this->selected_reminder_layout_item = nullptr;
+        this->redraw_right();
+    }
+}
+
+
+void MainWindow::on_btn_finish_subtask_clicked()
+{
+
+}
+
+
+void MainWindow::on_btn_delete_subtask_clicked()
+{
+    Q_ASSERT(this->selected_task_layout_item);
+    Q_ASSERT(this->selected_subtask_layout_item);
+    Subtask* selected_subtask = this->selected_subtask_layout_item->subtask;
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "确认", "确定要删除子任务 "+selected_subtask->name + "？",
+                                QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        selected_task_layout_item->task->del_subtask(selected_subtask->uuid);
+        this->selected_subtask_layout_item = nullptr;
+        this->redraw_right();
+    }
+}
+

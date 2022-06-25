@@ -71,13 +71,16 @@ color: rgb(31,31,31);</string>
          <property name="widgetResizable">
           <bool>true</bool>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
          <widget class="QWidget" name="scroll_tasklists">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
             <width>420</width>
-            <height>781</height>
+            <height>802</height>
            </rect>
           </property>
           <widget class="QWidget" name="verticalLayoutWidget">
@@ -197,6 +200,7 @@ color: rgb(31,31,31);</string>
               <font>
                <family>Agency FB</family>
                <pointsize>14</pointsize>
+               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -231,7 +235,7 @@ color: rgb(31,31,31);</string>
               <x>0</x>
               <y>0</y>
               <width>417</width>
-              <height>657</height>
+              <height>665</height>
              </rect>
             </property>
             <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -319,6 +323,7 @@ color: rgb(31,31,31);</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
+           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -439,15 +444,33 @@ color: rgb(31,31,31);</string>
                 <property name="widgetResizable">
                  <bool>true</bool>
                 </property>
-                <widget class="QWidget" name="scrollAreaWidgetContents">
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                </property>
+                <widget class="QWidget" name="scroll_reminders">
                  <property name="geometry">
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>326</width>
-                   <height>285</height>
+                   <width>310</width>
+                   <height>295</height>
                   </rect>
                  </property>
+                 <widget class="QWidget" name="verticalLayoutWidget_3">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>281</width>
+                    <height>271</height>
+                   </rect>
+                  </property>
+                  <layout class="QVBoxLayout" name="layout_reminders">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetMaximumSize</enum>
+                   </property>
+                  </layout>
+                 </widget>
                 </widget>
                </widget>
               </item>
@@ -516,15 +539,30 @@ color: rgb(31,31,31);</string>
                 <property name="widgetResizable">
                  <bool>true</bool>
                 </property>
-                <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                <widget class="QWidget" name="scroll_subtasks">
                  <property name="geometry">
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>326</width>
-                   <height>284</height>
+                   <width>310</width>
+                   <height>295</height>
                   </rect>
                  </property>
+                 <widget class="QWidget" name="verticalLayoutWidget_4">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>281</width>
+                    <height>271</height>
+                   </rect>
+                  </property>
+                  <layout class="QVBoxLayout" name="layout_subtasks">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetMaximumSize</enum>
+                   </property>
+                  </layout>
+                 </widget>
                 </widget>
                </widget>
               </item>
@@ -637,7 +675,7 @@ color: rgb(31,31,31);</string>
      <x>0</x>
      <y>0</y>
      <width>1356</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
