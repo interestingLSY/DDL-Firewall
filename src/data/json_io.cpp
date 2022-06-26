@@ -37,6 +37,7 @@ Json::Value dump(const Reminder &reminder) {
 	result["type"] = static_cast<int>(reminder.type);
 	result["accurate_time"] = dump(reminder.accurate_time);
 	result["second_delta"] = reminder.second_delta;
+	result["is_reminded"] = reminder.is_reminded;
 	return result;
 }
 
@@ -45,6 +46,7 @@ Reminder load_reminder(const Json::Value &value) {
 	result.type = static_cast<ReminderType>(value["type"].asInt());
 	result.accurate_time = load_qdatetime(value["accurate_time"]);
 	result.second_delta = value["second_delta"].asInt();
+	result.is_reminded = value["is_reminded"].asBool();
 	return result;
 }
 

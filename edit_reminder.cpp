@@ -32,7 +32,8 @@ void edit_reminder::on_btn_confirm_clicked()
         message_box.critical(nullptr, "Error", "提醒时间已经过期！");
         return;
     }
-    this->reminder->accurate_time=ui->reminder_datetime->dateTime();
+    this->reminder->accurate_time = ui->reminder_datetime->dateTime();
+    this->reminder->is_reminded = false;
 
     this->QDialog::close();
 }

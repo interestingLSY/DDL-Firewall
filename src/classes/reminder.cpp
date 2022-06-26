@@ -12,6 +12,7 @@ QDebug operator<< (QDebug debug, const Reminder &reminder) {
     } else {
         debug << "BY_TIME_DELTA," << reminder.second_delta;
     }
+    debug << "is_reminded: " << reminder.is_reminded;
     debug << "}";
     return debug;
 }

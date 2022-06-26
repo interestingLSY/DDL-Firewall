@@ -42,6 +42,7 @@ void add_reminder::on_btn_create_clicked()
     Reminder new_reminder;
     new_reminder.type=ReminderType::BY_ACCURATE_TIME;
     new_reminder.accurate_time = new_reminder_time;
+    new_reminder.is_reminded = false;
     MainWindow* mainwindow = dynamic_cast<MainWindow*>(this->parentWidget());
     Q_ASSERT(mainwindow != nullptr);
     Q_ASSERT(mainwindow->selected_task_layout_item != nullptr);
