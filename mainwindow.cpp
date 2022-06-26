@@ -372,7 +372,6 @@ void MainWindow::redraw_left() {
 }
 
 void MainWindow::redraw_middle() {
-
     int cnt_todos=0;
     for (Tasklist &tasklist : data_manager.tasklists)
         for (Task &task : tasklist.tasks)
@@ -381,9 +380,9 @@ void MainWindow::redraw_middle() {
                         task.end_time>QDateTime::currentDateTime())
                             cnt_todos++;
     if(cnt_todos)
-        ui->lab_ddlcounter->setText("今天还有 " + QString::number(cnt_todos) + " 个ddl,加油！");
+        ui->lab_ddlcounter->setText("今天还有 " + QString::number(cnt_todos) + " 个 ddl,加油！");
     else
-        ui->lab_ddlcounter->setText("你已经完成了今天全部的ddl，真棒！");
+        ui->lab_ddlcounter->setText("你已经完成了今天全部的 ddl，真棒！");
 
     qDeleteAll(ui->layout_tasks->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly));
     for (TaskLayoutItem &item : this->task_layout_items) {
@@ -510,9 +509,9 @@ void MainWindow::redraw_right() {
         ui->label_task_comment->setText(selected_task->comment);
     }
 
-    // 删除已存在的按钮
     if (this->selected_task_layout_item != nullptr)
     {
+        // 删除已存在的 subtask
         qDeleteAll(ui->layout_subtasks->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly));
 
         for (SubtaskLayoutItem& item : this->subtask_layout_items)

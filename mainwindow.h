@@ -50,28 +50,25 @@ public:
         Task* task;
         QPushButton* btn;
     };
+    QVector<TaskLayoutItem> task_layout_items;
+    // 当前选中的事务，nullptr 表示没有选中任何事务
+    TaskLayoutItem* selected_task_layout_item;
 
     struct ReminderLayoutItem {
         Reminder* reminder;
         QPushButton* btn;
     };
-
     QVector<ReminderLayoutItem> reminder_layout_items;
-    // 标注当前选中的子任务，nullptr代表目前未选中子任务
+    // 标注当前选中的 Reminder，nullptr 代表目前未选中 Reminder
     ReminderLayoutItem* selected_reminder_layout_item;
 
     struct SubtaskLayoutItem {
         Subtask* subtask;
         QPushButton* btn;
     };
-
     QVector<SubtaskLayoutItem> subtask_layout_items;
-    // 标注当前选中的子任务，nullptr代表目前未选中子任务
+    // 标注当前选中的子任务，nullptr 代表目前未选中子任务
     SubtaskLayoutItem* selected_subtask_layout_item;
-
-    QVector<TaskLayoutItem> task_layout_items;
-    // 当前选中的事务，nullptr 表示没有选中任何事务
-    TaskLayoutItem* selected_task_layout_item;
     
     
     // 重新绘制左边（list of tasklist）的区域
