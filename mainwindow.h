@@ -83,9 +83,6 @@ public:
     void redraw_middle();
     // 重新绘制右边（task）的区域
     void redraw_right();
-    //下一个提醒的任务
-    Task *next_task;
-    void set_next_task(Task *task);
 
 public:
     Ui::MainWindow *ui;
@@ -124,7 +121,6 @@ public slots:
     void select_displayed_task();
     void select_subtask();
     void select_reminder();
-    void create_remind_acurator();
 };
 
 #endif // MAINWINDOW_H

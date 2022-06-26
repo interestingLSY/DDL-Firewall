@@ -41,7 +41,6 @@ set(PROJECT_SOURCES
         edit_subtask.cpp
         edit_reminder.cpp
         remind_acurator.cpp
-        reminder_detector.cpp
         ddlfirewall.qrc
 )
 

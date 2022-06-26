@@ -14,7 +14,6 @@ SOURCES += \
     edit_reminder.cpp \
     edit_subtask.cpp \
     remind_acurator.cpp \
-    reminder_detector.cpp \
     src/3rdparty/jsoncpp/jsoncpp.cpp \
     src/classes/reminder.cpp \
     src/classes/task.cpp \
@@ -42,8 +41,6 @@ HEADERS += \
     edit_reminder.h \
     edit_subtask.h \
     remind_acurator.h \
-    reminder_detector.h \
-    reminder_detector.h \
     src/3rdparty/jsoncpp/json.h \
     src/3rdparty/jsoncpp/json-forwards.h \
     src/classes/reminder.h \

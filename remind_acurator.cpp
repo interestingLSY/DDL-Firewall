@@ -10,7 +10,7 @@ remind_acurator::remind_acurator(QWidget *parent) :
     ui->setupUi(this);
     this->setStyleSheet("background-color: rgb(255, 255, 255);");
     this->setWindowFlags(windowFlags()&~Qt::WindowContextHelpButtonHint);
-//    打算放在右下角
+//    TODO 放在右下角
 //    QScreen * screen = QGuiApplication::primaryScreen();
 //    const QRect desk_rect = screen->availableGeometry();
 
