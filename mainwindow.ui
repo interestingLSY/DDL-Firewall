@@ -109,6 +109,9 @@ color: rgb(31,31,31);</string>
          <property name="text">
           <string>新建事务清单</string>
          </property>
+         <property name="default">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item>
@@ -220,6 +223,9 @@ color: rgb(31,31,31);</string>
              <property name="text">
               <string>删除事务清单</string>
              </property>
+             <property name="default">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
           </layout>
@@ -275,12 +281,18 @@ color: rgb(31,31,31);</string>
            <property name="text">
             <string>新建任务</string>
            </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btn_add_sche_task">
            <property name="text">
             <string>新建定时事务</string>
+           </property>
+           <property name="default">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -435,6 +447,9 @@ color: rgb(31,31,31);</string>
                   <property name="text">
                    <string>添加提醒</string>
                   </property>
+                  <property name="default">
+                   <bool>true</bool>
+                  </property>
                  </widget>
                 </item>
                </layout>
@@ -496,12 +511,18 @@ color: rgb(31,31,31);</string>
                 <property name="text">
                  <string>编辑</string>
                 </property>
+                <property name="default">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="btn_delete_reminder">
                 <property name="text">
                  <string>删除</string>
+                </property>
+                <property name="default">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -529,6 +550,9 @@ color: rgb(31,31,31);</string>
                  <widget class="QPushButton" name="btn_add_subtask">
                   <property name="text">
                    <string>添加子事务</string>
+                  </property>
+                  <property name="default">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -588,6 +612,9 @@ color: rgb(31,31,31);</string>
                 <property name="text">
                  <string>完成</string>
                 </property>
+                <property name="default">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item>
@@ -595,12 +622,18 @@ color: rgb(31,31,31);</string>
                 <property name="text">
                  <string>编辑</string>
                 </property>
+                <property name="default">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="btn_delete_subtask">
                 <property name="text">
                  <string>删除</string>
+                </property>
+                <property name="default">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -625,6 +658,9 @@ color: rgb(31,31,31);</string>
               <property name="text">
                <string>完成</string>
               </property>
+              <property name="default">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -639,12 +675,18 @@ color: rgb(31,31,31);</string>
            <property name="text">
             <string>删除</string>
            </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btn_edit_task">
            <property name="text">
             <string>编辑</string>
+           </property>
+           <property name="default">
+            <bool>true</bool>
            </property>
           </widget>
          </item>

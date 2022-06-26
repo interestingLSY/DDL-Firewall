@@ -45,8 +45,6 @@ public:
     TasklistLayoutItem* selected_tasklist_layout_item;
 
     // 下一个提醒所属 Task
-    Task *next_task;
-    QDateTime remind_time;
 
     struct TaskLayoutItem {
         Task* task;
@@ -82,7 +80,9 @@ public:
     void redraw_middle();
     // 重新绘制右边（task）的区域
     void redraw_right();
-    
+    //下一个提醒的任务
+    Task *next_task;
+    void set_next_task(Task *task);
 
 public:
     Ui::MainWindow *ui;
@@ -111,10 +111,15 @@ private slots:
 
     void on_btn_finish_clicked();
 
+    void exit_all();
 public slots:
     void select_displayed_tasklist();
     void select_displayed_task();
     void select_subtask();
     void select_reminder();
+    void create_remind_acurator();
 };
+
 #endif // MAINWINDOW_H
+
+

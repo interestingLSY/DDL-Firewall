@@ -4,7 +4,10 @@
 #include <QBoxLayout>
 #include <QtGlobal>
 #include <QDateTime>
+#include <QSystemTrayIcon>
+#include <QMenu>
 
+#include "reminder_detector.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "add_job.h"
@@ -24,6 +27,53 @@
 #include "ui_edit_subtask.h"
 #include "edit_reminder.h"
 #include "ui_edit_reminder.h"
+#include "remind_acurator.h"
+
+reminder_detector thread1;
+Task *next_task_to_remind;
+
+//更新reminder的情况 但是目前会使两线程间变量访问矛盾，尝试添加互斥锁但没获得应有效果 猜测还有其它问题
+void check_reminders()
+{
+    /*
+    int cnt_all=0;
+    thread1.set_flag(false);
+
+    for (Tasklist &tasklist : data_manager.tasklists)
+        for (Task &task : tasklist.tasks)
+            for(Reminder &reminder : task.reminders)
+            {
+
+                if(task.is_finished==false && reminder.if_reminded == false)
+                {
+                    if(cnt_all==0||thread1.next_reminder->accurate_time>task.end_time)
+                    {
+                        thread1.set_flag(true);
+                        next_task_to_remind=&task;
+                        cnt_all++;
+                        thread1.set_reminder(&reminder);
+                        thread1.set_task(&task);
+                    }
+                }
+            }
+    */
+    return;
+}
+
+//生成提醒窗的位于主线程的槽函数
+void MainWindow::create_remind_acurator()
+{
+    remind_acurator *acurator = new remind_acurator();
+    check_reminders();
+    acurator->set_next_task(next_task_to_remind);
+    acurator->exec();
+}
+
+// 传递next_task的信息
+void MainWindow::set_next_task(Task *task)
+{
+    next_task=task;
+}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -51,6 +101,30 @@ MainWindow::MainWindow(QWidget *parent)
     this->redraw_left();
     this->redraw_middle();
     this->redraw_right();
+
+    // 期望添加右下角托盘 目前失败 TO DO 实现后台挂机 需要这个功能
+    auto trayIcon = new QSystemTrayIcon();
+    trayIcon->setIcon(QIcon("./ddlfirewall.ico"));
+    QMenu *menu = new QMenu();
+    QAction *action = menu->addAction("退出");
+    connect(action, &QAction::triggered, this ,&MainWindow::exit_all);
+    trayIcon->setContextMenu(menu);
+    trayIcon->show();
+    //END Failure
+
+    //创建新线程 目前先注释了
+    /*
+    thread1.Address_mainwindow = this;
+    check_reminders();
+    thread1.start();
+    */
+}
+
+
+
+void MainWindow::exit_all()
+{
+    qApp->quit();
 }
 
 MainWindow::~MainWindow() {
@@ -71,6 +145,7 @@ void MainWindow::on_btn_add_job_clicked() {
     querytask->setModal(true);
     querytask->exec();
 
+    check_reminders();
     // 这里需要 redraw_left，因为“全部事务”，“未完成事务”中的内容可能会出现变化
     this->redraw_left();
     this->redraw_middle();
@@ -117,6 +192,7 @@ void MainWindow::on_btn_del_task_clicked() {
         this->selected_task_layout_item = nullptr;
         // 之所以这里需要 redraw_left，是因为“全部事务”、“未完成事务”等 virtual tasklist 中的内容可能会出现变化
         // TODO 以后需要改进一下
+        void check_reminders();
         this->redraw_left();
         this->redraw_middle();
         this->redraw_right();
@@ -189,6 +265,7 @@ void MainWindow::on_btn_edit_task_clicked() {
 
     // qDebug() << new_task;
     data_manager.update_task(selected_task->uuid, new_task);
+    void check_reminders();
     this->redraw_left();
     this->redraw_middle();
     this->redraw_right();
@@ -459,13 +536,21 @@ void MainWindow::redraw_right() {
             QMetaObject::Connection connection = QObject::connect(btn, &QPushButton::clicked, this, &MainWindow::select_subtask);
         };
 
-        //添加子任务
+        //添加子任务 后添加已经完成了的
         for (Subtask &subtask : MainWindow::selected_task_layout_item->task->subtasks)
-            process_new_subtask(SubtaskLayoutItem
-            {
-                &subtask,
-                nullptr
-            });
+            if(subtask.is_finished==false)
+                process_new_subtask(SubtaskLayoutItem
+                {
+                    &subtask,
+                    nullptr
+                });
+        for (Subtask &subtask : MainWindow::selected_task_layout_item->task->subtasks)
+            if(subtask.is_finished==true)
+                process_new_subtask(SubtaskLayoutItem
+                {
+                    &subtask,
+                    nullptr
+                });
 
         //删除已存在的提醒
         qDeleteAll(ui->layout_reminders->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly));
@@ -493,11 +578,19 @@ void MainWindow::redraw_right() {
 
         //初始化 添加提醒
         for (Reminder &reminder : MainWindow::selected_task_layout_item->task->reminders)
-            process_new_reminder(ReminderLayoutItem
-            {
-                &reminder,
-                nullptr
-            });
+            if(reminder.accurate_time>QDateTime::currentDateTime())
+                process_new_reminder(ReminderLayoutItem
+                {
+                    &reminder,
+                    nullptr
+                });
+        for (Reminder &reminder : MainWindow::selected_task_layout_item->task->reminders)
+            if(reminder.accurate_time<QDateTime::currentDateTime())
+                process_new_reminder(ReminderLayoutItem
+                {
+                    &reminder,
+                    nullptr
+                });
     }
 }
 
@@ -530,7 +623,7 @@ void MainWindow::on_btn_add_reminder_clicked()
     add_reminder *adding = new add_reminder(this);
     adding->setModal(true);
     adding->exec();
-
+    check_reminders();
     this->redraw_right();
 }
 
@@ -544,7 +637,7 @@ void MainWindow::on_btn_edit_reminder_clicked()
 
     edit->setModal(true);
     edit->exec();
-
+    check_reminders();
     this->redraw_right();
 }
 
@@ -561,8 +654,10 @@ void MainWindow::on_btn_delete_reminder_clicked()
     if (reply == QMessageBox::Yes) {
         selected_task_layout_item->task->del_reminder(selected_reminder->uuid);
         this->selected_reminder_layout_item = nullptr;
+        check_reminders();
         this->redraw_right();
     }
+
 }
 
 
@@ -619,6 +714,7 @@ void MainWindow::on_btn_finish_clicked()
     {
         QMessageBox::about(this, "DDL-FireWall", "请再接再厉！");
     }
+    check_reminders();
     this->redraw_right();
     this->redraw_middle();
 }
