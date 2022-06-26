@@ -32,6 +32,9 @@ public:
 	// 如果这个 Reminder 的类型是 BY_TIME_DELTA（距离事务的开始时间还有指定秒数的时候提醒），那么该 field 就表示距离开始时间还有多少秒的时候提醒
 	int second_delta;
 
+	// 是否已经提醒。
+	bool is_reminded;
+	
 	Reminder();
 	
 	friend QDebug operator<< (QDebug debug, const Reminder &reminder);
