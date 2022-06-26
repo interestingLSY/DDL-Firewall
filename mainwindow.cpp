@@ -102,15 +102,18 @@ MainWindow::MainWindow(QWidget *parent)
     this->redraw_middle();
     this->redraw_right();
 
-    // 期望添加右下角托盘 目前失败 TO DO 实现后台挂机 需要这个功能
-    auto trayIcon = new QSystemTrayIcon();
-    trayIcon->setIcon(QIcon("./ddlfirewall.ico"));
-    QMenu *menu = new QMenu();
-    QAction *action = menu->addAction("退出");
+    // 右下角托盘
+    this->trayIcon = new QSystemTrayIcon(this);
+    this->trayIcon->setIcon(QIcon(":/temp-icon.png"));
+    this->trayIconMenu = new QMenu(this);
+    QAction *action = trayIconMenu->addAction("主界面");
+    connect(action, &QAction::triggered, this ,&MainWindow::show);
+
+    action = trayIconMenu->addAction("退出");
     connect(action, &QAction::triggered, this ,&MainWindow::exit_all);
-    trayIcon->setContextMenu(menu);
-    trayIcon->show();
-    //END Failure
+    
+    trayIcon->setContextMenu(this->trayIconMenu);
+    this->trayIcon->show();
 
     //创建新线程 目前先注释了
     /*
@@ -120,7 +123,16 @@ MainWindow::MainWindow(QWidget *parent)
     */
 }
 
-
+void MainWindow::closeEvent(QCloseEvent *event) {
+#ifdef Q_OS_MACOS
+    if (!event->spontaneous() || !isVisible()) {
+        return;
+    }
+#endif
+    trayIcon->showMessage("DDL-Firewall", "应用程序将会继续在后台运行", QSystemTrayIcon::Information, 3000);
+    this->hide();
+    event->ignore();
+}
 
 void MainWindow::exit_all()
 {

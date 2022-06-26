@@ -5,6 +5,9 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QPair>
+#include <QMenu>
+#include <QSystemTrayIcon>
+#include <QCloseEvent>
 
 #include "./src/classes/reminder.h"
 #include "./src/classes/subtask.h"
@@ -23,6 +26,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    QSystemTrayIcon *trayIcon;
+    QMenu *trayIconMenu;
 
     struct TasklistLayoutItem {
         QString name;
@@ -84,6 +90,9 @@ public:
 public:
     Ui::MainWindow *ui;
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 private slots:
     void on_btn_create_tasklist_clicked();
     void on_btn_add_job_clicked();
@@ -109,6 +118,7 @@ private slots:
     void on_btn_finish_clicked();
 
     void exit_all();
+
 public slots:
     void select_displayed_tasklist();
     void select_displayed_task();
