@@ -104,7 +104,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 右下角托盘
     this->trayIcon = new QSystemTrayIcon(this);
-    this->trayIcon->setIcon(QIcon(":/temp-icon.png"));
+    this->trayIcon->setIcon(QIcon(":/icon.png"));
     this->trayIconMenu = new QMenu(this);
     QAction *action = trayIconMenu->addAction("主界面");
     connect(action, &QAction::triggered, this ,&MainWindow::show);
@@ -454,7 +454,11 @@ void MainWindow::redraw_right() {
         // 当前没有选中任务
         ui->label_task_name->setText("请选择一个事务");
         ui->widget_task_info->setVisible(false);
+        ui->btn_del_task->setVisible(false);
+        ui->btn_edit_task->setVisible(false);
     } else {
+        ui->btn_del_task->setVisible(true);
+        ui->btn_edit_task->setVisible(true);
         //由选择状态确定按钮的显示情况
         if (this->selected_subtask_layout_item!=nullptr&&this->selected_task_layout_item->task->is_finished==false)
         {
