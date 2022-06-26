@@ -44,6 +44,16 @@ void AddScheTask::on_btn_create_clicked() {
 		message_box.critical(nullptr, "Error", "事务名不能为空");
 		return;
 	}
+    if(ui->input_task_name->text().length()>20) {
+        QMessageBox message_box;
+        message_box.critical(nullptr, "DDL Firewall", "事务名过长！请输入不超过20个字！");
+        return;
+    }
+    if(ui->input_comment->toPlainText().length()>100) {
+        QMessageBox message_box;
+        message_box.critical(nullptr, "DDL Firewall", "事务描述过长！请输入不超过100个字！");
+        return;
+    }
 	if (ui->datetime_start->dateTime() > ui->datetime_end->dateTime()) {
 		QMessageBox message_box;
 		message_box.critical(nullptr, "Error", "事务的开始时间不能晚于结束时间");

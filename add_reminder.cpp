@@ -33,9 +33,8 @@ void add_reminder::on_btn_create_clicked()
 {
     if(ui->reminder_datetime->dateTime()<QDateTime::currentDateTime())
     {
-        // TO DO 编写error类优化界面
         QMessageBox message_box;
-        message_box.critical(nullptr, "Error", "提醒时间已经过期！");
+        message_box.critical(nullptr, "DDL Firewall", "该提醒时间已经过期！");
         return;
     }
     QDateTime new_reminder_time = ui->reminder_datetime->dateTime();

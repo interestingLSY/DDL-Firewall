@@ -129,7 +129,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
         return;
     }
 #endif
-    trayIcon->showMessage("DDL-Firewall", "应用程序将会继续在后台运行", QSystemTrayIcon::Information, 3000);
+    trayIcon->showMessage("DDL FireWall", "应用程序将会继续在后台运行", QSystemTrayIcon::Information, 3000);
     this->hide();
     event->ignore();
 }
@@ -192,7 +192,7 @@ void MainWindow::on_btn_del_tasklist_clicked() {
     Q_ASSERT(!this->selected_tasklist_layout_item->is_virtual);
     Tasklist* selected_tasklist = this->selected_tasklist_layout_item->tasklist;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "DDL-FireWall", "确定要删除事务清单 "+selected_tasklist->name + "？\n这将会删除这个清单内的所有事务！",
+    reply = QMessageBox::question(this, "DDL FireWall", "确定要删除事务清单 "+selected_tasklist->name + "？\n这将会删除这个清单内的所有事务！",
                                 QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
         data_manager.del_tasklisk(selected_tasklist->uuid);
@@ -210,7 +210,7 @@ void MainWindow::on_btn_del_task_clicked() {
     Q_ASSERT(this->selected_task_layout_item);
     Task* selected_task = this->selected_task_layout_item->task;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "DDL-FireWall", "确定要删除事务 "+selected_task->name + "？",
+    reply = QMessageBox::question(this, "DDL FireWall", "确定要删除事务 "+selected_task->name + "？",
                                 QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
         data_manager.del_task(selected_task->uuid);
@@ -696,7 +696,7 @@ void MainWindow::on_btn_delete_reminder_clicked()
     Q_ASSERT(this->selected_reminder_layout_item);
     Reminder* selected_reminder = this->selected_reminder_layout_item->reminder;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "DDL-FireWall", "确定要删除在 "+selected_reminder->accurate_time.toString("yyyy-MM-dd hh:mm:ss")
+    reply = QMessageBox::question(this, "DDL FireWall", "确定要删除在 "+selected_reminder->accurate_time.toString("yyyy-MM-dd hh:mm:ss")
                                   + "时的提醒？",
                                  QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
@@ -715,7 +715,7 @@ void MainWindow::on_btn_finish_subtask_clicked()
     Q_ASSERT(this->selected_subtask_layout_item);
     Subtask* selected_subtask = this->selected_subtask_layout_item->subtask;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "DDL-FireWall", "恭喜你！确认完成子任务"+selected_subtask->name+ "?",
+    reply = QMessageBox::question(this, "DDL FireWall", "恭喜你！确认完成子任务"+selected_subtask->name+ "?",
                                  QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes)
     {
@@ -724,7 +724,7 @@ void MainWindow::on_btn_finish_subtask_clicked()
     }
     else
     {
-        QMessageBox::about(this, "DDL-FireWall", "任务尚未完成，请再接再厉！          ");
+        QMessageBox::about(this, "DDL FireWall", "任务尚未完成，请再接再厉！          ");
     }
 
 }
@@ -736,7 +736,7 @@ void MainWindow::on_btn_delete_subtask_clicked()
     Q_ASSERT(this->selected_subtask_layout_item);
     Subtask* selected_subtask = this->selected_subtask_layout_item->subtask;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "DDL-FireWall", "确定要删除子任务 "+selected_subtask->name + "？",
+    reply = QMessageBox::question(this, "DDL FireWall", "确定要删除子任务 "+selected_subtask->name + "？",
                                 QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
         selected_task_layout_item->task->del_subtask(selected_subtask->uuid);
@@ -751,7 +751,7 @@ void MainWindow::on_btn_finish_clicked()
     Q_ASSERT(this->selected_task_layout_item);
     Task* selected_task = this->selected_task_layout_item->task;
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "DDL-FireWall", "恭喜你！确认完成任务"+selected_task->name+ "?",
+    reply = QMessageBox::question(this, "DDL FireWall", "恭喜你！确认完成任务"+selected_task->name+ "?",
                                  QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes)
     {
@@ -760,7 +760,7 @@ void MainWindow::on_btn_finish_clicked()
     }
     else
     {
-        QMessageBox::about(this, "DDL-FireWall", "请再接再厉！");
+        QMessageBox::about(this, "DDL FireWall", "请再接再厉！");
     }
     check_reminders();
     this->redraw_right();

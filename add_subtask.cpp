@@ -29,11 +29,16 @@ void add_subtask::on_btn_create_clicked()
 {
     if(ui->input_subtask_name->text().isEmpty())
     {
-        // TO DO 编写error类优化界面
         QMessageBox message_box;
         message_box.critical(nullptr, "Error", "子任务名不能为空！");
         return;
     }
+    if(ui->input_subtask_name->text().length()>15) {
+        QMessageBox message_box;
+        message_box.critical(nullptr, "DDL Firewall", "子任务名过长！请输入不超过15个字！");
+        return;
+    }
+
     QString new_subtask_name = ui->input_subtask_name->text();
     Subtask new_subtask;
     new_subtask.name = new_subtask_name;

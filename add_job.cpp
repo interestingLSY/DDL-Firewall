@@ -48,6 +48,16 @@ void AddJob::on_btn_create_clicked() {
 		message_box.critical(nullptr, "Error", "事务名不能为空");
 		return;
 	}
+    if(ui->input_task_name->text().length()>20) {
+        QMessageBox message_box;
+        message_box.critical(nullptr, "DDL Firewall", "事务名过长！请输入不超过20个字！");
+        return;
+    }
+    if(ui->input_comment->toPlainText().length()>100) {
+        QMessageBox message_box;
+        message_box.critical(nullptr, "DDL Firewall", "事务描述过长！请输入不超过100个字！");
+        return;
+    }
 	Task new_task;
 	new_task.type = TaskType::JOB;
 	new_task.name = ui->input_task_name->text();
