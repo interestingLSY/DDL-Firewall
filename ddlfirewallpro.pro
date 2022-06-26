@@ -80,6 +80,8 @@ FORMS += \
     edit_job.ui \
     remind_acurator.ui
 
+RESOURCES += ddlfirewall.qrc
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

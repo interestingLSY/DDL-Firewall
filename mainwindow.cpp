@@ -103,21 +103,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->redraw_right();
 
     // 右下角托盘
-//    QSystemTrayIcon *TrayIcon = new QSystemTrayIcon(this);
-//    TrayIcon->setIcon(QIcon(":/ddlfireall"));
-//    this->trayIconMenu = new QMenu(this);
-//    QMenu *menu = new QMenu(this);
-//    QAction *action1 = new QAction(QObject::trUtf8("显示主界面"),this);
-//    connect(action1,&QAction::triggered,this,&MainWindow::show);
-//    QAction *action2 = new QAction(QObject::trUtf8("退出程序"),this);
-//    connect(action2,&QAction::triggered,this,&MainWindow::exit_all);
-//    menu->addAction(action1);
-//    menu->addSeparator();
-//    menu->addAction(action2);
-//    TrayIcon->setContextMenu(menu);
-//    TrayIcon->show();
     this->trayIcon = new QSystemTrayIcon(this);
-    this->trayIcon->setIcon(QIcon(":/icon.png"));
+    this->trayIcon->setIcon(QIcon(":/ddlfirewall.ico"));
     this->trayIconMenu = new QMenu(this);
     QAction *action = trayIconMenu->addAction("显示主界面");
     connect(action, &QAction::triggered, this ,&MainWindow::show);
@@ -128,6 +115,8 @@ MainWindow::MainWindow(QWidget *parent)
     trayIcon->setContextMenu(this->trayIconMenu);
     this->trayIcon->show();
 
+    this->setWindowIcon(QIcon(":/ddlfirewall.ico"));
+    
     //创建新线程 目前先注释了
     /*
     thread1.Address_mainwindow = this;

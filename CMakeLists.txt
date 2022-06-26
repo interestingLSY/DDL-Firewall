@@ -42,6 +42,7 @@ set(PROJECT_SOURCES
         edit_reminder.cpp
         remind_acurator.cpp
         reminder_detector.cpp
+        ddlfirewall.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
