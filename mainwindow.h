@@ -27,8 +27,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    // 与系统托盘有关的东西
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
+
+    // 与“提醒”相关的东西
+    void scan_task_and_remind();    // 扫描所有事务，检查是否需要提醒。该函数每 30 秒运行一次。TODO 这种方法比较低效，可以优化。
 
     struct TasklistLayoutItem {
         QString name;
@@ -50,7 +54,7 @@ public:
     // 当前选中的事务列表，nullptr 表示没有选中任何事务列表
     TasklistLayoutItem* selected_tasklist_layout_item;
 
-    // 下一个提醒所属 Task
+    // 下一个提醒所属的 Task
 
     struct TaskLayoutItem {
         Task* task;

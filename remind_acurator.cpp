@@ -3,7 +3,7 @@
 
 #include <QScreen>
 
-remind_acurator::remind_acurator(QWidget *parent) :
+remind_acurator::remind_acurator(Task* task, Reminder* reminder, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::remind_acurator)
 {
@@ -14,17 +14,10 @@ remind_acurator::remind_acurator(QWidget *parent) :
 //    QScreen * screen = QGuiApplication::primaryScreen();
 //    const QRect desk_rect = screen->availableGeometry();
 
-    this->setFixedSize(310,210);
-    ui->content->setText("提醒：不要忘记完成任务 "+this->next_task->name+" 呀！");
+    ui->content->setText("提醒：不要忘记完成任务 "+task->name+" 呀！");
 }
 
 remind_acurator::~remind_acurator()
 {
     delete ui;
-}
-
-void remind_acurator::set_next_task(Task *task)
-{
-    this->next_task=task;
-    //qDebug()<<this->next_task->name<<endl;
 }

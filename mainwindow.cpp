@@ -6,6 +6,7 @@
 #include <QDateTime>
 #include <QSystemTrayIcon>
 #include <QMenu>
+#include <QTimer>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -61,14 +62,16 @@ MainWindow::MainWindow(QWidget *parent)
     this->trayIconMenu = new QMenu(this);
     QAction *action = trayIconMenu->addAction("显示主界面");
     connect(action, &QAction::triggered, this ,&MainWindow::show);
-
     action = trayIconMenu->addAction("退出应用");
     connect(action, &QAction::triggered, this ,&MainWindow::exit_all);
-
     trayIcon->setContextMenu(this->trayIconMenu);
     this->trayIcon->show();
-
     this->setWindowIcon(QIcon(":/ddlfirewall.ico"));
+
+    // 提醒器
+    QTimer *timer = new QTimer(this);
+    QObject::connect(timer, &QTimer::timeout, this, &MainWindow::scan_task_and_remind);
+    timer->start(30*1000);  // 30 seconds
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
@@ -710,3 +713,35 @@ void MainWindow::on_btn_finish_clicked()
     this->redraw_middle();
 }
 
+void MainWindow::scan_task_and_remind() {
+    // 找到 tasklist_layout_items 中那个装有所有“未完成事务”的列表
+    QVector<Task*> *tasks = nullptr;
+    for (TasklistLayoutItem& layout_item : this->tasklist_layout_items) {
+        if (layout_item.is_virtual && layout_item.name == QString("未完成事务")) {
+            tasks = &layout_item.tasks;
+            break;
+        }
+    }
+    assert(tasks != nullptr);
+
+    // 从这里面筛选出需要提醒的 Reminder
+    QVector<QPair<Task*, Reminder*>> chosen_reminders;
+    QDateTime now = QDateTime::currentDateTime();
+    for (Task* task : (*tasks)) {
+        for (Reminder &reminder : task->reminders) {
+            if (!reminder.is_reminded && reminder.accurate_time <= now) {
+                chosen_reminders.push_back({task, &reminder});
+            }
+        }
+    }
+
+    // 依次进行提醒，并标注为“已提醒”
+    for (auto [task, reminder] : chosen_reminders) {
+        remind_acurator* acurator = new remind_acurator(task, reminder, this);
+        acurator->exec();
+        reminder->is_reminded = true;
+    }
+
+    // 对窗体的右侧部分进行更新
+    this->redraw_right();
+}
