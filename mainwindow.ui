@@ -80,7 +80,7 @@ color: rgb(31,31,31);</string>
             <x>0</x>
             <y>0</y>
             <width>420</width>
-            <height>802</height>
+            <height>781</height>
            </rect>
           </property>
           <widget class="QWidget" name="verticalLayoutWidget">
@@ -203,7 +203,6 @@ color: rgb(31,31,31);</string>
               <font>
                <family>Agency FB</family>
                <pointsize>14</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -241,7 +240,7 @@ color: rgb(31,31,31);</string>
               <x>0</x>
               <y>0</y>
               <width>417</width>
-              <height>665</height>
+              <height>657</height>
              </rect>
             </property>
             <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -335,7 +334,6 @@ color: rgb(31,31,31);</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -468,7 +466,7 @@ color: rgb(31,31,31);</string>
                    <x>0</x>
                    <y>0</y>
                    <width>310</width>
-                   <height>295</height>
+                   <height>261</height>
                   </rect>
                  </property>
                  <widget class="QWidget" name="verticalLayoutWidget_3">
@@ -569,7 +567,7 @@ color: rgb(31,31,31);</string>
                    <x>0</x>
                    <y>0</y>
                    <width>310</width>
-                   <height>295</height>
+                   <height>260</height>
                   </rect>
                  </property>
                  <widget class="QWidget" name="verticalLayoutWidget_4">
@@ -711,23 +709,12 @@ color: rgb(31,31,31);</string>
     </layout>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1356</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>狒狒</string>
-    </property>
-   </widget>
-   <addaction name="menu"/>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionss">
+   <property name="text">
+    <string>ss</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
