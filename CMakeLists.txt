@@ -32,10 +32,16 @@ set(PROJECT_SOURCES
         add_job.cpp
         add_sche_task.cpp
         add_tasklist.cpp
+        add_subtask.cpp
+        add_reminder.cpp
         calendar_type.cpp
         errors.cpp
         edit_job.cpp
         edit_sche_task.cpp
+        edit_subtask.cpp
+        edit_reminder.cpp
+        remind_acurator.cpp
+        reminder_detector.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
