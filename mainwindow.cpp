@@ -112,6 +112,7 @@ void MainWindow::on_btn_create_tasklist_clicked() {
     AddTaskList *querylists = new AddTaskList(this);
     querylists->setModal(true);
     querylists->exec();
+    delete querylists;
     this->redraw_left();
 }
 
@@ -120,6 +121,7 @@ void MainWindow::on_btn_add_job_clicked() {
     AddJob *querytask = new AddJob(this);
     querytask->setModal(true);
     querytask->exec();
+    delete querytask;
 
     // 这里需要 redraw_left，因为“全部事务”，“未完成事务”中的内容可能会出现变化
     this->redraw_left();
@@ -131,6 +133,7 @@ void MainWindow::on_btn_add_sche_task_clicked() {
     AddScheTask *querytask = new AddScheTask(this);
     querytask->setModal(true);
     querytask->exec();
+    delete querytask;
 
     this->redraw_left();
     this->redraw_middle();
@@ -210,6 +213,7 @@ void MainWindow::on_btn_edit_task_clicked() {
         editTask->setModal(true);
         editTask->exec();
         new_task=*(editTask->task);
+        delete editTask;
     }
     else if(new_task.type==TaskType::JOB)
     {
@@ -254,6 +258,7 @@ void MainWindow::on_btn_edit_task_clicked() {
         editJob->setModal(true);
         editJob->exec();
         new_task=*(editJob->task);
+        delete editJob;
     }
 
     // qDebug() << new_task;
@@ -597,7 +602,7 @@ void MainWindow::on_btn_add_subtask_clicked()
     add_subtask *adding = new add_subtask(this);
     adding->setModal(true);
     adding->exec();
-
+    delete adding;
     this->redraw_right();
 }
 
@@ -612,6 +617,7 @@ void MainWindow::on_btn_edit_subtask_clicked()
     edit->setModal(true);
     edit->exec();
 
+    delete edit;
     this->redraw_right();
 }
 
@@ -621,6 +627,7 @@ void MainWindow::on_btn_add_reminder_clicked()
     add_reminder *adding = new add_reminder(this);
     adding->setModal(true);
     adding->exec();
+    delete adding;
     this->redraw_right();
 }
 
@@ -634,6 +641,8 @@ void MainWindow::on_btn_edit_reminder_clicked()
 
     edit->setModal(true);
     edit->exec();
+
+    delete edit;
     this->redraw_right();
 }
 
@@ -739,6 +748,7 @@ void MainWindow::scan_task_and_remind() {
     for (auto [task, reminder] : chosen_reminders) {
         remind_acurator* acurator = new remind_acurator(task, reminder, this);
         acurator->exec();
+        delete acurator;
         reminder->is_reminded = true;
     }
 
