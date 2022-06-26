@@ -27,7 +27,6 @@
 #include "ui_edit_subtask.h"
 #include "edit_reminder.h"
 #include "ui_edit_reminder.h"
-#include "remind_acurator.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -751,9 +750,7 @@ void MainWindow::scan_task_and_remind() {
 
     // 依次进行提醒，并标注为“已提醒”
     for (auto [task, reminder] : chosen_reminders) {
-        remind_acurator* acurator = new remind_acurator(task, reminder, this);
-        acurator->exec();
-        delete acurator;
+        this->trayIcon->showMessage("DDL FireWall 提醒", "不要忘了 " + task->name + " 呀！", QSystemTrayIcon::Information, 10000);
         reminder->is_reminded = true;
     }
 

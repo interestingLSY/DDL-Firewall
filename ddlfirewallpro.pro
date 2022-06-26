@@ -13,7 +13,6 @@ SOURCES += \
     add_subtask.cpp \
     edit_reminder.cpp \
     edit_subtask.cpp \
-    remind_acurator.cpp \
     src/3rdparty/jsoncpp/jsoncpp.cpp \
     src/classes/reminder.cpp \
     src/classes/task.cpp \
@@ -40,7 +39,6 @@ HEADERS += \
     add_subtask.h \
     edit_reminder.h \
     edit_subtask.h \
-    remind_acurator.h \
     src/3rdparty/jsoncpp/json.h \
     src/3rdparty/jsoncpp/json-forwards.h \
     src/classes/reminder.h \
@@ -74,8 +72,7 @@ FORMS += \
     errors.ui \
     mainwindow.ui \
     edit_sche_task.ui \
-    edit_job.ui \
-    remind_acurator.ui
+    edit_job.ui
 
 RESOURCES += ddlfirewall.qrc
 
