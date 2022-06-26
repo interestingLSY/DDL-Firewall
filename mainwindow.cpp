@@ -134,9 +134,22 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     event->ignore();
 }
 
+
 void MainWindow::exit_all()
 {
     qApp->quit();
+}
+
+
+// 可以换行 防止超出显示范围
+void Label_Adjust_Size(QLabel* label,bool flag_Hcenter)
+{
+    label->adjustSize();
+    label->setWordWrap(true);
+    label->setAlignment(Qt::AlignTop);
+    label->setGeometry(QRect(328, 240, 329, 27*4));
+    if(flag_Hcenter)
+        label->setAlignment(Qt::AlignHCenter);
 }
 
 MainWindow::~MainWindow() {
@@ -226,6 +239,7 @@ void MainWindow::on_btn_edit_task_clicked() {
         editTask->ui->datetime_start->setDateTime(selected_task->start_time);
         editTask->ui->datetime_end->setDateTime(selected_task->end_time);
         editTask->ui->datetime_start->setDateTime(selected_task->start_time);
+        editTask->ui->chkbox_have_reminder->setVisible(true);
         if (selected_task->reminders.size()!=0)
         {
             editTask->ui->chkbox_have_reminder->setChecked(true);
@@ -236,6 +250,13 @@ void MainWindow::on_btn_edit_task_clicked() {
             editTask->ui->chkbox_have_reminder->setChecked(false);
             editTask->ui->datetime_reminder->setDateTime(QDateTime::currentDateTime());
         }
+
+        if(selected_task->is_finished==true)
+        {
+            editTask->ui->chkbox_have_reminder->setVisible(false);
+            editTask->ui->datetime_reminder->setVisible(false);
+        }
+
         editTask->setModal(true);
         editTask->exec();
         new_task=*(editTask->task);
@@ -246,6 +267,8 @@ void MainWindow::on_btn_edit_task_clicked() {
         editJob->putTaskAddress(selected_task);
         editJob->ui->input_task_name->setText(selected_task->name);
         editJob->ui->input_comment->setText(selected_task->comment);
+        editJob->ui->chkbox_have_reminder->setVisible(true);
+        editJob->ui->chkbox_have_ddl->setVisible(true);
         if(selected_task->end_time.isNull()==false)
         {
             editJob->ui->chkbox_have_ddl->setChecked(true);
@@ -270,6 +293,14 @@ void MainWindow::on_btn_edit_task_clicked() {
             editJob->ui->datetime_reminder->setVisible(false);
             editJob->ui->datetime_reminder->setDateTime(QDateTime::currentDateTime());
         }
+        if(selected_task->is_finished==true)
+        {
+            editJob->ui->chkbox_have_reminder->setVisible(false);
+            editJob->ui->datetime_reminder->setVisible(false);
+            editJob->ui->chkbox_have_ddl->setVisible(false);
+            editJob->ui->datetime_ddl->setVisible(false);
+        }
+
         editJob->setModal(true);
         editJob->exec();
         new_task=*(editJob->task);
@@ -422,7 +453,7 @@ void MainWindow::redraw_middle() {
         }
 
         ui->lab_tasklist_name->setText(this->selected_tasklist_layout_item->name);
-
+        Label_Adjust_Size(ui->lab_tasklist_name,true);
         auto process_new_task = [&](Task *task) {
             QPushButton* btn = new QPushButton(ui->scroll_tasks);
             btn->setText(task->name);
@@ -522,7 +553,9 @@ void MainWindow::redraw_right() {
                 ui->label_task_end_time->setText(selected_task->end_time.toString("yyyy-MM-dd hh:mm:ss"));
             }
         }
-        ui->label_task_comment->setText(selected_task->comment);
+        ui->label_task_comment_str->setText(selected_task->comment);
+        Label_Adjust_Size(ui->label_task_comment_str,false);
+        Label_Adjust_Size(ui->label_task_name,true);
     }
 
     if (this->selected_task_layout_item != nullptr)
@@ -691,7 +724,7 @@ void MainWindow::on_btn_finish_subtask_clicked()
     }
     else
     {
-        QMessageBox::about(this, "DDL-FireWall", "请再接再厉！");
+        QMessageBox::about(this, "DDL-FireWall", "任务尚未完成，请再接再厉！          ");
     }
 
 }

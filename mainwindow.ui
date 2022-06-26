@@ -51,6 +51,15 @@
        </item>
        <item>
         <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>宋体</family>
+           <pointsize>19</pointsize>
+           <weight>3</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">font: 25 19pt '宋体';
 color: rgb(31,31,31);</string>
@@ -80,7 +89,7 @@ color: rgb(31,31,31);</string>
             <x>0</x>
             <y>0</y>
             <width>420</width>
-            <height>781</height>
+            <height>802</height>
            </rect>
           </property>
           <widget class="QWidget" name="verticalLayoutWidget">
@@ -184,7 +193,7 @@ color: rgb(31,31,31);</string>
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
+          <layout class="QHBoxLayout" name="horizontalLayout" stretch="8,5">
            <item>
             <widget class="QLabel" name="lab_tasklist_name">
              <property name="sizePolicy">
@@ -201,9 +210,10 @@ color: rgb(31,31,31);</string>
              </property>
              <property name="font">
               <font>
-               <family>Agency FB</family>
-               <pointsize>14</pointsize>
-               <bold>true</bold>
+               <family>宋体</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -240,7 +250,7 @@ color: rgb(31,31,31);</string>
               <x>0</x>
               <y>0</y>
               <width>417</width>
-              <height>657</height>
+              <height>665</height>
              </rect>
             </property>
             <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -334,7 +344,8 @@ color: rgb(31,31,31);</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
-           <bold>true</bold>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
@@ -349,28 +360,30 @@ color: rgb(31,31,31);</string>
         <widget class="QWidget" name="widget_task_info" native="true">
          <layout class="QVBoxLayout" name="layout_task_info" stretch="0,0,0,0,0,0">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="1,4">
-            <item>
-             <widget class="QLabel" name="label_task_comment_str">
-              <property name="text">
-               <string>事务内容</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_task_comment">
-              <property name="text">
-               <string/>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QWidget" name="widget_task_start_time_2" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,4">
+             <item>
+              <widget class="QLabel" name="label_task_comment">
+               <property name="text">
+                <string>事务内容</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_task_comment_str">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </item>
           <item>
            <widget class="QWidget" name="widget_task_start_time" native="true">
@@ -466,7 +479,7 @@ color: rgb(31,31,31);</string>
                    <x>0</x>
                    <y>0</y>
                    <width>310</width>
-                   <height>261</height>
+                   <height>288</height>
                   </rect>
                  </property>
                  <widget class="QWidget" name="verticalLayoutWidget_3">
@@ -567,7 +580,7 @@ color: rgb(31,31,31);</string>
                    <x>0</x>
                    <y>0</y>
                    <width>310</width>
-                   <height>260</height>
+                   <height>287</height>
                   </rect>
                  </property>
                  <widget class="QWidget" name="verticalLayoutWidget_4">
