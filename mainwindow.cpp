@@ -72,6 +72,11 @@ MainWindow::MainWindow(QWidget *parent)
     QTimer *timer = new QTimer(this);
     QObject::connect(timer, &QTimer::timeout, this, &MainWindow::scan_task_and_remind);
     timer->start(30*1000);  // 30 seconds
+
+    // 定时保存，每 5 分钟保存一次
+    timer = new QTimer(this);
+    QObject::connect(timer, &QTimer::timeout, [&](){ data_manager.save(); });
+    timer->start(5*60*1000);    // 5 minutes
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
