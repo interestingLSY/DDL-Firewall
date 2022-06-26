@@ -84,7 +84,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
         return;
     }
 #endif
-    trayIcon->showMessage("DDL FireWall", "应用程序将会继续在后台运行", QSystemTrayIcon::Information, 3000);
+    trayIcon->showMessage("DDL FireWall", "应用程序将会继续在后台运行。若想退出，请右键此图标。", QSystemTrayIcon::Information, 3000);
     this->hide();
     event->ignore();
 }
