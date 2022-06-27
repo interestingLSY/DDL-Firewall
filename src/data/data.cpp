@@ -38,8 +38,6 @@ void DataManager::add_tasklist(const Tasklist &tasklist) {
 
 QVector<Tasklist*> DataManager::filter_tasklist(std::function<bool(const Tasklist&)> filt) {
 	QVector<Tasklist*> result;
-    //不清空会有问题
-    result.clear();
 	for (Tasklist& tasklist : this->tasklists)
 		if (filt(tasklist))
 			result.push_back(&tasklist);
@@ -57,8 +55,6 @@ void DataManager::del_tasklisk(uuid_t target_uuid) {
 
 QVector<Task*> DataManager::generate_virtual_tasklist(std::function<bool(const Task&)> filt) {
 	QVector<Task*> result;
-    //不清空会有问题
-    result.clear();
 	for (Tasklist& tasklist : this->tasklists) {
 		result.append(tasklist.filter_task(filt));
 	}
