@@ -514,7 +514,10 @@ void MainWindow::redraw_right() {
                 ui->label_task_end_time->setText(selected_task->end_time.toString("yyyy-MM-dd hh:mm:ss"));
             }
         }
-        ui->label_task_comment_str->setText(selected_task->comment);
+        if(selected_task->comment.length()>0)
+            ui->label_task_comment_str->setText(selected_task->comment);
+        else
+            ui->label_task_comment_str->setText("无");
         Label_Adjust_Size(ui->label_task_comment_str,false);
         Label_Adjust_Size(ui->label_task_name,true);
     }
