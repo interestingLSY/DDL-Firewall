@@ -125,6 +125,8 @@ public slots:
     void select_displayed_task();
     void select_subtask();
     void select_reminder();
+signals :
+    void save_all();
 };
 
 #endif // MAINWINDOW_H

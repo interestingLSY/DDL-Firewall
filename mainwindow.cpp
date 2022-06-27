@@ -75,6 +75,7 @@ MainWindow::MainWindow(QWidget *parent)
     // 定时保存，每 5 分钟保存一次
     timer = new QTimer(this);
     QObject::connect(timer, &QTimer::timeout, [&](){ data_manager.save(); });
+    QObject::connect(this, &MainWindow::save_all, [&](){ data_manager.save(); });
     timer->start(5*60*1000);    // 5 minutes
 }
 
@@ -86,6 +87,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 #endif
     trayIcon->showMessage("DDL FireWall", "应用程序将会继续在后台运行。若想退出，请右键此图标。", QSystemTrayIcon::Information, 3000);
     this->hide();
+    emit save_all();
     event->ignore();
 }
 
@@ -173,7 +175,7 @@ void MainWindow::on_btn_del_task_clicked() {
         data_manager.del_task(selected_task->uuid);
         this->selected_task_layout_item = nullptr;
         // 之所以这里需要 redraw_left，是因为“全部事务”、“未完成事务”等 virtual tasklist 中的内容可能会出现变化
-        // TODO 以后需要改进一下
+
         void check_reminders();
         this->redraw_left();
         this->redraw_middle();
