@@ -365,7 +365,7 @@ color: rgb(31,31,31);</string>
              <item>
               <widget class="QLabel" name="label_task_comment">
                <property name="text">
-                <string>事务内容</string>
+                <string>事务内容：</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -391,7 +391,7 @@ color: rgb(31,31,31);</string>
              <item>
               <widget class="QLabel" name="label_task_start_time_str">
                <property name="text">
-                <string>开始时间</string>
+                <string>开始时间：</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -417,7 +417,7 @@ color: rgb(31,31,31);</string>
              <item>
               <widget class="QLabel" name="label_task_end_time_str">
                <property name="text">
-                <string>结束时间</string>
+                <string>结束时间：</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
