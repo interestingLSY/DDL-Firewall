@@ -64,6 +64,7 @@ MainWindow::MainWindow(QWidget *parent)
     action = trayIconMenu->addAction("退出应用");
     connect(action, &QAction::triggered, this ,&MainWindow::exit_all);
     trayIcon->setContextMenu(this->trayIconMenu);
+    trayIcon->setToolTip(tr("DDL-Firewall"));
     this->trayIcon->show();
     this->setWindowIcon(QIcon(":/ddlfirewall.ico"));
 
