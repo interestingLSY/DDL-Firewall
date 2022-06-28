@@ -283,6 +283,7 @@ void MainWindow::select_displayed_tasklist() {
         }
     }
     this->selected_task_layout_item = nullptr;
+    this->redraw_left();
     this->redraw_middle();
     this->redraw_right();
 }
@@ -294,6 +295,8 @@ void MainWindow::select_displayed_task() {
             this->selected_task_layout_item = &item;
         }
     }
+    this->redraw_left();
+    this->redraw_middle();
     this->redraw_right();
 }
 
