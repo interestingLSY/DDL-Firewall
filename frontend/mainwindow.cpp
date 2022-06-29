@@ -420,6 +420,10 @@ void MainWindow::redraw_middle() {
         auto process_new_task = [&](Task *task) {
             QPushButton* btn = new QPushButton(ui->scroll_tasks);
             btn->setText(task->name);
+            if(task->is_finished==true)
+                btn->setStyleSheet("text-decoration: line-through;");
+            else
+                btn->setStyleSheet("text-decoration: none;");
             ui->layout_tasks->addWidget(btn);
             ui->scroll_tasks->setLayout(ui->layout_tasks);
             this->task_layout_items.push_back(TaskLayoutItem {
