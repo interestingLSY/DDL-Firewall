@@ -1,7 +1,7 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-RC_ICONS= ddlfirewall.ico
+RC_ICONS= frontend/ddlfirewall.ico
 CONFIG += c++17
 CONFIG += resources_big
 # You can make your code fail to compile if it uses deprecated APIs.
