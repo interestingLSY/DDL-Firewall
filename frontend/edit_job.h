@@ -2,7 +2,7 @@
 #define EDIT_JOB_H
 
 #include <QDialog>
-#include "./src/classes/task.h"
+#include "../backend/classes/task.h"
 namespace Ui {
 class EditJob;
 }

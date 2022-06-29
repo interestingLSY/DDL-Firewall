@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QDateTime>
 
-#include "./src/classes/task.h"
+#include "../backend/classes/task.h"
 namespace Ui {
 class EditScheTask;
 }

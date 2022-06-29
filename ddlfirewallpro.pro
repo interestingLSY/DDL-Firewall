@@ -9,72 +9,72 @@ CONFIG += resources_big
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    add_reminder.cpp \
-    add_subtask.cpp \
-    edit_reminder.cpp \
-    edit_subtask.cpp \
-    src/3rdparty/jsoncpp/jsoncpp.cpp \
-    src/classes/reminder.cpp \
-    src/classes/task.cpp \
-    src/classes/subtask.cpp \
-    src/classes/tasklist.cpp \
-    src/config/config.cpp \
-    src/data/data.cpp \
-    src/data/json_io.cpp \
-    src/fileio/textfile.cpp \
-    src/self_test/data_gen.cpp \
-    add_job.cpp \
-    add_sche_task.cpp \
-    add_tasklist.cpp \
-    calendar_type.cpp \
-    errors.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    edit_sche_task.cpp \
-    edit_job.cpp
+    frontend/add_reminder.cpp \
+    frontend/add_subtask.cpp \
+    frontend/edit_reminder.cpp \
+    frontend/edit_subtask.cpp \
+    backend/3rdparty/jsoncpp/jsoncpp.cpp \
+    backend/classes/reminder.cpp \
+    backend/classes/task.cpp \
+    backend/classes/subtask.cpp \
+    backend/classes/tasklist.cpp \
+    backend/config/config.cpp \
+    backend/data/data.cpp \
+    backend/data/json_io.cpp \
+    backend/fileio/textfile.cpp \
+    backend/self_test/data_gen.cpp \
+    frontend/add_job.cpp \
+    frontend/add_sche_task.cpp \
+    frontend/add_tasklist.cpp \
+    frontend/calendar_type.cpp \
+    frontend/errors.cpp \
+    frontend/main.cpp \
+    frontend/mainwindow.cpp \
+    frontend/edit_sche_task.cpp \
+    frontend/edit_job.cpp
 
 HEADERS += \
-    add_reminder.h \
-    add_reminder.h \
-    add_subtask.h \
-    edit_reminder.h \
-    edit_subtask.h \
-    src/3rdparty/jsoncpp/json.h \
-    src/3rdparty/jsoncpp/json-forwards.h \
-    src/classes/reminder.h \
-    src/classes/task.h \
-    src/classes/subtask.h \
-    src/classes/tasklist.h \
-    src/config/config.h \
-    src/data/data.h\
-    src/data/json_io.h\
-    src/fileio/textfile.h \
-    src/self_test/data_gen.h \
-    add_job.h \
-    add_sche_task.h \
-    add_tasklist.h \
-    calendar_type.h \
-    errors.h \
-    mainwindow.h \
-    edit_sche_task.h \
-    edit_job.h
+    frontend/add_reminder.h \
+    frontend/add_reminder.h \
+    frontend/add_subtask.h \
+    frontend/edit_reminder.h \
+    frontend/edit_subtask.h \
+    backend/3rdparty/jsoncpp/json.h \
+    backend/3rdparty/jsoncpp/json-forwards.h \
+    backend/classes/reminder.h \
+    backend/classes/task.h \
+    backend/classes/subtask.h \
+    backend/classes/tasklist.h \
+    backend/config/config.h \
+    backend/data/data.h\
+    backend/data/json_io.h\
+    backend/fileio/textfile.h \
+    backend/self_test/data_gen.h \
+    frontend/add_job.h \
+    frontend/add_sche_task.h \
+    frontend/add_tasklist.h \
+    frontend/calendar_type.h \
+    frontend/errors.h \
+    frontend/mainwindow.h \
+    frontend/edit_sche_task.h \
+    frontend/edit_job.h
 
 FORMS += \
-    add_job.ui \
-    add_reminder.ui \
-    add_reminder.ui \
-    add_sche_task.ui \
-    add_subtask.ui \
-    add_tasklist.ui \
-    calendar_type.ui \
-    edit_reminder.ui \
-    edit_subtask.ui \
-    errors.ui \
-    mainwindow.ui \
-    edit_sche_task.ui \
-    edit_job.ui
+    frontend/add_job.ui \
+    frontend/add_reminder.ui \
+    frontend/add_reminder.ui \
+    frontend/add_sche_task.ui \
+    frontend/add_subtask.ui \
+    frontend/add_tasklist.ui \
+    frontend/calendar_type.ui \
+    frontend/edit_reminder.ui \
+    frontend/edit_subtask.ui \
+    frontend/errors.ui \
+    frontend/mainwindow.ui \
+    frontend/edit_sche_task.ui \
+    frontend/edit_job.ui
 
-RESOURCES += ddlfirewall.qrc
+RESOURCES += frontend/ddlfirewall.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

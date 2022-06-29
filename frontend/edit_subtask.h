@@ -1,7 +1,7 @@
 #ifndef EDIT_SUBTASK_H
 #define EDIT_SUBTASK_H
 
-#include "./src/classes/subtask.h"
+#include "../backend/classes/subtask.h"
 #include "mainwindow.h"
 
 #include <QDialog>

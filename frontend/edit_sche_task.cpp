@@ -1,6 +1,6 @@
 #include "edit_sche_task.h"
 #include "ui_edit_sche_task.h"
-#include "./src/classes/task.h"
+#include "../backend/classes/task.h"
 #include "mainwindow.h"
 
 #include <QDateTime>

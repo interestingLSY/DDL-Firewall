@@ -15,32 +15,32 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        src/3rdparty/jsoncpp/jsoncpp.cpp
-        src/classes/reminder.cpp
-        src/classes/task.cpp
-        src/classes/subtask.cpp
-        src/classes/tasklist.cpp
-        src/config/config.cpp
-        src/data/data.cpp
-        src/data/json_io.cpp
-        src/fileio/textfile.cpp
-        src/self_test/data_gen.cpp
-        add_job.cpp
-        add_sche_task.cpp
-        add_tasklist.cpp
-        add_subtask.cpp
-        add_reminder.cpp
-        calendar_type.cpp
-        errors.cpp
-        edit_job.cpp
-        edit_sche_task.cpp
-        edit_subtask.cpp
-        edit_reminder.cpp
-        ddlfirewall.qrc
+        frontend/main.cpp
+        frontend/mainwindow.cpp
+        frontend/mainwindow.h
+        frontend/mainwindow.ui
+        backend/3rdparty/jsoncpp/jsoncpp.cpp
+        backend/classes/reminder.cpp
+        backend/classes/task.cpp
+        backend/classes/subtask.cpp
+        backend/classes/tasklist.cpp
+        backend/config/config.cpp
+        backend/data/data.cpp
+        backend/data/json_io.cpp
+        backend/fileio/textfile.cpp
+        backend/self_test/data_gen.cpp
+        frontend/add_job.cpp
+        frontend/add_sche_task.cpp
+        frontend/add_tasklist.cpp
+        frontend/add_subtask.cpp
+        frontend/add_reminder.cpp
+        frontend/calendar_type.cpp
+        frontend/errors.cpp
+        frontend/edit_job.cpp
+        frontend/edit_sche_task.cpp
+        frontend/edit_subtask.cpp
+        frontend/edit_reminder.cpp
+        frontend/ddlfirewall.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

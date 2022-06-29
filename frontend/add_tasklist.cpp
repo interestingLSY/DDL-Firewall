@@ -1,11 +1,11 @@
 #include <QDialog>
 #include <QMessageBox>
 
-#include "./src/classes/reminder.h"
-#include "./src/classes/subtask.h"
-#include "./src/classes/task.h"
-#include "./src/classes/tasklist.h"
-#include "./src/data/data.h"
+#include "../backend/classes/reminder.h"
+#include "../backend/classes/subtask.h"
+#include "../backend/classes/task.h"
+#include "../backend/classes/tasklist.h"
+#include "../backend/data/data.h"
 
 #include "add_tasklist.h"
 #include "ui_add_tasklist.h"

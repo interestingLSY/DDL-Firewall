@@ -1,8 +1,8 @@
 #include <QDateTime>
 #include <QMessageBox>
 
-#include "./src/classes/tasklist.h"
-#include "./src/data/data.h"
+#include "../backend/classes/tasklist.h"
+#include "../backend/data/data.h"
 
 #include "add_sche_task.h"
 #include "ui_add_sche_task.h"

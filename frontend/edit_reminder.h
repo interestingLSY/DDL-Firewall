@@ -2,7 +2,7 @@
 #define EDIT_REMINDER_H
 
 #include <QDialog>
-#include "./src/classes/reminder.h"
+#include "../backend/classes/reminder.h"
 
 namespace Ui {
 class edit_reminder;
