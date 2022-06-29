@@ -15,10 +15,30 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
+        frontend/main.cpp
+        frontend/mainwindow.cpp
+        frontend/mainwindow.h
+        frontend/mainwindow.ui
+        backend/3rdparty/jsoncpp/jsoncpp.cpp
+        backend/classes/reminder.cpp
+        backend/classes/task.cpp
+        backend/classes/subtask.cpp
+        backend/classes/tasklist.cpp
+        backend/config/config.cpp
+        backend/data/data.cpp
+        backend/data/json_io.cpp
+        backend/fileio/textfile.cpp
+        backend/self_test/data_gen.cpp
+        frontend/add_job.cpp
+        frontend/add_sche_task.cpp
+        frontend/add_tasklist.cpp
+        frontend/add_subtask.cpp
+        frontend/add_reminder.cpp
+        frontend/edit_job.cpp
+        frontend/edit_sche_task.cpp
+        frontend/edit_subtask.cpp
+        frontend/edit_reminder.cpp
+        frontend/ddlfirewall.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -37,6 +37,7 @@ Thumbs.db
 
 # qtcreator generated files
 *.pro.user*
+*.pro.user
 
 # xemacs temporary files
 *.flc
@@ -75,3 +76,6 @@ Thumbs.db
 /build
 /.vscode
 /CMakeLists.txt.user
+
+# added by intlsy
+/test-intlsy
