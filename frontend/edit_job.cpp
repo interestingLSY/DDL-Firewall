@@ -68,6 +68,8 @@ void EditJob::on_btn_create_clicked()
         this->task->reminders.clear();
         Reminder reminder;
         reminder.type = ReminderType::BY_ACCURATE_TIME;
+        reminder.is_reminded=false;
+        reminder.accurate_time = ui->datetime_reminder->dateTime();
         this->task->reminders.push_back(reminder);
     }
     this->QDialog::close();

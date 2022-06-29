@@ -58,6 +58,7 @@ void EditScheTask::on_btn_create_clicked()
         Reminder reminder;
         reminder.type = ReminderType::BY_ACCURATE_TIME;
         reminder.accurate_time = ui->datetime_reminder->dateTime();
+        reminder.is_reminded= false;
         this->task->reminders.push_back(reminder);
     }
     this->QDialog::close();

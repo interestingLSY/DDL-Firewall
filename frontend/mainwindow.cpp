@@ -383,7 +383,7 @@ void MainWindow::redraw_middle() {
         for (Task &task : tasklist.tasks)
             if(task.end_time.isNull()==false&&task.is_finished==false)
                 if(task.end_time.date()==QDateTime::currentDateTime().date()&&
-                        task.end_time>QDateTime::currentDateTime())
+                        !task.is_finished)
                             cnt_todos++;
     if(cnt_todos)
         ui->lab_ddlcounter->setText("今天还有 " + QString::number(cnt_todos) + " 个 ddl,加油！");

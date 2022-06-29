@@ -69,6 +69,7 @@ void AddJob::on_btn_create_clicked() {
 		Reminder reminder;
 		reminder.type = ReminderType::BY_ACCURATE_TIME;
 		reminder.accurate_time = ui->datetime_reminder->dateTime();
+        reminder.is_reminded=false;
 		new_task.reminders.push_back(reminder);
 	}
 	MainWindow* parent = dynamic_cast<MainWindow*>(this->parentWidget());
