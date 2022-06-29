@@ -34,8 +34,6 @@ set(PROJECT_SOURCES
         frontend/add_tasklist.cpp
         frontend/add_subtask.cpp
         frontend/add_reminder.cpp
-        frontend/calendar_type.cpp
-        frontend/errors.cpp
         frontend/edit_job.cpp
         frontend/edit_sche_task.cpp
         frontend/edit_subtask.cpp

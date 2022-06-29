@@ -26,8 +26,6 @@ SOURCES += \
     frontend/add_job.cpp \
     frontend/add_sche_task.cpp \
     frontend/add_tasklist.cpp \
-    frontend/calendar_type.cpp \
-    frontend/errors.cpp \
     frontend/main.cpp \
     frontend/mainwindow.cpp \
     frontend/edit_sche_task.cpp \
@@ -53,8 +51,6 @@ HEADERS += \
     frontend/add_job.h \
     frontend/add_sche_task.h \
     frontend/add_tasklist.h \
-    frontend/calendar_type.h \
-    frontend/errors.h \
     frontend/mainwindow.h \
     frontend/edit_sche_task.h \
     frontend/edit_job.h
@@ -66,10 +62,8 @@ FORMS += \
     frontend/add_sche_task.ui \
     frontend/add_subtask.ui \
     frontend/add_tasklist.ui \
-    frontend/calendar_type.ui \
     frontend/edit_reminder.ui \
     frontend/edit_subtask.ui \
-    frontend/errors.ui \
     frontend/mainwindow.ui \
     frontend/edit_sche_task.ui \
     frontend/edit_job.ui

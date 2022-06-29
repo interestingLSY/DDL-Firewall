@@ -9,7 +9,6 @@
 
 #include "add_tasklist.h"
 #include "ui_add_tasklist.h"
-#include "errors.h"
 
 AddTaskList::AddTaskList(QWidget *parent) :
     QDialog(parent),

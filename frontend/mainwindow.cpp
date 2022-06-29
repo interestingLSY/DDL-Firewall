@@ -13,8 +13,6 @@
 #include "add_job.h"
 #include "add_sche_task.h"
 #include "add_tasklist.h"
-#include "errors.h"
-#include "calendar_type.h"
 #include "add_job.h"
 #include "add_sche_task.h"
 #include "edit_sche_task.h"
